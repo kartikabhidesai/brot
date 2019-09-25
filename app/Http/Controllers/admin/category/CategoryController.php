@@ -33,7 +33,7 @@ class CategoryController extends Controller
         $data['plugincss'] = array();
         $data['pluginjs'] = array('jquery.validate.min.js');
         $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'category.js');
-        $data['funinit'] = array('Category.init()');
+        $data['funinit'] = array('Category.add()');
         $data['header'] = array(
             'title' => 'Add New category',
             'breadcrumb' => array(
@@ -50,7 +50,7 @@ class CategoryController extends Controller
         $data['plugincss'] = array();
         $data['pluginjs'] = array('jquery.validate.min.js');
         $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'category.js');
-        $data['funinit'] = array('Category.add()');
+        $data['funinit'] = array('Category.init()');
         $data['header'] = array(
             'title' => 'Category List',
             'breadcrumb' => array(
