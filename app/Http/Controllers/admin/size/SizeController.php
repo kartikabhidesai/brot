@@ -30,8 +30,23 @@ class SizeController extends Controller
                 'Size List' => 'Size-list'));
         return view('admin.pages.size.list', $data);
     }
-    public function add(){
-         $objSubcategory = new Category();
+    public function add(Request $request){
+        if ($request->isMethod('post')) {
+           
+            $objSize = new Size();
+            $result = $objSize->addSize($request);
+            if ($result) {
+                $return['status'] = 'success';
+                $return['message'] = 'Subcategory created successfully.';
+                $return['redirect'] = route('Subcategory-list');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
+        }
+        $objSubcategory = new Category();
         $data['result'] = $objSubcategory->getCategory();
         $data['title'] = 'Add Size | Brot';
         $data['css'] = array();
@@ -47,8 +62,39 @@ class SizeController extends Controller
         return view('admin.pages.size.add', $data);
     }
     
-    
-    public function ajaxaction(Request $request){
+    public function editsize(Request $request , $id){
+        if ($request->isMethod('post')) {
+           
+//            $objSize = new Size();
+//            $result = $objSize->addSize($request);
+//            if ($result) {
+//                $return['status'] = 'success';
+//                $return['message'] = 'Subcategory created successfully.';
+//                $return['redirect'] = route('Subcategory-list');
+//            } else {
+//                $return['status'] = 'error';
+//                $return['message'] = 'something will be wrong.';
+//            }
+//            echo json_encode($return);
+//            exit;
+        }
+        $objSubcategory = new Category();
+        $data['result'] = $objSubcategory->getCategory();
+        $data['title'] = 'Edit Size | Brot';
+        $data['css'] = array();
+        $data['plugincss'] = array();
+        $data['pluginjs'] = array('jquery.validate.min.js');
+        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'size.js');
+        $data['funinit'] = array('Size.edit()');
+        $data['header'] = array(
+            'title' => 'Size List',
+            'breadcrumb' => array(
+                'Dashboard' => 'dashboard',
+                'Size List' => 'Size-list'));
+        return view('admin.pages.size.edit', $data);
+    }
+
+        public function ajaxaction(Request $request){
         $action = $request->input('action');
             switch ($action) {
                 case 'changecategory':

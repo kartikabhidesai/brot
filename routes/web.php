@@ -44,6 +44,6 @@ Route::match(['get', 'post'], 'logout', ['as' => 'logout', 'uses' => 'admin\Logi
 
 //Size
 Route::match(['get', 'post'], 'Size-list', ['as' => 'Size-list', 'uses' => 'admin\size\SizeController@index']);
-Route::match(['get', 'post'], 'Edit-size/{id}', ['as' => 'Edit-size', 'uses' => 'admin\size\SizeController@editsubcategory']);
+Route::match(['get', 'post'], 'Edit-size/{id}', ['as' => 'Edit-size', 'uses' => 'admin\size\SizeController@editsize']);
 Route::match(['get', 'post'], 'Add-size', ['as' => 'Add-size', 'uses' => 'admin\size\SizeController@add']);
 Route::match(['get', 'post'], 'size-ajaxaction', ['as' => 'Size-ajax-action', 'uses' => 'admin\size\SizeController@ajaxaction']);
