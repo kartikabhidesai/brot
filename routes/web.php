@@ -34,9 +34,16 @@ Route::match(['get', 'post'], 'Category-List', ['as' => 'Category-List', 'uses' 
 Route::match(['get', 'post'], 'Update-Category/{id}', ['as' => 'Update-Category', 'uses' => 'admin\category\CategoryController@editcategory']);
 Route::match(['get', 'post'], 'category-ajax-action', ['as' => 'categoryajaxaction', 'uses' => 'admin\category\CategoryController@categoryajaxaction']);
 
+
 //Sub Category
 Route::match(['get', 'post'], 'Subcategory-list', ['as' => 'Subcategory-list', 'uses' => 'admin\subcategory\SubcategoryController@index']);
-Route::match(['get', 'post'], 'Edit-subcategory', ['as' => 'edit-subcategory', 'uses' => 'admin\subcategory\SubcategoryController@edit']);
+Route::match(['get', 'post'], 'Edit-subcategory/{id}', ['as' => 'Edit-subcategory', 'uses' => 'admin\subcategory\SubcategoryController@editsubcategory']);
 Route::match(['get', 'post'], 'Add-subcategory', ['as' => 'Add-subcategory', 'uses' => 'admin\subcategory\SubcategoryController@add']);
-
+Route::match(['get', 'post'], 'subcategory-ajax-action', ['as' => 'categoryajaxaction', 'uses' => 'admin\subcategory\SubcategoryController@ajaxaction']);
 Route::match(['get', 'post'], 'logout', ['as' => 'logout', 'uses' => 'admin\LoginController@logout']);
+
+//Size
+Route::match(['get', 'post'], 'Size-list', ['as' => 'Size-list', 'uses' => 'admin\size\SizeController@index']);
+Route::match(['get', 'post'], 'Edit-size/{id}', ['as' => 'Edit-size', 'uses' => 'admin\size\SizeController@editsubcategory']);
+Route::match(['get', 'post'], 'Add-size', ['as' => 'Add-size', 'uses' => 'admin\size\SizeController@add']);
+Route::match(['get', 'post'], 'Size-ajax-action', ['as' => 'Size-ajax-action', 'uses' => 'admin\size\SizeController@ajaxaction']);

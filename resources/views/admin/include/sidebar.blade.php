@@ -33,8 +33,8 @@ $items = Session::get('logindata');
                         <span class="selected"></span>
                     </a>
                 </li>
-                <li class="nav-item start {{ ($currRoute == 'size')  ? 'active' : '' }}">
-                    <a href="#" class="nav-link nav-toggle">
+                <li class="nav-item start {{ ($currRoute == 'Size-list')  ? 'active' : '' }}">
+                    <a href="{{ route('Size-list') }}" class="nav-link nav-toggle">
                         <i class="fa fa-list-alt" aria-hidden="true"></i>
                         <span class="title">Size</span>
                         <span class="selected"></span>

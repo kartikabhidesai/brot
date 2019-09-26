@@ -4,14 +4,14 @@
     <div class="col-md-12">
         <div class="card card-box">
             <div class="card-head">
-                <header>Sub Category List</header>
-                
+                <header>Size List</header>
+
             </div>
             <div class="card-body ">
                 <div class="row p-b-20 pull-right">
                     <div class="col-md-6 col-sm-6 col-6">
                         <div class="btn-group">
-                            <a href="{{ route('Add-subcategory') }}" id="addRow" class="btn btn-info">
+                            <a href="#" id="addRow" class="btn btn-info">
                                 Add New <i class="fa fa-plus"></i>
                             </a>
                         </div>
@@ -24,21 +24,22 @@
 <!--                                <th class="center">Profile</th>
                                 <th class="center"> First Name </th>
                                 <th class="center"> Last Name</th>
--->                                <th class="center"> No </th>
+                                -->                                <th class="center"> No </th>
                                 <th class="center">Category Name</th>
                                 <th class="center">Sub-Category Name</th>
-                                <th class="center">Update Sub-category</th>
-                                <th class="center">Delete Sub-category</th>
+                                <th class="center">Size</th>
+                                <th class="center">Update Size</th>
+                                <th class="center">Delete Size</th>
                             </tr>
                         </thead>
                         <tbody>
                             @php 
-                             $i =0;
+                            $i =0;
                             @endphp
                             @foreach($result as $value)
-                                @php
-                                    $i++;
-                                @endphp
+                            @php
+                            $i++;
+                            @endphp
                             <tr class="odd gradeX">
                                 <td class="center">{{ $i }}</td>
                                 <td class="center">{{ $value->categoryname }}</td>
@@ -60,7 +61,4 @@
         </div>
     </div>
 </div>
-
-<!--delete toggle-->
-
 @endsection

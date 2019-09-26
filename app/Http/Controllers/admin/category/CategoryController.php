@@ -19,7 +19,7 @@ class CategoryController extends Controller
             $result = $objCategory->addCategory($request);
             if ($result) {
                 $return['status'] = 'success';
-                $return['message'] = 'Record created successfully.';
+                $return['message'] = 'Category created successfully.';
                 $return['redirect'] = route('Category-List');
             } else {
                 $return['status'] = 'error';
@@ -42,7 +42,7 @@ class CategoryController extends Controller
         return view('admin.pages.category.addcategory', $data);
     }
     public function categorylist(Request $request) {
-
+        
         $objCategory = new Category();
         $data['result'] = $objCategory->getCategory();
         $data['title'] = 'Category List | Brot';
@@ -63,13 +63,22 @@ class CategoryController extends Controller
         if ($request->isMethod('post')) {
             $objCategory = new Category();
             $result = $objCategory->editCategory($request, $id);
-            
+            if ($result) {
+                $return['status'] = 'success';
+                $return['message'] = 'Category Edited successfully.';
+                $return['redirect'] = route('Category-List');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
         }
         $data['title'] = 'Edit Category | Brot';
         $data['css'] = array();
         $data['plugincss'] = array();
         $data['pluginjs'] = array('jquery.validate.min.js');
-        $data['js'] = array('category.js');
+        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'category.js');
         $data['funinit'] = array('Category.edit()');
         $data['header'] = array(
             'title' => 'Update Category',
@@ -90,11 +99,11 @@ class CategoryController extends Controller
                 $result = $objCategory->deleteCategory($data);  
                 if ($result) {
                     $return['status'] = 'success';
-                    $return['message'] = 'Record deleted successfully.';
+                    $return['message'] = 'Category deleted successfully.';
                     $return['redirect'] = route('Category-List');
                 } else {
                     $return['status'] = 'error';
-                    $return['message'] = 'Record Not Deleted';
+                    $return['message'] = 'Category Not Deleted';
                 }
 
                 return json_encode($return);
