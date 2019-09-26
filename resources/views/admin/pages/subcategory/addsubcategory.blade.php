@@ -12,7 +12,7 @@
             <div class="card-body " id="bar-parent">
                  <form method="post" id='addsubcategory'>{{ csrf_field() }}
                     <div class="form-group">
-                        <label for="simpleFormEmail">Category name</label>
+                        <label for="simpleFormEmail">Category </label>
                         <select class="form-control" name="category" id="category">
                             <option value="">Select Category</option>
                             @foreach($result as $key)

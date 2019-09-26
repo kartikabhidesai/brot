@@ -65,4 +65,12 @@ class Subcategory extends Model
     	return $result;
     
     }
+    
+    public function getSubcategorylist($id){
+       $result = Subcategory::select('subcategoryname','id')
+               ->where("categoryid",$id)
+               ->get();
+       return $result;
+       
+    }
 }

@@ -11,7 +11,7 @@
                 <div class="row p-b-20 pull-right">
                     <div class="col-md-6 col-sm-6 col-6">
                         <div class="btn-group">
-                            <a href="#" id="addRow" class="btn btn-info">
+                            <a href="{{ route('Add-size') }}" id="addRow" class="btn btn-info">
                                 Add New <i class="fa fa-plus"></i>
                             </a>
                         </div>
