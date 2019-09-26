@@ -37,8 +37,8 @@ class SizeController extends Controller
             $result = $objSize->addSize($request);
             if ($result) {
                 $return['status'] = 'success';
-                $return['message'] = 'Subcategory created successfully.';
-                $return['redirect'] = route('Subcategory-list');
+                $return['message'] = 'Size added successfully.';
+                $return['redirect'] = route('Size-list');
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'something will be wrong.';
