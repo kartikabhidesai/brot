@@ -41,7 +41,7 @@ $items = Session::get('logindata');
                     </a>
                 </li>
                 <li class="nav-item {{ ($currRoute == 'product') || ($currRoute == 'Product') || ($currRoute == 'Product-List')   ? 'active' : '' }}">
-                    <a href="#" class="nav-link nav-toggle">
+                    <a href="{{ route('product-list') }}" class="nav-link nav-toggle">
                         <i class="fa fa-product-hunt" aria-hidden="true"></i>
                         <span class="title">Product</span>
                     </a>

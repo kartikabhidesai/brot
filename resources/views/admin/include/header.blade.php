@@ -32,4 +32,19 @@
     <script>
             var baseurl = "{{ asset('/') }}";
     </script>
+    @if (!empty($plugincss)) 
+        @foreach ($plugincss as $value) 
+            @if(!empty($value))
+                <link rel="stylesheet" href="{{ url('admin/assets/plugins/'.$value) }}">
+            @endif
+        @endforeach
+    @endif
+     @if (!empty($css)) 
+        @foreach ($css as $value) 
+        @if(!empty($value))
+        <link rel="stylesheet" href="{{ url('admin/assets/'.$value) }}">
+        @endif
+        @endforeach
+        @endif
+        
 </head>

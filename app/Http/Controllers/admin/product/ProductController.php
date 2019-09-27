@@ -5,50 +5,20 @@ namespace App\Http\Controllers\admin\product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Product;
-
+use App\Model\Subcategory;
+use App\Model\Category;
+use App\Model\Size;
 
 class ProductController extends Controller
 {
-    public function __construct() {
+    function __construct() {
         
     }
-
-    public function newproduct(Request $request) {
-
-        if ($request->isMethod('post')) {
-           
-            $objProduct = new Product();
-            $result = $objProduct->addProduct($request);
-            if ($result) {
-                $return['status'] = 'success';
-                $return['message'] = 'Record created successfully.';
-                $return['redirect'] = route('Product-List');
-            } else {
-                $return['status'] = 'error';
-                $return['message'] = 'something will be wrong.';
-            }
-            echo json_encode($return);
-            exit;
-        }
-        $data['title'] = 'New Product | Brot';
-        $data['css'] = array();
-        $data['plugincss'] = array();
-        $data['pluginjs'] = array('jquery.validate.min.js');
-        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'product.js');
-        $data['funinit'] = array('Product.init()');
-        $data['header'] = array(
-            'title' => 'Add New Product',
-            'breadcrumb' => array(
-                'Dashboard' => 'dashboard',
-                'Add New Product' => 'Product'));
-        return view('admin.pages.product.newproduct', $data);
-    }
-
-    public function viewproduct() {
-
-        $objProduct = new Product();
-        $data['result'] = $objProduct->getProduct();
-        $data['title'] = 'View Product | Brot';
+    public function index(){
+        
+//        $objProduct = new Product();
+//        $data['result'] = $objProduct->getProduct();
+        $data['title'] = 'Product List | Brot';
         $data['css'] = array();
         $data['plugincss'] = array();
         $data['pluginjs'] = array('jquery.validate.min.js');
@@ -58,104 +28,44 @@ class ProductController extends Controller
             'title' => 'Product List',
             'breadcrumb' => array(
                 'Dashboard' => 'dashboard',
-                'Product List' => 'Product-List'));
-        return view('admin.pages.product.viewproduct', $data);
+                'Product List' => 'product-list'));
+        return view('admin.pages.product.list', $data);
     }
-
-    public function editproduct(Request $request, $id) {
+    public function add(Request $request){
         
-        if ($request->isMethod('post')) {
+        if($request->isMethod('post')){
+            
             $objProduct = new Product();
-            $result = $objProduct->editProduct($request, $id);
+            $data['result'] = $objProduct->addProduct();
         }
-        $data['title'] = 'Edit Product | Brot';
+        $objSubcategory = new Category();
+        $data['result'] = $objSubcategory->getCategory();
+        $data['title'] = 'Add Product | Brot';
         $data['css'] = array();
-        $data['plugincss'] = array();
-        $data['pluginjs'] = array('jquery.validate.min.js');
-        $data['js'] = array('product.js');
-        $data['funinit'] = array('Product.init()');
+        $data['plugincss'] = array('select2/css/select2.css','select2/css/select2-bootstrap.min.css');
+        $data['pluginjs'] = array('plugins/select2/js/select2.js','pages/select2/select2-init.js');
+        $data['js'] = array('jquery.validate.min.js','ajaxfileupload.js', 'jquery.form.min.js', 'product.js');
+        $data['funinit'] = array('Product.add()');
         $data['header'] = array(
-            'title' => 'Update Product',
+            'title' => 'Add Product',
             'breadcrumb' => array(
                 'Dashboard' => 'dashboard',
-                'Update Product' => 'Update-Product'));
-        $objProduct = new Product();
-        $data['result'] = $objProduct->getProductDetail($request, $id);
-        return view('admin.pages.product.updateproduct', $data);
+                'Add Product' => 'Add-product'));
+        return view('admin.pages.product.add',$data);
     }
-    public function category() {
-        
-        $objProduct = new Product();
-        $data['result'] = $objProduct->getProduct();
-        $data['title'] = 'category | Brot';
-        $data['css'] = array();
-        $data['plugincss'] = array();
-        $data['pluginjs'] = array('jquery.validate.min.js');
-        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'product.js');
-        $data['funinit'] = array('Product.init()');
-        $data['header'] = array(
-            'title' => 'Category',
-            'breadcrumb' => array(
-                'Dashboard' => 'dashboard',
-                'Category' => 'Category'));
-        return view('admin.pages.product.viewproduct', $data);
-    }
-    public function subcategory() {
-        
-        $objProduct = new Product();
-        $data['result'] = $objProduct->getProduct();
-        $data['title'] = 'View Product | Brot';
-        $data['css'] = array();
-        $data['plugincss'] = array();
-        $data['pluginjs'] = array('jquery.validate.min.js');
-        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'product.js');
-        $data['funinit'] = array('Product.init()');
-        $data['header'] = array(
-            'title' => 'Sub Category',
-            'breadcrumb' => array(
-                'Dashboard' => 'dashboard',
-                'Sub Category' => 'Sub Category'));
-        return view('admin.pages.product.viewproduct', $data);
-    }
-    public function size() {
-        
-        $objProduct = new Product();
-        $data['result'] = $objProduct->getProduct();
-        $data['title'] = 'size | Brot';
-        $data['css'] = array();
-        $data['plugincss'] = array();
-        $data['pluginjs'] = array('jquery.validate.min.js');
-        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'product.js');
-        $data['funinit'] = array('Product.init()');
-        $data['header'] = array(
-            'title' => 'size',
-            'breadcrumb' => array(
-                'Dashboard' => 'dashboard',
-                'size' => 'size'));
-        return view('admin.pages.product.viewproduct', $data);
-    }
-    public function productajaxaction(Request $request) {
-
+    public function ajaxaction(Request $request){
         $action = $request->input('action');
-        switch ($action) {
-            case 'deleteProduct':
-                $data = $request->input('data');
-                $objProduct = new Product();
-                $result = $objProduct->deleteProduct($data);
-                if ($result) {
-                    $return['status'] = 'success';
-                    $return['message'] = 'Record deleted successfully.';
-                    $return['redirect'] = route('Product-List');
-                } else {
-                    $return['status'] = 'error';
-                    $return['message'] = 'Record Not Deleted';
-                }
-
-                return json_encode($return);
-                break;
-            case 'deleteDemo':
-                $result = $this->deleteDemo($request->input('data'));
-                break;
-        }
+            switch ($action) {
+                case 'changecategory':
+                   $objSubcategory = new Subcategory();
+                   $result = $objSubcategory->getSubcategorylist($request->input('id'));
+                   return json_encode($result);
+                    break;
+                case 'changesize':
+                   $objSize = new Size();
+                   $result = $objSize->getSizelist($request->input('id'));
+                   return json_encode($result);
+                   break;
+            }
     }
 }

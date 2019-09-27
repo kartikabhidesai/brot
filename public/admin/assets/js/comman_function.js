@@ -332,9 +332,9 @@ function handleFormValidate(form, rules, submitCallback, showToaster) {
             this.defaultShowErrors(); // keep error messages next to each input element   
         },
         highlight: function (element) { // hightlight error inputs
-            $(element).closest('.form-control').addClass('has-error'); // set error class to the control group
+            $(element).closest('.form-control ,.select2-selection').addClass('has-error'); // set error class to the control group
 //            
-//            $(element).parent().parent().find('.select2').addClass('has-error');
+            $(element).parent().parent().find('.select2-selection').addClass('has-error');
 //            $(element).parent().addClass('error')
 //            $(element).parent().addClass('is-focused')
         },

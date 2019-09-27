@@ -64,22 +64,26 @@ class SizeController extends Controller
     
     public function editsize(Request $request , $id){
         if ($request->isMethod('post')) {
-           
-//            $objSize = new Size();
-//            $result = $objSize->addSize($request);
-//            if ($result) {
-//                $return['status'] = 'success';
-//                $return['message'] = 'Subcategory created successfully.';
-//                $return['redirect'] = route('Subcategory-list');
-//            } else {
-//                $return['status'] = 'error';
-//                $return['message'] = 'something will be wrong.';
-//            }
-//            echo json_encode($return);
-//            exit;
+            $objSize = new Size();
+            $result = $objSize->editsize($request);
+            if ($result) {
+                $return['status'] = 'success';
+                $return['message'] = 'Subcategory created successfully.';
+                $return['redirect'] = route('Size-list');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
         }
-        $objSubcategory = new Category();
-        $data['result'] = $objSubcategory->getCategory();
+        
+        $objSize =  new Size();
+        $data['sizedetails']=$objSize->getSizeDetails($id);
+        $objSubcategory = new Subcategory();
+        $data['subcategory']= $objSubcategory->getSubcategoryList($data['sizedetails'][0]->categoryid); 
+        $objcategory = new Category();
+        $data['result'] = $objcategory->getCategory();
         $data['title'] = 'Edit Size | Brot';
         $data['css'] = array();
         $data['plugincss'] = array();
@@ -102,7 +106,21 @@ class SizeController extends Controller
                    $result = $objSubcategory->getSubcategorylist($request->input('id'));
                    return json_encode($result);
                     break;
-                    
+                case 'deleteSize':
+                    $data = $request->input('data');
+                    $objSize = new Size();
+                    $result = $objSize->deleteSize($data);  
+                    if ($result) {
+                        $return['status'] = 'success';
+                        $return['message'] = 'Size deleted successfully.';
+                        $return['redirect'] = route('Size-list');
+                    } else {
+                        $return['status'] = 'error';
+                        $return['message'] = 'Size Not Deleted';
+                    }
+
+                    return json_encode($return);
+                    break;    
         }
     }
 }

@@ -3,8 +3,12 @@ function format(state) {
     return "<img class='flag' src='../light/assets/img/flags/" + state.id.toLowerCase() + ".png'/> &nbsp;" + state.text;
 }
 
-var placeholder = "Select a State";
+var placeholder = "Select a Size";
 $('.select2, .select2-multiple').select2({
+	theme: "bootstrap",
+//    placeholder: placeholder,
+});
+$('.selectsize').select2({
 	theme: "bootstrap",
     placeholder: placeholder,
 });

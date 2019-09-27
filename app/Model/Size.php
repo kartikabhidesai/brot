@@ -31,5 +31,35 @@ class Size extends Model
         return true;
      }
      
-     
+     public function getSizeDetails($id){
+        $result = Size::select('categoryid','subcategoryid','size','id')
+                    ->where('id',$id)
+                    ->get();
+        return $result;
+     }
+     public function editsize($request){
+         
+            $objSize=  new Size();
+            $objSize->categoryid = $request->input('category');
+            $objSize->subcategoryid = $request->input('subcategory');
+            $objSize->size = $request->input('size');
+            $objSize->created_at = date("Y-m-d h:i:s");
+            $objSize->updated_at = date("Y-m-d h:i:s");
+            $objSize->save();
+            
+            return true;
+     }
+     public function deleteSize($data)
+    {
+        $result = Size::find($data['id'])->delete();
+    	
+    	return $result;
+    }
+    public function getSizelist($id){
+       $result = Size::select('size','id')
+               ->where("subcategoryid",$id)
+               ->get();
+       return $result;
+       
+    }
 }

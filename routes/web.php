@@ -47,3 +47,10 @@ Route::match(['get', 'post'], 'Size-list', ['as' => 'Size-list', 'uses' => 'admi
 Route::match(['get', 'post'], 'Edit-size/{id}', ['as' => 'Edit-size', 'uses' => 'admin\size\SizeController@editsize']);
 Route::match(['get', 'post'], 'Add-size', ['as' => 'Add-size', 'uses' => 'admin\size\SizeController@add']);
 Route::match(['get', 'post'], 'size-ajaxaction', ['as' => 'Size-ajax-action', 'uses' => 'admin\size\SizeController@ajaxaction']);
+
+//product
+Route::match(['get', 'post'], 'product-list', ['as' => 'product-list', 'uses' => 'admin\product\ProductController@index']);
+Route::match(['get', 'post'], 'Add-product', ['as' => 'Add-product', 'uses' => 'admin\product\ProductController@add']);
+Route::match(['get', 'post'], 'Product-ajaxaction', ['as' => 'Product-ajaxaction', 'uses' => 'admin\product\ProductController@ajaxaction']);
+
+
