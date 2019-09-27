@@ -16,8 +16,8 @@ class ProductController extends Controller
     }
     public function index(){
         
-//        $objProduct = new Product();
-//        $data['result'] = $objProduct->getProduct();
+        $objProduct = new Product();
+        $data['result'] = $objProduct->getProduct();
         $data['title'] = 'Product List | Brot';
         $data['css'] = array();
         $data['plugincss'] = array();
@@ -36,7 +36,17 @@ class ProductController extends Controller
         if($request->isMethod('post')){
             
             $objProduct = new Product();
-            $data['result'] = $objProduct->addProduct();
+            $result = $objProduct->addProduct($request);
+            if ($result) {
+                $return['status'] = 'success';
+                $return['message'] = 'Product created successfully.';
+                $return['redirect'] = route('product-list');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'something will be wrong.';
+            }
+            echo json_encode($return);
+            exit;
         }
         $objSubcategory = new Category();
         $data['result'] = $objSubcategory->getCategory();

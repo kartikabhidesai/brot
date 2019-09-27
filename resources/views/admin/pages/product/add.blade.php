@@ -18,37 +18,37 @@
                             @endforeach
                         </select>
                     </div>
-
                     <div class="form-group">
                         <label for="simpleFormEmail">Sub Category </label>
                         <select class="form-control selectsubcategory subcategory" name="subcategory"  id="subcategory">
                             <option value="">Select sub category</option>
                         </select>
                     </div>
-                    
-
-
-
                     <div class="form-group ">
                         <label for="simpleFormEmail">Size </label>
-                        <select id="multiple" name="size" class="form-control has-error select2-multiple selectsize" multiple>
-                               
-                            </select>
-                        
+                        <select id="multiple" name="size[]" class="form-control has-error select2-multiple selectsize" multiple>
+                            <option value="">Select sub category</option>
+                        </select>
                     </div>
-
-
-                    <div class="form-group appendproduct">
-                        <div class="row">
-                            <div class="col-md-10 col-sm-10">
-                                <label for="simpleFormEmail">Enter product Code</label>
-                                <input type="text" class="form-control product" id="product" name="product" placeholder="Enter product">
-                            </div>
-                            <div class="col-md-2 col-sm-2">
-                                <label for="simpleFormEmail">&nbsp;</label>
-                                <button class="form-control btn btn-success addproduct" data-dir="up" type="button"><span class="fa fa-plus"></span></button>
-                            </div>
-                        </div>
+                    <div class="form-group ">
+                        <label for="simpleFormEmail">Enter product Code</label>
+                        <input type="text" class="form-control product" id="productcode" name="productcode" placeholder="Enter product Code">
+                    </div>
+                    <div class="form-group ">
+                        <label for="simpleFormEmail">Enter product Name</label>
+                        <input type="text" class="form-control product" id="productname" name="productname" placeholder="Enter product Name">
+                    </div>
+                    <div class="form-group ">
+                        <label for="simpleFormEmail">Enter product price</label>
+                        <input type="text" class="form-control product" id="price" name="price" placeholder="Enter product price">
+                    </div>
+                    <div class="form-group ">
+                        <label for="simpleFormEmail">Enter product Description</label>
+                        <input type="text" class="form-control product" id="description" name="description" placeholder="Enter product Description">
+                    </div>
+                    <div class="form-group ">
+                        <label for="simpleFormEmail">Enter product Quantity</label>
+                        <input type="text" class="form-control product" id="quantity" name="quantity" placeholder="Enter product Quantity">
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

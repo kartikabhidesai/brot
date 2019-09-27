@@ -10,6 +10,11 @@ var Product = function () {
                 category: {required: true},
                 subcategory: {required: true},
                 size: {required: true},
+                productcode: {required: true},
+                productname: {required: true},
+                price: {required: true},
+                description: {required: true},
+                quantity: {required: true},
             };
             handleFormValidate(form, rules, function(form) {
                 handleAjaxFormSubmit(form,true);
