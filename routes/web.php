@@ -26,10 +26,6 @@ Route::match(['get', 'post'], 'admin-login', ['as' => 'admin-login', 'uses' => '
 Route::match(['get', 'post'], 'register', ['as' => 'register', 'uses' => 'admin\LoginController@register']);
 Route::match(['get', 'post'], 'forgotpassword', ['as' => 'forgotpassword', 'uses' => 'admin\LoginController@forgotpassword']);
 
-
-
-
-
 //category
 Route::match(['get', 'post'], 'Add-Category', ['as' => 'Add-Category', 'uses' => 'admin\category\CategoryController@newcategory']);
 Route::match(['get', 'post'], 'Category-List', ['as' => 'Category-List', 'uses' => 'admin\category\CategoryController@categorylist']);

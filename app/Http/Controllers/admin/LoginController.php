@@ -14,7 +14,8 @@ class LoginController extends Controller
 {
     protected $redirectTo = '/';
     public function __construct() {
-        
+//        parent::__construct();
+//        $this->middleware('admin');
     }
     public function login(Request $request) {
         
@@ -105,7 +106,6 @@ class LoginController extends Controller
     }
 
     public function logout(Request $request) {
-
         $this->resetGuard();
         return redirect()->route('admin-login');
     }

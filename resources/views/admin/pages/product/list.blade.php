@@ -25,6 +25,7 @@
                                 <th class="center"> First Name </th>
                                 <th class="center"> Last Name</th>
 -->                                <th class="center"> No </th>
+                                <th class="center"> product image</th>
                                 <th class="center"> Category Name</th>
                                 <th class="center"> Sub Category Name</th>
                                 <th class="center">Size</th>
@@ -47,6 +48,13 @@
                             @endphp
                             <tr class="odd gradeX">
                                 <td class="center">{{ $i }}</td>
+                                <td class="user-circle-img">
+                                    @if($value->image != '' || $value->image != NULL)
+                                    <img height="50px" width="50px" src="{{ url('/uploads/product/'.$value->image) }}" alt="User's Profile Picture">
+                                    @else
+                                    <img  height="50px" width="50px" src="{{ url('admin/assets/img/mega-img1.jpg') }}" alt="User's Profile Picture">
+                                    @endif
+                                </td>
                                 <td class="center">{{ $value->categoryname }}</td>
                                 <td class="center">{{ $value->subcategoryname }}</td>
                                 <td class="center">{{ $value->size }}</td>

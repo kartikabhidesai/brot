@@ -10,4 +10,15 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    public $loginUser;
+
+    public function __construct() {
+
+        $this->middleware(function ($request, $next) {
+            if (!empty(Auth()->guard('admin')->user())) {
+                $this->loginUser = Auth()->guard('admin')->user();
+            }
+            return $next($request);
+        });
+    }
 }
