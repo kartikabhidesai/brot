@@ -37,16 +37,7 @@ class SubcategoryController extends Controller
            
             $objSubcategory = new Subcategory();
             $result = $objSubcategory->addSubcategory($request);
-            if ($result) {
-                $return['status'] = 'success';
-                $return['message'] = 'Subcategory created successfully.';
-                $return['redirect'] = route('Subcategory-list');
-            } else {
-                $return['status'] = 'error';
-                $return['message'] = 'something will be wrong.';
-            }
-            echo json_encode($return);
-            exit;
+            echo json_encode($result); exit;
         }
         $data['title'] = 'New Sub category | Brot';
         $data['css'] = array();
@@ -69,15 +60,7 @@ class SubcategoryController extends Controller
             
             $objSubcategory = new Subcategory();
             $result = $objSubcategory->editSubcategory($request, $id);
-            if ($result) {
-                $return['status'] = 'success';
-                $return['message'] = 'Subcategory Edited successfully.';
-                $return['redirect'] = route('Subcategory-list');
-            } else {
-                $return['status'] = 'error';
-                $return['message'] = 'something will be wrong.';
-            }
-            echo json_encode($return);
+            echo json_encode($result);
             exit;
         }
         $data['title'] = 'Edit Sub Category | Brot';
@@ -91,10 +74,11 @@ class SubcategoryController extends Controller
             'breadcrumb' => array(
                 'Dashboard' => 'dashboard',
                 'Update Sub Category' => 'Edit-subcategory'));
-        $objSubcategory = new Category();
-        $data['result1'] = $objSubcategory->getCategory();
+        $objcategory = new Category();
+        $data['result1'] = $objcategory->getCategory();
         $objSubcategory = new Subcategory();
         $data['result'] = $objSubcategory->getSubcategoryDetail($request, $id);
+        $data['id'] = $id;
         return view('admin.pages.subcategory.updatesubcategory', $data);
     }
     
@@ -104,7 +88,7 @@ class SubcategoryController extends Controller
                 case 'deleteSubcategory':
                     $data = $request->input('data');
                     $objSubCategory = new Subcategory();
-                    $result = $objSubCategory->deleteCategory($request);  
+                    $result = $objSubCategory->deleteCategory($data);  
                     if ($result) {
                         $return['status'] = 'success';
                         $return['message'] = 'Subcategory deleted successfully.';

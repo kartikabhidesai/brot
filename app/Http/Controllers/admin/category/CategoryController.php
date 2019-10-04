@@ -23,7 +23,7 @@ class CategoryController extends Controller
                 $return['redirect'] = route('Category-List');
             } else {
                 $return['status'] = 'error';
-                $return['message'] = 'something will be wrong.';
+                $return['message'] = 'Category already exist.';
             }
             echo json_encode($return);
             exit;
@@ -69,7 +69,7 @@ class CategoryController extends Controller
                 $return['redirect'] = route('Category-List');
             } else {
                 $return['status'] = 'error';
-                $return['message'] = 'something will be wrong.';
+                $return['message'] = 'Category already exist.';
             }
             echo json_encode($return);
             exit;

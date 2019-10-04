@@ -20,12 +20,13 @@ Route::match(['get', 'post'], '/', ['as' => 'home', 'uses' => 'frontend\Dashboar
 
 
 // Admin Route
-Route::match(['get', 'post'], 'dashboard', ['as' => 'dashboard', 'uses' => 'admin\dashboard\DashboardController@dashboard']);
 
 Route::match(['get', 'post'], 'admin-login', ['as' => 'admin-login', 'uses' => 'admin\LoginController@login']);
 Route::match(['get', 'post'], 'register', ['as' => 'register', 'uses' => 'admin\LoginController@register']);
 Route::match(['get', 'post'], 'forgotpassword', ['as' => 'forgotpassword', 'uses' => 'admin\LoginController@forgotpassword']);
-
+$adminPrefix = "";
+Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
+Route::match(['get', 'post'], 'dashboard', ['as' => 'dashboard', 'uses' => 'admin\dashboard\DashboardController@dashboard']);
 
 
 
@@ -53,5 +54,7 @@ Route::match(['get', 'post'], 'size-ajaxaction', ['as' => 'Size-ajax-action', 'u
 //product
 Route::match(['get', 'post'], 'product-list', ['as' => 'product-list', 'uses' => 'admin\product\ProductController@index']);
 Route::match(['get', 'post'], 'Add-product', ['as' => 'Add-product', 'uses' => 'admin\product\ProductController@add']);
+Route::match(['get', 'post'], 'Edit-Product/{id}', ['as' => 'Edit-Product', 'uses' => 'admin\product\ProductController@edit']);
 Route::match(['get', 'post'], 'Product-ajaxaction', ['as' => 'Product-ajaxaction', 'uses' => 'admin\product\ProductController@ajaxaction']);
 
+});

@@ -35,16 +35,7 @@ class SizeController extends Controller
            
             $objSize = new Size();
             $result = $objSize->addSize($request);
-            if ($result) {
-                $return['status'] = 'success';
-                $return['message'] = 'Size added successfully.';
-                $return['redirect'] = route('Size-list');
-            } else {
-                $return['status'] = 'error';
-                $return['message'] = 'something will be wrong.';
-            }
-            echo json_encode($return);
-            exit;
+            echo json_encode($result); exit;
         }
         $objSubcategory = new Category();
         $data['result'] = $objSubcategory->getCategory();
@@ -65,31 +56,23 @@ class SizeController extends Controller
     public function editsize(Request $request , $id){
         if ($request->isMethod('post')) {
             $objSize = new Size();
-            $result = $objSize->editsize($request);
-            if ($result) {
-                $return['status'] = 'success';
-                $return['message'] = 'Subcategory created successfully.';
-                $return['redirect'] = route('Size-list');
-            } else {
-                $return['status'] = 'error';
-                $return['message'] = 'something will be wrong.';
-            }
-            echo json_encode($return);
+            $result = $objSize->editsize($request, $id);
+            echo json_encode($result);
             exit;
         }
-        
         $objSize =  new Size();
-        $data['sizedetails']=$objSize->getSizeDetails($id);
+        $data['result']=$objSize->getSizeDetails($id);
         $objSubcategory = new Subcategory();
-        $data['subcategory']= $objSubcategory->getSubcategoryList($data['sizedetails'][0]->categoryid); 
+        $data['subcategory']= $objSubcategory->getSubcategoryList($data['result'][0]->categoryid); 
         $objcategory = new Category();
-        $data['result'] = $objcategory->getCategory();
+        $data['category'] = $objcategory->getCategory();
         $data['title'] = 'Edit Size | Brot';
         $data['css'] = array();
         $data['plugincss'] = array();
         $data['pluginjs'] = array('jquery.validate.min.js');
         $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'size.js');
         $data['funinit'] = array('Size.edit()');
+        $data['id'] = $id;
         $data['header'] = array(
             'title' => 'Size List',
             'breadcrumb' => array(

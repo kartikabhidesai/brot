@@ -11,17 +11,22 @@ class Category extends Model
     protected $table = 'category';
     public function addCategory($request){
       
-       $objcategory=  new Category();
-       $objcategory->categoryname = $request->input('categoryname');
-       $objcategory->created_at = date("Y-m-d h:i:s");
-       $objcategory->updated_at = date("Y-m-d h:i:s");
-       
-       return $objcategory->save();
+        $findCategory = Category::where('categoryname', $request->input('categoryname'))->first();
+        
+        if(!empty($findCategory)) {
+            return false;
+        }
+        $objcategory=  new Category();
+        $objcategory->categoryname = $request->input('categoryname');
+        $objcategory->created_at = date("Y-m-d h:i:s");
+        $objcategory->updated_at = date("Y-m-d h:i:s");
+
+        return $objcategory->save();
     }
     public function getCategory(){
       
        $result = Category::select('*')
-                 ->get();   
+                 ->get();  
        return $result;
     }
     public function getCategoryDetail($request, $id){
@@ -33,6 +38,11 @@ class Category extends Model
     }
     public function editCategory($request, $id){
         
+        $findCategory = Category::where('categoryname', $request->input('categoryname'))->first();
+        
+        if(!empty($findCategory)) {
+            return false;
+        }
         $result = Category::find($id);
         $result->categoryname = $request->input('categoryname');;
         $result->created_at = date('Y-m-d H:i:s');

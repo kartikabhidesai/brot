@@ -44,14 +44,14 @@
                                 <td class="center">{{ $i }}</td>
                                 <td class="center">{{ $value->categoryname }}</td>
                                 <td class="center">{{ $value->subcategoryname }}</td>
-                                <td class="center">{{ $value->size }}</td>
+                                <td class="center">{{ $value->names }}</td>
                                 <td class="center">
-                                    <a href="{{ route('Edit-size',$value->id) }}" class="btn btn-tbl-edit btn-xs">
+                                    <a href="{{ route('Edit-size',$value->categoryid) }}" class="btn btn-tbl-edit btn-xs">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                 </td>
                                 <td class="center">
-                                    <a data-toggle="modal" data-target="#deletemodal" data-id="{{ $value->id }}" class="btn btn-tbl-delete btn-xs delete"><i class="fa fa-trash-o"></i></a>
+                                    <a data-toggle="modal" data-target="#deletemodal" data-id="{{ $value->categoryid }}" class="btn btn-tbl-delete btn-xs delete"><i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                             @endforeach
