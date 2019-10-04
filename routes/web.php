@@ -24,12 +24,15 @@ Route::match(['get', 'post'], '/', ['as' => 'home', 'uses' => 'frontend\Dashboar
 Route::match(['get', 'post'], 'admin-login', ['as' => 'admin-login', 'uses' => 'admin\LoginController@login']);
 Route::match(['get', 'post'], 'register', ['as' => 'register', 'uses' => 'admin\LoginController@register']);
 Route::match(['get', 'post'], 'forgotpassword', ['as' => 'forgotpassword', 'uses' => 'admin\LoginController@forgotpassword']);
+<<<<<<< HEAD
 $adminPrefix = "";
 Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
 Route::match(['get', 'post'], 'dashboard', ['as' => 'dashboard', 'uses' => 'admin\dashboard\DashboardController@dashboard']);
 
 
 
+=======
+>>>>>>> 52c451f30ef3bc81c83ff0122a41770b61163467
 
 //category
 Route::match(['get', 'post'], 'Add-Category', ['as' => 'Add-Category', 'uses' => 'admin\category\CategoryController@newcategory']);

@@ -3,7 +3,10 @@
 namespace App\Http\Middleware;
 
 use Closure;
+<<<<<<< HEAD
 use Auth;
+=======
+>>>>>>> 52c451f30ef3bc81c83ff0122a41770b61163467
 
 class Admin
 {
@@ -14,6 +17,7 @@ class Admin
      * @param  \Closure  $next
      * @return mixed
      */
+<<<<<<< HEAD
     public function handle($request, Closure $next, $guard = 'admin')
     {    
         if (Auth::guard($guard)->guest()) {
@@ -24,6 +28,10 @@ class Admin
             }
         } 
 
+=======
+    public function handle($request, Closure $next)
+    {
+>>>>>>> 52c451f30ef3bc81c83ff0122a41770b61163467
         return $next($request);
     }
 }

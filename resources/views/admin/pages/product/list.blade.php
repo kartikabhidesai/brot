@@ -48,9 +48,15 @@
                             @endphp
                             <tr class="odd gradeX">
                                 <td class="center">{{ $i }}</td>
+<<<<<<< HEAD
                                 <td class="user-circle-img showimage">
                                     @if($value->image != '' || $value->image != NULL)
                                     <img height="50px"  width="50px" src="{{ url('/uploads/product/'.$value->image) }}" alt="User's Profile Picture">
+=======
+                                <td class="user-circle-img">
+                                    @if($value->image != '' || $value->image != NULL)
+                                    <img height="50px" width="50px" src="{{ url('/uploads/product/'.$value->image) }}" alt="User's Profile Picture">
+>>>>>>> 52c451f30ef3bc81c83ff0122a41770b61163467
                                     @else
                                     <img  height="50px" width="50px" src="{{ url('admin/assets/img/mega-img1.jpg') }}" alt="User's Profile Picture">
                                     @endif
