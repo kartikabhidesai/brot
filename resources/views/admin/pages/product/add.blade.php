@@ -32,29 +32,27 @@
                             <option value="">Select sub category</option>
                         </select>
                     </div>
-                    <div class="form-group ">
-                        <label for="simpleFormEmail">Size </label>
-                        <select id="multiple" name="size[]" class="form-control has-error select2-multiple selectsize" multiple>
-                            <option value="">Select size</option>
-                        </select>
+                    <div class="form-group appendsize">
+                        <div class="row">
+                            <div class="col-md-5 col-sm-5">
+                                <label for="simpleFormEmail">Size </label>
+                                <select class="form-control size sizeselect" name="size[]" id="size">
+                                    <option value="">Select size</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5 col-sm-5">
+                                <label for="simpleFormEmail">Quantity </label>
+                                <input type="text" class="form-control quantity" id="quantity" name="quantity[]" placeholder="Enter Quantity">
+                            </div>
+                            <div class="col-md-2 col-sm-2">
+                                <label for="simpleFormEmail">&nbsp;</label>
+                                <button class="form-control btn btn-success addsizequantity" data-dir="up" id="sizebutton" type="button" disabled><span class="fa fa-plus"></span></button>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group ">
                         <label for="simpleFormEmail">Enter product price</label>
                         <input type="text" class="form-control product" id="price" name="price" placeholder="Enter product price">
-                    </div>
-                    <div class="form-group ">
-                        <label for="simpleFormEmail">Enter product Quantity</label>
-                        <div class="input-group spinner">
-                            <input type="number" class="form-control" value="1" name="quantity">
-                            <div class="input-group-btn-vertical">
-                                <button class="btn btn-default" type="button" data-dir="up">
-                                    <i class="fa fa-caret-up"></i>
-                                </button>
-                                <button class="btn btn-default" type="button" data-dir="dwn">
-                                    <i class="fa fa-caret-down"></i>
-                                </button>
-                            </div>
-                        </div>
                     </div>
                     <div class="form-group">
                         <label for="simpleFormEmail">Enter product Description</label>

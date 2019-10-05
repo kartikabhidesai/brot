@@ -37,19 +37,10 @@ class ProductController extends Controller {
     public function add(Request $request) {
 
         if ($request->isMethod('post')) {
-
+            
             $objProduct = new Product();
             $result = $objProduct->addProduct($request);
-            if ($result) {
-                $return['status'] = 'success';
-                $return['message'] = 'Product created successfully.';
-                $return['redirect'] = route('product-list');
-            } else {
-                $return['status'] = 'error';
-                $return['message'] = 'Product Name already exist';
-            }
-            echo json_encode($return);
-            exit;
+            echo json_encode($result); exit;
         }
         $objSubcategory = new Category();
         $data['result'] = $objSubcategory->getCategory();
@@ -70,6 +61,10 @@ class ProductController extends Controller {
     public function edit(Request $request , $id) {
         if ($request->isMethod('post')) {
             
+            $objProduct = new Product();
+            $result = $objProduct->editproduct($request, $id);
+            echo json_encode($result);
+            exit;
         }
         $objSubcategory = new Category();
         $data['category'] = $objSubcategory->getCategory();
@@ -78,13 +73,13 @@ class ProductController extends Controller {
         $objProductimage = new Product_image;
         $data['image'] = $objProductimage->getProductimage($id);
         $objSubcategory = new Subcategory();
-        $data['subcategory']= $objSubcategory->getSubcategorynew(); 
+        $data['subcategory']= $objSubcategory->getSubcategorylist($id); 
         $objSize = new Size();
-        $data['size']= $objSize->getSize(); 
+        $data['size']= $objSize->getSizeDetails($id); 
         $data['title'] = 'Edit Product | Brot';
         $data['css'] = array();
-        $data['plugincss'] = array();
-        $data['pluginjs'] = array('jquery.validate.min.js');
+        $data['plugincss'] = array('select2/css/select2.css', 'select2/css/select2-bootstrap.min.css');
+        $data['pluginjs'] = array('jquery.validate.min.js','plugins/select2/js/select2.js', 'pages/select2/select2-init.js');
         $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'product.js');
         $data['funinit'] = array('Product.edit()');
         $data['header'] = array(
@@ -105,7 +100,7 @@ class ProductController extends Controller {
                     break;
                 case 'changesize':
                     $objSize = new Size();
-                    $result = $objSize->getSizelist($request->input('id'));
+                    $result = $objSize->getSizelist($request);
                     return json_encode($result);
                     break;
                 case 'deleteProduct':

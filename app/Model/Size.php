@@ -56,7 +56,7 @@ class Size extends Model {
                 $return['redirect'] = route('Size-list');
             }
         }
-
+        
         return $return;
     }
 
@@ -121,10 +121,10 @@ class Size extends Model {
         return $result;
     }
 
-    public function getSizelist($id) {
-       
+    public function getSizelist($request) {
         $result = Size::select('size', 'id')
-                ->where("subcategoryid", $id)
+                ->where("subcategoryid", $request->input('subcategory'))
+                ->where("categoryid", $request->input('category'))
                 ->get();
         return $result;
     }

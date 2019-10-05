@@ -2,7 +2,7 @@
 @section('content')
 @foreach($product as $result)
 @endforeach
-@foreach($image as $result1)
+@foreach($image as $image)
 @endforeach
 <div class="row">
     <div class="col-md-12 col-sm-12">
@@ -38,29 +38,44 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group ">
-                        <label for="simpleFormEmail">Size </label>
-                        <select id="multiple" name="size[]" class="form-control has-error select2-multiple selectsize" multiple>
-                            <option value="">Select size</option>
-                        </select>
+                    <div class="form-group appendsize">
+                        @for($i = 0 ; $i < count($size) ; $i++)
+                        @if($i == 0)
+                        <div class="row">
+                            <div class="col-md-5 col-sm-5">
+                                <label for="simpleFormEmail">Size </label>
+                                <input type="text" class="form-control  size sizeselect" id="size" name="size[]" value="{{ $size[$i]->size }}")>
+                            </div>
+                            <div class="col-md-5 col-sm-5">
+                                <label for="simpleFormEmail">Quantity </label>
+                                <input type="text" class="form-control quantity" id="quantity" name="quantity[]" placeholder="Enter Quantity">
+                            </div>
+                            <div class="col-md-2 col-sm-2">
+                                <label for="simpleFormEmail">&nbsp;</label>
+                                <button class="form-control btn btn-success addsizequantity" data-dir="up" id="sizebutton" type="button" ><span class="fa fa-plus"></span></button>
+                            </div>
+                        </div>
+                        @else
+                        <div class="row removesizeQuantity">
+                            <div class="col-md-5 col-sm-5">
+                                <label for="simpleFormEmail">&nbsp;</label>    
+                                <input type="text" class="form-control  size sizeselect" id="size" name="size[]" value="{{ $size[$i]->size }}")>
+                            </div>
+                            <div class="col-md-5 col-sm-5">
+                                <label for="simpleFormEmail">&nbsp;</label>
+                                <input type="text" class="form-control quantity" id="quantity" name="quantity[]" placeholder="Enter Quantity">
+                            </div>
+                            <div class="col-md-2 col-sm-2">
+                                <label for="simpleFormEmail">&nbsp;</label>
+                                <button class="form-control btn btn-danger removesize" data-dir="up" id="sizebutton" type="button" ><span class="fa fa-minus"></span></button>
+                            </div>
+                        </div>
+                        @endif
+                        @endfor 
                     </div>
                     <div class="form-group ">
                         <label for="simpleFormEmail">Enter product price</label>
                         <input type="text" class="form-control product" id="price" name="price" value="{{ $result->price }}">
-                    </div>
-                    <div class="form-group ">
-                        <label for="simpleFormEmail">Enter product Quantity</label>
-                        <div class="input-group spinner">
-                            <input type="number" class="form-control"    name="quantity" value="{{ $result->quantity }}">
-                            <div class="input-group-btn-vertical">
-                                <button class="btn btn-default" type="button" data-dir="up">
-                                    <i class="fa fa-caret-up"></i>
-                                </button>
-                                <button class="btn btn-default" type="button" data-dir="dwn">
-                                    <i class="fa fa-caret-down"></i>
-                                </button>
-                            </div>
-                        </div>
                     </div>
                     <div class="form-group">
                         <label for="simpleFormEmail">Enter product Description</label>
@@ -69,7 +84,7 @@
                     <div class="form-group appendproduct">
                         <div class="row col-md-12 col-sm-12">
                             <div class="">
-                                <img height="100px" width="100px" src="{{ url('/uploads/product/'.$result1->image) }}" alt="product Image"></div>
+                                <img height="100px" width="100px" src="{{ url('/uploads/product/'.$image->image) }}" alt="product Image"></div>
                             <div class="col-md-3 col-sm-3">
                                 <label for="simpleFormEmail">Update Image</label>
                                 <input type="file" class="form-control" id="image" name="image" >
