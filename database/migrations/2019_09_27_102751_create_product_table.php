@@ -19,10 +19,8 @@ class CreateProductTable extends Migration
             $table->string('productname');
             $table->integer('catagory');
             $table->integer('subcatagory');
-            $table->integer('size');
             $table->decimal('price', 10, 2);
             $table->text('description');
-            $table->integer('quantity');
             $table->timestamps();
         });
     }

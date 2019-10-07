@@ -1,7 +1,9 @@
 @extends('admin.layout.app')
 @section('content')
 @foreach($product as $result)
-
+@endforeach
+@foreach($image as $image)
+@endforeach
 <div class="row">
     <div class="col-md-12 col-sm-12">
         <div class="card card-box">
@@ -82,8 +84,6 @@
                     <div class="form-group appendproduct">
                         <div class="row col-md-12 col-sm-12">
                             <div class="">
-                                @foreach($image as $image)
-                                @endforeach
                                 <img height="100px" width="100px" src="{{ url('/uploads/product/'.$image->image) }}" alt="product Image"></div>
                             <div class="col-md-3 col-sm-3">
                                 <label for="simpleFormEmail">Update Image</label>
