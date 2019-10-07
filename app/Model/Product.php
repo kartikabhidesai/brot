@@ -174,7 +174,7 @@ class Product extends Model {
     }
 
     public function getProduct() {
-        $result = Product::select('category.categoryname', 'subcategory.subcategoryname', 'Product_size.quantity', 'product_image.image', 'product.price', 'product.description', 'product_size.quantity', 'product.productcode', 'product_size.size', 'product.productname', 'product.id')
+        $result = Product::select('category.categoryname', 'subcategory.subcategoryname',   'product_image.image', 'product.price', 'product.description', 'product_size.quantity', 'product.productcode', 'product_size.size', 'product.productname', 'product.id')
                 ->leftjoin('category', 'category.id', '=', 'product.catagory')
                 ->leftjoin('subcategory', 'subcategory.id', '=', 'product.subcatagory')
                 ->leftjoin('product_size', 'product_size.productid', '=', 'product.id')

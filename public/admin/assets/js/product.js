@@ -284,24 +284,6 @@ var Product = function () {
         });
         
         $('body').on("click", ".addsizequantity", function () {
-            var category = $('#category').val(); 
-            var subcategory = $('#subcategory').val(); 
-            $.ajax({
-                type: "POST",
-                headers: {
-                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
-                },
-                url: baseurl + "Product-ajaxaction",
-                data: {'action': 'changesize', 'subcategory': subcategory, 'category':category},
-                success: function (data) {
-                    var output = JSON.parse(data);
-                    
-                    var selectoptionhtml = '<option value="">Select Size</option>';
-                    for (var i = 0; i < output.length; i++) {
-                        var temp_html = "";
-                        temp_html = '<option value="' + output[i].id + '">' + output[i].size + '</option>';
-                        selectoptionhtml = selectoptionhtml + temp_html;
-                    }
                     var html = '<div class="row removesizeQuantity">'+
                             '<div class="col-md-5 col-sm-5">'+
                                 '<label for="simpleFormEmail">&nbsp;</label>    '+
@@ -317,9 +299,7 @@ var Product = function () {
                             '</div>'+
                         '</div>';
                          $(".appendsize").append(html);
-                }
-            });
-        });
+                     });
         $('body').on("click", ".removesize", function () {
             $(this).closest('.removesizeQuantity').remove();
         });
