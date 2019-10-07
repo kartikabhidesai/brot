@@ -125,7 +125,7 @@ class Subcategory extends Model {
     }
 
     public function getSubcategorylist($id) {
-        $result = Subcategory::select('subcategoryname','categoryid', 'id','subcategoryname')
+        $result = Subcategory::select('subcategoryname','categoryid', 'id')
                 ->where("categoryid", $id)
                 ->get();
         return $result;

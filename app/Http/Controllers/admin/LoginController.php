@@ -74,7 +74,7 @@ class LoginController extends Controller
             $bojUser = $bojUser->addUsers($request);
             if ($bojUser) {
                 $return['status'] = 'success';
-                $return['message'] = "Agency added Successfully!";
+                $return['message'] = "Register Successfully!";
                 $return['redirect'] = route('admin-login');
             } else {
                 $return['status'] = 'error';

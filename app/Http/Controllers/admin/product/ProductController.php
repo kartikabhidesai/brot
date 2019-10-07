@@ -9,6 +9,7 @@ use App\Model\Subcategory;
 use App\Model\Category;
 use App\Model\Size;
 use App\Model\Product_image;
+use App\Model\Product_size;
 
 class ProductController extends Controller {
 
@@ -74,8 +75,8 @@ class ProductController extends Controller {
         $data['image'] = $objProductimage->getProductimage($id);
         $objSubcategory = new Subcategory();
         $data['subcategory']= $objSubcategory->getSubcategorylist($id); 
-        $objSize = new Size();
-        $data['size']= $objSize->getSizeDetails($id); 
+        $objSize = new Product_size();
+        $data['size']= $objSize->getproductSizeDetails($id); 
         $data['title'] = 'Edit Product | Brot';
         $data['css'] = array();
         $data['plugincss'] = array('select2/css/select2.css', 'select2/css/select2-bootstrap.min.css');
