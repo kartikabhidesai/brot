@@ -1,9 +1,7 @@
 @extends('admin.layout.app')
 @section('content')
 @foreach($product as $result)
-@endforeach
-@foreach($image as $image)
-@endforeach
+
 <div class="row">
     <div class="col-md-12 col-sm-12">
         <div class="card card-box">
@@ -48,7 +46,7 @@
                             </div>
                             <div class="col-md-5 col-sm-5">
                                 <label for="simpleFormEmail">Quantity </label>
-                                <input type="text" class="form-control quantity" id="quantity" name="quantity[]" placeholder="Enter Quantity">
+                                <input type="text" class="form-control quantity" id="quantity" name="quantity[]" placeholder="Enter Quantity" value="{{$size[0]->quantity }}">
                             </div>
                             <div class="col-md-2 col-sm-2">
                                 <label for="simpleFormEmail">&nbsp;</label>
@@ -59,11 +57,11 @@
                         <div class="row removesizeQuantity">
                             <div class="col-md-5 col-sm-5">
                                 <label for="simpleFormEmail">&nbsp;</label>    
-                                <input type="text" class="form-control  size sizeselect" id="size" name="size[]" value="{{ $size[$i]->size }}")>
+                                <input type="text" class="form-control  size sizeselect" id="size" name="size[]" value="{{ $size[$i]->size }}">
                             </div>
                             <div class="col-md-5 col-sm-5">
                                 <label for="simpleFormEmail">&nbsp;</label>
-                                <input type="text" class="form-control quantity" id="quantity" name="quantity[]" placeholder="Enter Quantity">
+                                <input type="text" class="form-control quantity" id="quantity" name="quantity[]" placeholder="Enter Quantity" value="{{$size[0]->quantity }}">
                             </div>
                             <div class="col-md-2 col-sm-2">
                                 <label for="simpleFormEmail">&nbsp;</label>
@@ -84,6 +82,8 @@
                     <div class="form-group appendproduct">
                         <div class="row col-md-12 col-sm-12">
                             <div class="">
+                                @foreach($image as $image)
+                                @endforeach
                                 <img height="100px" width="100px" src="{{ url('/uploads/product/'.$image->image) }}" alt="product Image"></div>
                             <div class="col-md-3 col-sm-3">
                                 <label for="simpleFormEmail">Update Image</label>

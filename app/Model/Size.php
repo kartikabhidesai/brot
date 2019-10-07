@@ -62,10 +62,11 @@ class Size extends Model {
 
     public function getSizeDetails($id) {
 
-        $result = Size::select('categoryid', 'subcategoryid', 'size', 'id')
+        $result = Size::select('size.categoryid', 'size.subcategoryid', 'size.size', 'size.id','product_size.quantity')
+                ->leftjoin('product_size','product_size.size','=','size.id')
                 ->where('categoryid', $id)
                 ->get();
-
+       
         return $result;
     }
 
