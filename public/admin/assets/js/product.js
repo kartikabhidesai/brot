@@ -31,13 +31,13 @@ var Product = function () {
         var validateTrip = true;
         $('#addproductform').validate({
             rules: {
-            category: {required: true},
-            subcategory: {required: true},
-            productcode: {required: true},
-            productname: {required: true},
-            price: {required: true},
-            description: {required: true},
-            quantity: {required: true}
+                category: {required: true},
+                subcategory: {required: true},
+                productcode: {required: true},
+                productname: {required: true},
+                price: {required: true},
+                description: {required: true},
+                quantity: {required: true}
             },
             invalidHandler: function (event, validator) {
                 validateTrip = false;
@@ -83,8 +83,9 @@ var Product = function () {
                 }
             });
             return customValid;
-        };
-        
+        }
+        ;
+
         $("body").on("change", ".category", function () {
             var id = $(this).val();
             $.ajax({
@@ -110,18 +111,18 @@ var Product = function () {
             });
         });
 
-        
+
         $("body").on("change", ".subcategory", function () {
             $('#sizebutton').prop('disabled', false);
-            var category = $('#category').val(); 
-            var subcategory = $('#subcategory').val(); 
+            var category = $('#category').val();
+            var subcategory = $('#subcategory').val();
             $.ajax({
                 type: "POST",
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
                 url: baseurl + "Product-ajaxaction",
-                data: {'action': 'changesize', 'subcategory': subcategory, 'category':category},
+                data: {'action': 'changesize', 'subcategory': subcategory, 'category': category},
                 success: function (data) {
                     var output = JSON.parse(data);
                     var subcategoryhtml = '<option value="">Select size</option>';
@@ -135,7 +136,7 @@ var Product = function () {
                 }
             });
         });
-        
+
         $('body').on("click", ".addimage", function () {
             var html = '<div class="form-group removediv">' +
                     '<div class="row">' +
@@ -154,42 +155,42 @@ var Product = function () {
         $('body').on("click", ".removeimage", function () {
             $(this).closest('.removediv').remove();
         });
-        
+
         $('body').on("click", ".addsizequantity", function () {
-            var category = $('#category').val(); 
-            var subcategory = $('#subcategory').val(); 
+            var category = $('#category').val();
+            var subcategory = $('#subcategory').val();
             $.ajax({
                 type: "POST",
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
                 url: baseurl + "Product-ajaxaction",
-                data: {'action': 'changesize', 'subcategory': subcategory, 'category':category},
+                data: {'action': 'changesize', 'subcategory': subcategory, 'category': category},
                 success: function (data) {
                     var output = JSON.parse(data);
-                    
+
                     var selectoptionhtml = '<option value="">Select Size</option>';
                     for (var i = 0; i < output.length; i++) {
                         var temp_html = "";
                         temp_html = '<option value="' + output[i].id + '">' + output[i].size + '</option>';
                         selectoptionhtml = selectoptionhtml + temp_html;
                     }
-                    var html = '<div class="row removesizeQuantity">'+
-                            '<div class="col-md-5 col-sm-5">'+
-                                '<label for="simpleFormEmail">&nbsp;</label>'+
-                                '<select class="form-control size" name="size[]" id="size">'+selectoptionhtml+
-                                '</select>'+
-                            '</div>'+
-                            '<div class="col-md-5 col-sm-5">'+
-                                '<label for="simpleFormEmail">&nbsp;</label>'+
-                                '<input type="text" class="form-control quantity" id="quantity" name="quantity[]" placeholder="Enter Quantity">'+
-                            '</div>'+
-                            '<div class="col-md-2 col-sm-2">'+
-                                '<label for="simpleFormEmail">&nbsp;</label>'+
-                                '<button class="form-control btn btn-danger removesize" data-dir="up" type="button"><span class="fa fa-minus"></span></button>'+
-                            '</div>'+
-                        '</div>';
-                         $(".appendsize").append(html);
+                    var html = '<div class="row removesizeQuantity">' +
+                            '<div class="col-md-5 col-sm-5">' +
+                            '<label for="simpleFormEmail">&nbsp;</label>' +
+                            '<select class="form-control size" name="size[]" id="size">' + selectoptionhtml +
+                            '</select>' +
+                            '</div>' +
+                            '<div class="col-md-5 col-sm-5">' +
+                            '<label for="simpleFormEmail">&nbsp;</label>' +
+                            '<input type="text" class="form-control quantity" id="quantity" name="quantity[]" placeholder="Enter Quantity">' +
+                            '</div>' +
+                            '<div class="col-md-2 col-sm-2">' +
+                            '<label for="simpleFormEmail">&nbsp;</label>' +
+                            '<button class="form-control btn btn-danger removesize" data-dir="up" type="button"><span class="fa fa-minus"></span></button>' +
+                            '</div>' +
+                            '</div>';
+                    $(".appendsize").append(html);
                 }
             });
         });
@@ -204,13 +205,13 @@ var Product = function () {
         var validateTrip = true;
         $('#editproductform').validate({
             rules: {
-            category: {required: true},
-            subcategory: {required: true},
-            productcode: {required: true},
-            productname: {required: true},
-            price: {required: true},
-            description: {required: true},
-            quantity: {required: true}
+                category: {required: true},
+                subcategory: {required: true},
+                productcode: {required: true},
+                productname: {required: true},
+                price: {required: true},
+                description: {required: true},
+                quantity: {required: true}
             },
             invalidHandler: function (event, validator) {
                 validateTrip = false;
@@ -256,7 +257,8 @@ var Product = function () {
                 }
             });
             return customValid;
-        };
+        }
+        ;
 
         $("body").on("change", ".category", function () {
             var id = $(this).val();
@@ -282,26 +284,83 @@ var Product = function () {
                 }
             });
         });
+
+        $("body").on("change", ".subcategory", function () {
+            var category = $('#category').val();
+            var subcategory = $('#subcategory').val();
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "Product-ajaxaction",
+                data: {'action': 'changesize', 'subcategory': subcategory, 'category': category},
+                success: function (data) {
+                    var output = JSON.parse(data);
+                    var subcategoryhtml = '<option value="">Select size</option>';
+                    for (var i = 0; i < output.length; i++) {
+                        var temp_html = "";
+                        temp_html = '<option value="' + output[i].id + '">' + output[i].size + '</option>';
+                        subcategoryhtml = subcategoryhtml + temp_html;
+                    }
+                    $(".sizeselect").html(subcategoryhtml);
+//                        handleAjaxResponse(data);
+                }
+            });
+        });
+        
         
         $('body').on("click", ".addsizequantity", function () {
-                    var html = '<div class="row removesizeQuantity">'+
-                            '<div class="col-md-5 col-sm-5">'+
-                                '<label for="simpleFormEmail">&nbsp;</label>    '+
-                                '<input type="text" class="form-control  size sizeselect" id="size" name="size[]" value="" placeholder="Enter Size">'+
-                            '</div>'+
-                            '<div class="col-md-5 col-sm-5">'+
-                                '<label for="simpleFormEmail">&nbsp;</label>'+
-                                '<input type="text" class="form-control quantity" id="quantity" name="quantity[]" placeholder="Enter Quantity">'+
-                            '</div>'+
-                            '<div class="col-md-2 col-sm-2">'+
-                                '<label for="simpleFormEmail">&nbsp;</label>'+
-                                '<button class="form-control btn btn-danger removesize" data-dir="up" id="sizebutton" type="button" ><span class="fa fa-minus"></span></button>'+
-                            '</div>'+
-                        '</div>';
-                         $(".appendsize").append(html);
-                     });
+            var category = $('#category').val();
+            var subcategory = $('#subcategory').val();
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "Product-ajaxaction",
+                data: {'action': 'changesize', 'subcategory': subcategory, 'category': category},
+                success: function (data) {
+                    var output = JSON.parse(data);
+                    var selectoptionhtml = '<option value="">Select Size</option>';
+                    for (var i = 0; i < output.length; i++) {
+                        var temp_html = "";
+                        temp_html = '<option value="' + output[i].id + '">' + output[i].size + '</option>';
+                        selectoptionhtml = selectoptionhtml + temp_html;
+                    }
+                    var html = '<div class="row removesizeQuantity">' +
+                            '<div class="col-md-5 col-sm-5">' +
+                            '<label for="simpleFormEmail">&nbsp;</label>' +
+                            '<select class="form-control size" name="size[]" id="size">' + selectoptionhtml +
+                            '</select>' +
+                            '</div>' +
+                            '<div class="col-md-5 col-sm-5">' +
+                            '<label for="simpleFormEmail">&nbsp;</label>' +
+                            '<input type="text" class="form-control quantity" id="quantity" name="quantity[]" placeholder="Enter Quantity">' +
+                            '</div>' +
+                            '<div class="col-md-2 col-sm-2">' +
+                            '<label for="simpleFormEmail">&nbsp;</label>' +
+                            '<button class="form-control btn btn-danger removesize" data-dir="up" type="button"><span class="fa fa-minus"></span></button>' +
+                            '</div>' +
+                            '</div>';
+                    $(".appendsize").append(html);
+                }
+            });
+        });
         $('body').on("click", ".removesize", function () {
             $(this).closest('.removesizeQuantity').remove();
+        });
+        
+        $('body').on("click", ".addimage", function () {
+            var html = '<div class="col-md-10 col-sm-10">' +
+                    '<label for="simpleFormEmail">&nbsp;</label>' +
+                    '<input type="file" class="form-control product" id="image" name="image[]">' +
+                    '</div>' +
+                    '<div class="col-md-2 col-sm-2">' +
+                    '<label for="simpleFormEmail">&nbsp;</label>' +
+                    '<button class="form-control btn btn-danger removeimage" data-dir="up" type="button"><span class="fa fa-minus"></span></button>' +
+                    '</div>' ;
+            $(".appendimage").append(html);
         });
     }
 

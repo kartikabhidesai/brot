@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use File;
 use App\Model\Product;
 use App\Model\Product_image;
 use App\Model\Product_size;
@@ -94,8 +95,7 @@ class Product extends Model {
         if (Product::find($id)->delete()) {
             $data['$resultsize'] = DB::table('product_size')
                             ->where('productid', $id)->delete();
-//            $data['$resultimage'] = DB::table('product_image')
-//                        ->where('productid', $id)->delete();
+            
         }
         $alradyExist = "";
         $count = 0;
@@ -142,11 +142,8 @@ class Product extends Model {
         $name = '';
         if ($request->file()) {
             for ($i = 0; $i < count($request->file('image')); $i++) {
-                $existImage = public_path('/uploads/product/') . $result->image;
-                if (File::exists($existImage)) { // unlink or remove previous company image from folder
-                    File::delete($existImage);
-                }
-
+                $data['$resultimage'] = DB::table('product_image')
+                        ->where('productid', $id)->delete();
                 $image = $request->file('image')[$i];
                 $name = time() . $i . '.' . $image->getClientOriginalExtension();
                 $destinationPath = public_path('/uploads/product/');
@@ -178,14 +175,14 @@ class Product extends Model {
     }
 
     public function getProduct() {
-        $result = Product::select('category.categoryname', 'subcategory.subcategoryname', 'product_image.image', 'product.price', 'product.description', 'product_size.quantity', 'product.productcode', 'product_size.size', 'product.productname', 'product.id')
+        $result = Product::select('category.categoryname', 'subcategory.subcategoryname','size.size', 'product_image.image', 'product.price', 'product.description', 'product_size.quantity', 'product.productcode', 'product.productname', 'product.id')
                 ->leftjoin('category', 'category.id', '=', 'product.catagory')
                 ->leftjoin('subcategory', 'subcategory.id', '=', 'product.subcatagory')
                 ->leftjoin('product_size', 'product_size.productid', '=', 'product.id')
+                ->leftjoin('size', 'size.id', '=', 'product_size.size')
                 ->leftjoin('product_image', 'product_image.productid', '=', 'product.id')
                 ->groupBy('product_image.productid')
                 ->get();
-
         return $result;
     }
 

@@ -58,7 +58,7 @@
                         @else
                         <div class="row removesizeQuantity">
                             <div class="col-md-5 col-sm-5">
-                                <label for="simpleFormEmail">Size </label>
+                                <label for="simpleFormEmail">&nbsp;</label>
                                 <select class="form-control size sizeselect" name="size[]" id="size">
                                     <option value="{{ $size[$i]->id }}">{{ $size[$i]->size }}</option>
                                 </select>
@@ -85,11 +85,11 @@
                     </div>
                     <div class="form-group appendproduct">
                         <div class="row col-md-12 col-sm-12">
-                            <div class="">
-                                @foreach($image as $image)
+                            @foreach($image as $image)
+                            <div class="margin-right-10 margin-top-10">
                                 <img height="100px" width="100px" src="{{ url('/uploads/product/'.$image->image) }}" alt="product Image" value="{{ $image->image }}">
-                                @endforeach
                             </div>
+                            @endforeach
                         </div>
                         <div class="row appendimage">
                             <div class="col-md-10 col-sm-10">

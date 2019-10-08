@@ -84,7 +84,7 @@ class ProductController extends Controller {
         $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'product.js');
         $data['funinit'] = array('Product.edit()');
         $data['header'] = array(
-            'title' => 'Product List',
+            'title' => 'Edit Product',
             'breadcrumb' => array(
                 'Dashboard' => 'dashboard',
                 'Edit-Product' => 'Product-list'));
