@@ -74,9 +74,9 @@ class ProductController extends Controller {
         $objProductimage = new Product_image;
         $data['image'] = $objProductimage->getProductimage($id);
         $objSubcategory = new Subcategory();
-        $data['subcategory']= $objSubcategory->getSubcategorylist($id); 
+        $data['subcategory']= $objSubcategory->getSubcategorylist($data['product'][0]->catagory); 
         $objSize = new Product_size();
-        $data['size']= $objSize->getproductSizeDetails($id); 
+        $data['size']= $objSize->getproductSizeDetailsNew($id); 
         $data['title'] = 'Edit Product | Brot';
         $data['css'] = array();
         $data['plugincss'] = array('select2/css/select2.css', 'select2/css/select2-bootstrap.min.css');
@@ -87,7 +87,7 @@ class ProductController extends Controller {
             'title' => 'Product List',
             'breadcrumb' => array(
                 'Dashboard' => 'dashboard',
-                'Product List' => 'Product-list'));
+                'Edit-Product' => 'Product-list'));
         return view('admin.pages.product.edit', $data);
     }
 

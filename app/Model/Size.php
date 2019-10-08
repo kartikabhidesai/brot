@@ -15,7 +15,7 @@ class Size extends Model {
         $result = Size::select(DB::raw('group_concat(size) as names'), 'category.categoryname', 'subcategory.subcategoryname', 'size.id', 'size.categoryid')
                 ->leftjoin('category', 'category.id', '=', 'size.categoryid')
                 ->leftjoin('subcategory', 'subcategory.id', '=', 'size.subcategoryid')
-                ->groupBy('size.categoryid')
+                ->groupBy('size.subcategoryid')
                 ->get();
         return $result;
     }

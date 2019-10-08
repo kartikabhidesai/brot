@@ -32,7 +32,7 @@
                         <select class="form-control selectsubcategory subcategory" name="subcategory"  id="subcategory">
                             <option value="">Select Sub Category</option>
                             @foreach($subcategory as $key1)
-                            <option value="{{ $key1->id }}" {{ $key1->categoryid == $result->catagory ? 'selected' : ''}}>{{ $key1->subcategoryname }}</option>
+                            <option value="{{ $key1->id }}" {{ $key1->id == $result->subcatagory ? 'selected' : ''}}>{{ $key1->subcategoryname }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -42,7 +42,9 @@
                         <div class="row">
                             <div class="col-md-5 col-sm-5">
                                 <label for="simpleFormEmail">Size </label>
-                                <input type="text" class="form-control  size sizeselect" id="{{ $size[$i]->id }}" name="size[]" value="{{ $size[$i]->size }}")>
+                                <select class="form-control size sizeselect" name="size[]" id="size">
+                                    <option value="{{ $size[$i]->id }}">{{ $size[$i]->size }}</option>
+                                </select>
                             </div>
                             <div class="col-md-5 col-sm-5">
                                 <label for="simpleFormEmail">Quantity </label>
@@ -50,14 +52,16 @@
                             </div>
                             <div class="col-md-2 col-sm-2">
                                 <label for="simpleFormEmail">&nbsp;</label>
-                                <button class="form-control btn btn-success addsizequantity" data-dir="up" id="sizebutton" type="button" ><span class="fa fa-plus"></span></button>
+                                <button class="form-control btn btn-success addsizequantity " data-dir="up" id="sizebutton" type="button" ><span class="fa fa-plus"></span></button>
                             </div>
                         </div>
                         @else
                         <div class="row removesizeQuantity">
                             <div class="col-md-5 col-sm-5">
-                                <label for="simpleFormEmail">&nbsp;</label>    
-                                <input type="text" class="form-control  size sizeselect" id="{{ $size[$i]->id }}" name="size[]" value="{{ $size[$i]->size }}">
+                                <label for="simpleFormEmail">Size </label>
+                                <select class="form-control size sizeselect" name="size[]" id="size">
+                                    <option value="{{ $size[$i]->id }}">{{ $size[$i]->size }}</option>
+                                </select>
                             </div>
                             <div class="col-md-5 col-sm-5">
                                 <label for="simpleFormEmail">&nbsp;</label>
@@ -65,7 +69,7 @@
                             </div>
                             <div class="col-md-2 col-sm-2">
                                 <label for="simpleFormEmail">&nbsp;</label>
-                                <button class="form-control btn btn-danger removesize" data-dir="up" id="sizebutton" type="button" ><span class="fa fa-minus"></span></button>
+                                <button class="form-control btn btn-danger removesize " data-dir="up" id="sizebutton" type="button" ><span class="fa fa-minus"></span></button>
                             </div>
                         </div>
                         @endif
@@ -83,11 +87,18 @@
                         <div class="row col-md-12 col-sm-12">
                             <div class="">
                                 @foreach($image as $image)
-                                <img height="100px" width="100px" src="{{ url('/uploads/product/'.$image->image) }}" alt="product Image"></div>
+                                <img height="100px" width="100px" src="{{ url('/uploads/product/'.$image->image) }}" alt="product Image" value="{{ $image->image }}">
                                 @endforeach
-                            <div class="col-md-3 col-sm-3">
-                                <label for="simpleFormEmail">Update Image</label>
-                                <input type="file" class="form-control" id="image" name="image" >
+                            </div>
+                        </div>
+                        <div class="row appendimage">
+                            <div class="col-md-10 col-sm-10">
+                                <label for="simpleFormEmail">Product Image</label>
+                                <input type="file" class="form-control" id="image" name="image[]">
+                            </div>
+                            <div class="col-md-2 col-sm-2">
+                                <label for="simpleFormEmail">&nbsp;</label>
+                                <button class="form-control btn btn-success addimage" data-dir="up" type="button"><span class="fa fa-plus"></span></button>
                             </div>
                         </div>
                     </div>
