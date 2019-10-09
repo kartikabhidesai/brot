@@ -6,7 +6,7 @@
         <ol class="breadcrumb page-breadcrumb pull-right">
 
             <div class="breadcrumb-title center">
-                @php 
+            @php 
             $count = count($header['breadcrumb']); 
             $temp = 1;
             @endphp 

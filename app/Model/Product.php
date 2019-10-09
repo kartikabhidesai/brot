@@ -119,6 +119,7 @@ class Product extends Model {
                 if ($input >= 0) {
                     $input--;
                     $objProduct = new Product();
+                    $objProduct->id = $id;
                     $objProduct->productcode = $request->input('productcode');
                     $objProduct->productname = $request->input('productname');
                     $objProduct->catagory = $request->input('category');
@@ -175,7 +176,7 @@ class Product extends Model {
     }
 
     public function getProduct() {
-        $result = Product::select('category.categoryname', 'subcategory.subcategoryname','size.size', 'product_image.image', 'product.price', 'product.description', 'product_size.quantity', 'product.productcode', 'product.productname', 'product.id')
+        $result = Product::select(DB::raw('group_concat(size.size) as size'),DB::raw('group_concat(product_size.quantity) as quantity'),'category.categoryname', 'subcategory.subcategoryname', 'product_image.image', 'product.price', 'product.description', 'product.productcode', 'product.productname', 'product.id')
                 ->leftjoin('category', 'category.id', '=', 'product.catagory')
                 ->leftjoin('subcategory', 'subcategory.id', '=', 'product.subcatagory')
                 ->leftjoin('product_size', 'product_size.productid', '=', 'product.id')

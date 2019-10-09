@@ -7,15 +7,32 @@
     <!-- Site title -->
     <title>Brot - Fashion Shop HTML Template</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ url('frontend/assets/img/favicon.ico') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href=" {{ url('frontend/assets/img/favicon.ico') }}" type="image/x-icon" />
     <!-- Bootstrap CSS -->
-    <link href="{{ url('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href=" {{ url('frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font-Awesome CSS -->
-    <link href="{{ url('frontend/assets/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href=" {{ url('frontend/assets/css/font-awesome.min.css') }}" rel="stylesheet">
     <!-- IonIcon CSS -->
-    <link href="{{ url('frontend/assets/css/ionicons.min.css') }}" rel="stylesheet">
+    <link href=" {{ url('frontend/assets/css/ionicons.min.css') }}" rel="stylesheet">
     <!-- Plugins CSS -->
-    <link href="{{ url('frontend/assets/css/plugins.css') }}" rel="stylesheet">
+    <link href=" {{ url('frontend/assets/css/plugins.css') }}" rel="stylesheet">
     <!-- Main Style CSS -->
-    <link href="{{ url('frontend/assets/css/style.css') }}" rel="stylesheet">
+    <link href=" {{ url('frontend/assets/css/style.css') }}" rel="stylesheet">
+    <script>
+        var baseurl = "{{ asset('/') }}";
+    </script>
+    @if (!empty($plugincss)) 
+    @foreach ($plugincss as $value) 
+    @if(!empty($value))
+    <link rel="stylesheet" href="{{ url('frontend/assets/plugins/'.$value) }}">
+    @endif
+    @endforeach
+    @endif
+    @if (!empty($css)) 
+    @foreach ($css as $value) 
+    @if(!empty($value))
+    <link rel="stylesheet" href="{{ url('frontend/assets/'.$value) }}">
+    @endif
+    @endforeach
+    @endif
 </head>

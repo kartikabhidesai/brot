@@ -85,6 +85,7 @@ class Subcategory extends Model {
                     $result = true;
                 } else {
                     $objSubcategory = new Subcategory();
+                    $objSubcategory->id = $id;
                     $objSubcategory->categoryid = $request->input('category');
                     $objSubcategory->subcategoryname = $request->input('subcategoryname')[$i];
                     $objSubcategory->created_at = date("Y-m-d h:i:s");

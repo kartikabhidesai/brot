@@ -39,7 +39,7 @@
                     <div class="form-group appendsize">
                         @for($i = 0 ; $i < count($size) ; $i++)
                         @if($i == 0)
-                        <div class="row">
+                        <div class="row ">
                             <div class="col-md-5 col-sm-5">
                                 <label for="simpleFormEmail">Size </label>
                                 <select class="form-control size sizeselect" name="size[]" id="size">

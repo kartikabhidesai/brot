@@ -16,6 +16,13 @@
 //});
 
 Route::match(['get', 'post'], '/', ['as' => 'home', 'uses' => 'frontend\DashboardController@dashboard']);
+Route::match(['get', 'post'], 'contactus', ['as' => 'contactus', 'uses' => 'frontend\ContactusController@contactus']);
+Route::match(['get', 'post'], 'product', ['as' => 'product', 'uses' => 'frontend\ProductController@product']);
+Route::match(['get', 'post'], 'myaccount', ['as' => 'myaccount', 'uses' => 'frontend\MyaccountController@myaccount']);
+Route::match(['get', 'post'], 'login', ['as' => 'login', 'uses' => 'frontend\DashboardController@login']);
+Route::match(['get', 'post'], 'checkout', ['as' => 'checkout', 'uses' => 'frontend\DashboardController@checkout']);
+Route::match(['get', 'post'], 'cart', ['as' => 'cart', 'uses' => 'frontend\DashboardController@cart']);
+
 
 
 

@@ -90,6 +90,7 @@ class Size extends Model {
                     $result = true;
                 } else {
                     $objSize = new Size();
+                    $objSize->id = $id;
                     $objSize->categoryid = $request->input('category');
                     $objSize->subcategoryid = $request->input('subcategory');
                     $objSize->size = $request->input('size')[$i];

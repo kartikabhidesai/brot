@@ -44,7 +44,8 @@ class Category extends Model
             return false;
         }
         $result = Category::find($id);
-        $result->categoryname = $request->input('categoryname');;
+        $result->id = $id;
+        $result->categoryname = $request->input('categoryname');
         $result->created_at = date('Y-m-d H:i:s');
         $result->updated_at = date('Y-m-d H:i:s');
         if ($result->save()) {

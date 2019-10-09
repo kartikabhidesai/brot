@@ -48,7 +48,7 @@
                             @endphp
                             <tr class="odd gradeX">
                                 <td class="center">{{ $i }}</td>
-                                <td class="user-circle-img showimage">
+                                <td class="user-circle-img center">
                                     @if($value->image != '' || $value->image != NULL)
                                     <img height="50px"  width="50px" src="{{ url('/uploads/product/'.$value->image) }}" alt="User's Profile Picture">
                                     @else

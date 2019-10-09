@@ -347,6 +347,7 @@ var Product = function () {
                 }
             });
         });
+        
         $('body').on("click", ".removesize", function () {
             $(this).closest('.removesizeQuantity').remove();
         });
