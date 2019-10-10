@@ -11,7 +11,7 @@
                 <div class="row p-b-20 pull-right">
                     <div class="col-md-6 col-sm-6 col-6">
                         <div class="btn-group">
-                            <a href="{{ route('Add-size') }}" id="addRow" class="btn btn-info">
+                            <a href="{{ route('add-size') }}" id="addRow" class="btn btn-info">
                                 Add New <i class="fa fa-plus"></i>
                             </a>
                         </div>
@@ -46,7 +46,7 @@
                                 <td class="center">{{ $value->subcategoryname }}</td>
                                 <td class="center">{{ $value->names }}</td>
                                 <td class="center">
-                                    <a href="{{ route('Edit-size',$value->categoryid) }}" class="btn btn-tbl-edit btn-xs">
+                                    <a href="{{ route('edit-size',$value->categoryid) }}" class="btn btn-tbl-edit btn-xs">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                 </td>

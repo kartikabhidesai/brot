@@ -16,9 +16,9 @@
 //});
 
 Route::match(['get', 'post'], '/', ['as' => 'home', 'uses' => 'frontend\DashboardController@dashboard']);
-Route::match(['get', 'post'], 'contactus', ['as' => 'contactus', 'uses' => 'frontend\ContactusController@contactus']);
+Route::match(['get', 'post'], 'contact-us', ['as' => 'contact-us', 'uses' => 'frontend\ContactusController@contactus']);
 Route::match(['get', 'post'], 'product', ['as' => 'product', 'uses' => 'frontend\ProductController@product']);
-Route::match(['get', 'post'], 'myaccount', ['as' => 'myaccount', 'uses' => 'frontend\MyaccountController@myaccount']);
+Route::match(['get', 'post'], 'my-account', ['as' => 'my-account', 'uses' => 'frontend\MyaccountController@myaccount']);
 Route::match(['get', 'post'], 'login', ['as' => 'login', 'uses' => 'frontend\DashboardController@login']);
 Route::match(['get', 'post'], 'checkout', ['as' => 'checkout', 'uses' => 'frontend\DashboardController@checkout']);
 Route::match(['get', 'post'], 'cart', ['as' => 'cart', 'uses' => 'frontend\DashboardController@cart']);
@@ -39,29 +39,29 @@ Route::match(['get', 'post'], 'dashboard', ['as' => 'dashboard', 'uses' => 'admi
 
 
 //category
-Route::match(['get', 'post'], 'Add-Category', ['as' => 'Add-Category', 'uses' => 'admin\category\CategoryController@newcategory']);
-Route::match(['get', 'post'], 'Category-List', ['as' => 'Category-List', 'uses' => 'admin\category\CategoryController@categorylist']);
-Route::match(['get', 'post'], 'Update-Category/{id}', ['as' => 'Update-Category', 'uses' => 'admin\category\CategoryController@editcategory']);
+Route::match(['get', 'post'], 'add-category', ['as' => 'add-category', 'uses' => 'admin\category\CategoryController@newcategory']);
+Route::match(['get', 'post'], 'category-list', ['as' => 'category-list', 'uses' => 'admin\category\CategoryController@categorylist']);
+Route::match(['get', 'post'], 'update-category/{id}', ['as' => 'update-category', 'uses' => 'admin\category\CategoryController@editcategory']);
 Route::match(['get', 'post'], 'category-ajax-action', ['as' => 'categoryajaxaction', 'uses' => 'admin\category\CategoryController@categoryajaxaction']);
 
 
 //Sub Category
-Route::match(['get', 'post'], 'Subcategory-list', ['as' => 'Subcategory-list', 'uses' => 'admin\subcategory\SubcategoryController@index']);
-Route::match(['get', 'post'], 'Edit-subcategory/{id}', ['as' => 'Edit-subcategory', 'uses' => 'admin\subcategory\SubcategoryController@editsubcategory']);
-Route::match(['get', 'post'], 'Add-subcategory', ['as' => 'Add-subcategory', 'uses' => 'admin\subcategory\SubcategoryController@add']);
+Route::match(['get', 'post'], 'subcategory-list', ['as' => 'subcategory-list', 'uses' => 'admin\subcategory\SubcategoryController@index']);
+Route::match(['get', 'post'], 'edit-subcategory/{id}', ['as' => 'edit-subcategory', 'uses' => 'admin\subcategory\SubcategoryController@editsubcategory']);
+Route::match(['get', 'post'], 'add-subcategory', ['as' => 'add-subcategory', 'uses' => 'admin\subcategory\SubcategoryController@add']);
 Route::match(['get', 'post'], 'subcategory-ajax-action', ['as' => 'categoryajaxaction', 'uses' => 'admin\subcategory\SubcategoryController@ajaxaction']);
 Route::match(['get', 'post'], 'logout', ['as' => 'logout', 'uses' => 'admin\LoginController@logout']);
 
 //Size
-Route::match(['get', 'post'], 'Size-list', ['as' => 'Size-list', 'uses' => 'admin\size\SizeController@index']);
-Route::match(['get', 'post'], 'Edit-size/{id}', ['as' => 'Edit-size', 'uses' => 'admin\size\SizeController@editsize']);
-Route::match(['get', 'post'], 'Add-size', ['as' => 'Add-size', 'uses' => 'admin\size\SizeController@add']);
-Route::match(['get', 'post'], 'size-ajaxaction', ['as' => 'Size-ajax-action', 'uses' => 'admin\size\SizeController@ajaxaction']);
+Route::match(['get', 'post'], 'size-list', ['as' => 'size-list', 'uses' => 'admin\size\SizeController@index']);
+Route::match(['get', 'post'], 'edit-size/{id}', ['as' => 'edit-size', 'uses' => 'admin\size\SizeController@editsize']);
+Route::match(['get', 'post'], 'add-size', ['as' => 'add-size', 'uses' => 'admin\size\SizeController@add']);
+Route::match(['get', 'post'], 'size-ajaxaction', ['as' => 'size-ajax-action', 'uses' => 'admin\size\SizeController@ajaxaction']);
 
 //product
 Route::match(['get', 'post'], 'product-list', ['as' => 'product-list', 'uses' => 'admin\product\ProductController@index']);
-Route::match(['get', 'post'], 'Add-product', ['as' => 'Add-product', 'uses' => 'admin\product\ProductController@add']);
-Route::match(['get', 'post'], 'Edit-Product/{id}', ['as' => 'Edit-Product', 'uses' => 'admin\product\ProductController@edit']);
-Route::match(['get', 'post'], 'Product-ajaxaction', ['as' => 'Product-ajaxaction', 'uses' => 'admin\product\ProductController@ajaxaction']);
+Route::match(['get', 'post'], 'add-product', ['as' => 'add-product', 'uses' => 'admin\product\ProductController@add']);
+Route::match(['get', 'post'], 'edit-product/{id}', ['as' => 'edit-product', 'uses' => 'admin\product\ProductController@edit']);
+Route::match(['get', 'post'], 'product-ajaxaction', ['as' => 'product-ajaxaction', 'uses' => 'admin\product\ProductController@ajaxaction']);
 
 });

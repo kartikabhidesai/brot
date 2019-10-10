@@ -24,6 +24,7 @@ class Product extends Model {
             $alradyExist = "";
             $count = 0;
             $input = 0;
+            $lastid = "";
             for ($i = 0; $i < count($request->input('size')); $i++) {
                 $sub = $request->input('size')[$i];
                 $findSize = Product::select('*')
@@ -64,7 +65,7 @@ class Product extends Model {
                 }
             }
             $name = '';
-            if ($request->file()) {
+            if ($lastid != '' && $request->file()) {
                 for ($i = 0; $i < count($request->file('image')); $i++) {
 
                     $image = $request->file('image')[$i];
@@ -100,6 +101,7 @@ class Product extends Model {
         $alradyExist = "";
         $count = 0;
         $input = 0;
+        $lastid = "";
         for ($i = 0; $i < count($request->input('size')); $i++) {
             $sub = $request->input('size')[$i];
             $findSize = Product::select('*')
@@ -141,10 +143,10 @@ class Product extends Model {
             }
         }
         $name = '';
-        if ($request->file()) {
-            for ($i = 0; $i < count($request->file('image')); $i++) {
-                $data['$resultimage'] = DB::table('product_image')
+        if ($request->file() && $lastid !=  "") {
+            $data['$resultimage'] = DB::table('product_image')
                         ->where('productid', $id)->delete();
+            for ($i = 0; $i < count($request->file('image')); $i++) {
                 $image = $request->file('image')[$i];
                 $name = time() . $i . '.' . $image->getClientOriginalExtension();
                 $destinationPath = public_path('/uploads/product/');
@@ -179,10 +181,10 @@ class Product extends Model {
         $result = Product::select(DB::raw('group_concat(size.size) as size'),DB::raw('group_concat(product_size.quantity) as quantity'),'category.categoryname', 'subcategory.subcategoryname', 'product_image.image', 'product.price', 'product.description', 'product.productcode', 'product.productname', 'product.id')
                 ->leftjoin('category', 'category.id', '=', 'product.catagory')
                 ->leftjoin('subcategory', 'subcategory.id', '=', 'product.subcatagory')
+                ->leftjoin('product_image', 'product_image.productid', '=', 'product.id')
                 ->leftjoin('product_size', 'product_size.productid', '=', 'product.id')
                 ->leftjoin('size', 'size.id', '=', 'product_size.size')
-                ->leftjoin('product_image', 'product_image.productid', '=', 'product.id')
-                ->groupBy('product_image.productid')
+                ->groupBy('product.productname')
                 ->get();
         return $result;
     }

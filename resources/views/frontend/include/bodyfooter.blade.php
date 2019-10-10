@@ -42,11 +42,10 @@
                         <div class="footer-single-widget mt-40">
                             <h5 class="widget-title">Contact Us</h5>
                             <div class="widget-body">
-                                <p class="desc">60, 29th Street, San Francisco, CA 94110,
-                                    United States of America</p>
+                                <p class="desc">G-106 Titanium City Center, Satellite, Ahmedabad, Gujarat, India</p>
                                 <ul class="contact-info">
-                                    <li><a href="tel:99556688526">(+00) 123-456-789</a></li>
-                                    <li><a href="mailto:demo@example.com">demo@example.com</a></li>
+                                    <li><a href="tel:88666 20260">+91 88666 20260</a></li>
+                                    <li><a href="mailto:info@mototivewebsolution.com">info@mototivewebsolution.com</a></li>
                                 </ul>
                             </div>
                         </div>

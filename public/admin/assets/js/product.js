@@ -16,7 +16,7 @@ var Product = function () {
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
-                url: baseurl + "Product-ajaxaction",
+                url: baseurl + "product-ajaxaction",
                 data: {'action': 'deleteProduct', 'data': data},
                 success: function (data) {
                     handleAjaxResponse(data);
@@ -93,7 +93,7 @@ var Product = function () {
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
-                url: baseurl + "Product-ajaxaction",
+                url: baseurl + "product-ajaxaction",
                 data: {'action': 'changecategory', 'id': id},
                 success: function (data) {
                     var output = JSON.parse(data);
@@ -121,7 +121,7 @@ var Product = function () {
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
-                url: baseurl + "Product-ajaxaction",
+                url: baseurl + "product-ajaxaction",
                 data: {'action': 'changesize', 'subcategory': subcategory, 'category': category},
                 success: function (data) {
                     var output = JSON.parse(data);
@@ -164,7 +164,7 @@ var Product = function () {
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
-                url: baseurl + "Product-ajaxaction",
+                url: baseurl + "product-ajaxaction",
                 data: {'action': 'changesize', 'subcategory': subcategory, 'category': category},
                 success: function (data) {
                     var output = JSON.parse(data);
@@ -293,7 +293,7 @@ var Product = function () {
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
-                url: baseurl + "Product-ajaxaction",
+                url: baseurl + "product-ajaxaction",
                 data: {'action': 'changesize', 'subcategory': subcategory, 'category': category},
                 success: function (data) {
                     var output = JSON.parse(data);
@@ -318,7 +318,7 @@ var Product = function () {
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val(),
                 },
-                url: baseurl + "Product-ajaxaction",
+                url: baseurl + "product-ajaxaction",
                 data: {'action': 'changesize', 'subcategory': subcategory, 'category': category},
                 success: function (data) {
                     var output = JSON.parse(data);

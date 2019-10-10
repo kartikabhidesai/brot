@@ -18,9 +18,9 @@ $currRoute = Route::current()->getName();
                             <div class="main-menu">
                                 <nav id="mobile-menu">
                                     <ul>
-                                        <li class="nav-link {{ ($currRoute == 'home' || $currRoute == 'myaccount' || $currRoute == 'checkout')  ? 'active' : '' }}"><a href="{{ route('home') }}">Home</a></li>
+                                        <li class="nav-link {{ ($currRoute == 'home' || $currRoute == 'my-account' || $currRoute == 'checkout')  ? 'active' : '' }}"><a href="{{ route('home') }}">Home</a></li>
                                         <li class="nav-link {{ ($currRoute == 'product')  ? 'active' : '' }}"><a href="{{ route('product') }}">Product</a></li>
-                                        <li class="nav-link {{ ($currRoute == 'contactus')  ? 'active' : '' }}"><a href="{{ route('contactus') }}">Contact us</a></li>
+                                        <li class="nav-link {{ ($currRoute == 'contact-us')  ? 'active' : '' }}"><a href="{{ route('contact-us') }}">Contact us</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -30,7 +30,7 @@ $currRoute = Route::current()->getName();
                         <div class="header-setting-option setting-style-2">
                             <div class="user-account">
                                 <div class="user-icon">
-                                    <a  href="{{ route('myaccount') }}">
+                                    <a  href="{{ route('my-account') }}">
                                         <i class="ion-ios-person fa-lg"></i>
                                     </a>
                                 </div>

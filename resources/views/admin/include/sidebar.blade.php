@@ -19,28 +19,28 @@ $items = Session::get('logindata');
                         <span class="selected"></span>
                     </a>
                 </li>
-                <li class="nav-item start {{ ($currRoute == 'Category-List')  ? 'active' : '' }}">
-                    <a href="{{ route('Category-List') }}" class="nav-link nav-toggle">
+                <li class="nav-item start {{ ($currRoute == 'category-list')  ? 'active' : '' }}">
+                    <a href="{{ route('category-list') }}" class="nav-link nav-toggle">
                         <i class="fa fa-list-alt" aria-hidden="true"></i>
                         <span class="title">Category</span>
                         <span class="selected"></span>
                     </a>
                 </li>
-                <li class="nav-item start {{ ($currRoute == 'Subcategory-list')  ? 'active' : '' }}">
-                    <a href="{{ route('Subcategory-list') }}" class="nav-link nav-toggle">
+                <li class="nav-item start {{ ($currRoute == 'subcategory-list')  ? 'active' : '' }}">
+                    <a href="{{ route('subcategory-list') }}" class="nav-link nav-toggle">
                         <i class="fa fa-list-alt" aria-hidden="true"></i>
                         <span class="title">Sub Category</span>
                         <span class="selected"></span>
                     </a>
                 </li>
-                <li class="nav-item start {{ ($currRoute == 'Size-list')  ? 'active' : '' }}">
-                    <a href="{{ route('Size-list') }}" class="nav-link nav-toggle">
+                <li class="nav-item start {{ ($currRoute == 'size-list')  ? 'active' : '' }}">
+                    <a href="{{ route('size-list') }}" class="nav-link nav-toggle">
                         <i class="fa fa-list-alt" aria-hidden="true"></i>
                         <span class="title">Size</span>
                         <span class="selected"></span>
                     </a>
                 </li>
-                <li class="nav-item {{ ($currRoute == 'product') || ($currRoute == 'Product') || ($currRoute == 'Product-List')   ? 'active' : '' }}">
+                <li class="nav-item {{ ($currRoute == 'product-list')   ? 'active' : '' }}">
                     <a href="{{ route('product-list') }}" class="nav-link nav-toggle">
                         <i class="fa fa-product-hunt" aria-hidden="true"></i>
                         <span class="title">Product</span>

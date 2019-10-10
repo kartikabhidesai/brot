@@ -11,7 +11,7 @@
                 <div class="row p-b-20 pull-right">
                     <div class="col-md-6 col-sm-6 col-6">
                         <div class="btn-group">
-                            <a href="{{ route('Add-Category') }}" id="addRow" class="btn btn-info">
+                            <a href="{{ route('add-category') }}" id="addRow" class="btn btn-info">
                                 Add New <i class="fa fa-plus"></i>
                             </a>
                         </div>
@@ -42,7 +42,7 @@
                                 <td class="center">{{ $i }}</td>
                                 <td class="center">{{ $value->categoryname }}</td>
                                 <td class="center">
-                                    <a href="{{ route('Update-Category',$value->id) }}" class="btn btn-tbl-edit btn-xs">
+                                    <a href="{{ route('update-category',$value->id) }}" class="btn btn-tbl-edit btn-xs">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                 </td>

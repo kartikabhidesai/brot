@@ -43,13 +43,13 @@
                         est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum
                         formas human.</p>
                     <ul>
-                        <li><i class="fa fa-fax"></i> Address : No 40 Baria Sreet 133/2 NewYork City</li>
-                        <li><i class="fa fa-phone"></i> info@yourdomain.com</li>
-                        <li><i class="fa fa-envelope-o"></i> +88013245657</li>
+                        <li><i class="fa fa-fax"></i> Address : G-106 Titanium City Center, Satellite, Ahmedabad, Gujarat, India</li>
+                        <li><i class="fa fa-mobile"></i>+91 88666 20260</li>
+                        <li><i class="fa fa-envelope-o"></i> info@mototivewebsolution.com </li>
                     </ul>
                     <div class="working-time">
                         <h3>Working Hours</h3>
-                        <p><span>Monday – Saturday:</span>08AM – 22PM</p>
+                        <p><span>Monday – Saturday:</span>11AM – 08PM</p>
                     </div>
                 </div>
             </div>
