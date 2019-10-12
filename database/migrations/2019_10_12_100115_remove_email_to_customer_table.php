@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserTypeToUsersTable extends Migration
+class RemoveEmailToCustomerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddUserTypeToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->enum('user_type', ['ADMIN', 'CUSTOMER'])->after('email');
+        Schema::table('customer', function (Blueprint $table) {
+            $table->dropcolumn('password');
+            $table->dropcolumn('email_verified_at');
+            $table->dropcolumn('remember_token');
         });
     }
 
@@ -25,7 +27,7 @@ class AddUserTypeToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('customer', function (Blueprint $table) {
             //
         });
     }

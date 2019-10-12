@@ -5,13 +5,14 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Product;
+use Session;
 
 class DashboardController extends Controller
 {
     function __construct() {
         
     }
-    public function dashboard(){
+    public function dashboard(Request $request){
         
         $objProduct = new Product();
         $data['result'] = $objProduct->getProduct();
@@ -25,23 +26,16 @@ class DashboardController extends Controller
             'title' => 'HOME',
             'breadcrumb' => array(
                 'Home' => 'home'));
-        return view("frontend.pages.dashboard",$data);
+        return view("frontend.pages.dashboard.dashboard",$data);
     }
-    public function login(){
-        
-        $data['header'] = array(
-            'title' => 'HOME',
-            'breadcrumb' => array(
-                'Home' => 'home'));
-        return view("frontend.pages.login",$data);
-    }
+   
     public function checkout(){
         
         $data['header'] = array(
             'title' => 'Checkout',
             'breadcrumb' => array(
                 'Checkout' => 'checkout'));
-        return view("frontend.pages.checkout",$data);
+        return view("frontend.pages.checkout.checkout",$data);
     }
     public function cart(){
         
@@ -57,6 +51,18 @@ class DashboardController extends Controller
             'title' => 'Cart',
             'breadcrumb' => array(
                 'Cart' => 'cart'));
-        return view("frontend.pages.cart",$data);
+        return view("frontend.pages.cart.cart",$data);
+    }
+    public function ajaxaction(Request $request){
+        $action = $request->input('action');
+        switch ($action) {
+            case 'getdata':
+                $id = $request->input('data');
+                $objProduct = new Product();
+                $data['result'] = $objProduct->getProductmodel($id);
+                $res = view('frontend.pages.productmodal', $data);
+                return $res;
+                break;
+        }
     }
 }

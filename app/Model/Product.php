@@ -181,10 +181,20 @@ class Product extends Model {
         $result = Product::select(DB::raw('group_concat(size.size) as size'),DB::raw('group_concat(product_size.quantity) as quantity'),'category.categoryname', 'subcategory.subcategoryname', 'product_image.image', 'product.price', 'product.description', 'product.productcode', 'product.productname', 'product.id')
                 ->leftjoin('category', 'category.id', '=', 'product.catagory')
                 ->leftjoin('subcategory', 'subcategory.id', '=', 'product.subcatagory')
-                ->leftjoin('product_image', 'product_image.productid', '=', 'product.id')
                 ->leftjoin('product_size', 'product_size.productid', '=', 'product.id')
                 ->leftjoin('size', 'size.id', '=', 'product_size.size')
-                ->groupBy('product.productname')
+                ->leftjoin('product_image', 'product_image.productid', '=', 'product.id')
+                ->groupby('product.productname')
+                ->get();
+        return $result;
+    }
+    public function getProductmodel($id) {
+        $result = Product::select('product_image.image', 'product.price', 'product.description', 'product.productcode', 'product.productname', 'product.id')
+                ->leftjoin('product_size', 'product_size.productid', '=', 'product.id')
+                ->leftjoin('size', 'size.id', '=', 'product_size.size')
+                ->leftjoin('product_image', 'product_image.productid', '=', 'product.id')
+                ->where('product_image.productid',$id)
+                ->where('product.id',$id)
                 ->get();
         return $result;
     }

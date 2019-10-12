@@ -64,7 +64,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mtn-30">
+        <div class="row mtn-30">{{ csrf_field() }}
             <div class="col-12">
                 <div class="product-carousel-5 slick-row-15">
                     <!-- product single item start -->
@@ -75,7 +75,7 @@
                                 <img src="{{ url('/uploads/product/'.$result[$i]->image) }}" height="250px" width="200px" alt="product image">
                             </a>
                             <div class="product-action-link ">
-                                <a href="#" data-toggle="modal" data-target="#quick_view"> <span
+                                <a href="#" data-toggle="modal"  data-target="#quick_view" class="zoomimage" data-id="{{ $result[$i]->id }}"> <span
                                         data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
                             </div>
                         </div>
@@ -660,65 +660,8 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-            <div class="modal-body">
-                <!-- product details inner end -->
-                <div class="product-details-inner">
-                    <div class="row">
-                        <div class="col-lg-5">
+            <div class="modal-body productmodel">
 
-                            <div class="product-large-slider mb-20">
-                                @for($i = 0; $i < count($result); $i++)
-                                <div class="pro-large-img img-zoom">
-                                    <img src=" {{ url('uploads/product/'.$result[$i]->image) }}" alt="" />
-                                </div>
-                                @endfor
-                            </div>
-                            <div class="pro-nav slick-row-10">
-                                @for($i = 0; $i < count($result); $i++)
-                                <div class="pro-nav-thumb"><img src=" {{ url('uploads/product/'.$result[$i]->image) }}"
-                                                                alt="" />
-                                </div>
-                                @endfor
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="product-details-des">
-                                <h3>Chaz Kangeroo Hoodies</h3>
-                                <div class="pro-review">
-                                    <span><a href="#">1 review(s)</a></span>
-                                </div>
-                                <div class="price-box">
-                                    <span class="regular-price">$70.00</span>
-                                    <span class="old-price"><del>$80.00</del></span>
-                                </div>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.<br>
-                                    Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea
-                                    dictumst. Suspendisse ultrices mauris diam. Nullam sed aliquet elit.</p>
-                                <div class="quantity-cart-box d-flex align-items-center mb-20">
-                                    <div class="quantity">
-                                        <div class="pro-qty"><input type="text" value="1"></div>
-                                    </div>
-                                    <div class="sqr-btn">
-                                        <a href="cart.html">Add to cart</a>
-                                    </div>
-                                </div>
-                                <div class="availability mb-20">
-                                    <h5>Availability:</h5>
-                                    <span>In Stock</span>
-                                </div>
-                                <div class="share-icon">
-                                    <h5>Share:</h5>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- product details inner end -->
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 var Login = function () {
     var register = function () {
-        var form = $('#addagenciesform');
+       
+        var form = $('#registerform');
         var rules = {
             fname: {required: true, minlength: 2},
             lname: {required: true},
@@ -12,6 +13,7 @@ var Login = function () {
         handleFormValidate(form, rules, function (form) {
             handleAjaxFormSubmit(form);
         });
+        
         $('#loginform').validate({
             rules: {
                 email: {required: true, email: true},

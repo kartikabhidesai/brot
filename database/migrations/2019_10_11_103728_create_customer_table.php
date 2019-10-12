@@ -15,10 +15,14 @@ class CreateCustomerTable extends Migration
     {
         Schema::create('customer', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('userid');
             $table->string('fname');
             $table->string('lname');
             $table->string('mobile');
-            $table->string('address');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -30,6 +34,6 @@ class CreateCustomerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer');
+        
     }
 }

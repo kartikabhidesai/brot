@@ -17,6 +17,6 @@ class ContactusController extends Controller
             'breadcrumb' => array(
                 'Home' => 'home',
                 'Contact Us' => 'contactus'));
-        return view("frontend.pages.contactus",$data);
+        return view("frontend.pages.contactus.contactus",$data);
     }
 }

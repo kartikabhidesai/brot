@@ -10,28 +10,38 @@ use Redirect;
 use Auth;
 use Session;
 
-class LoginController extends Controller
-{
+class LoginController extends Controller {
+
     protected $redirectTo = '/';
-    public function __construct() {
+
+    function __construct() {
         
     }
-    public function login(Request $request) {
-        
-        if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'user_type' => 'ADMIN'])) {
 
-            $loginData = array(
-                'fname' => Auth::guard('admin')->user()->fname,
-                'lname' => Auth::guard('admin')->user()->lname,
-                'mobile' => Auth::guard('admin')->user()->mobile,
-                'email' => Auth::guard('admin')->user()->email,
-                'id' => Auth::guard('admin')->user()->id,
-                'user_type' => Auth::guard('admin')->user()->user_type,
-            );
-            Session::push('logindata', $loginData);
-           
-            return redirect('dashboard');
-        } 
+    public function login(Request $request) {
+
+        if ($request->isMethod('post')) {
+            if (Auth::guard('admin')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'user_type' => 'ADMIN'])) {
+
+                $loginData = array(
+                    'fname' => Auth::guard('admin')->user()->fname,
+                    'lname' => Auth::guard('admin')->user()->lname,
+                    'mobile' => Auth::guard('admin')->user()->mobile,
+                    'email' => Auth::guard('admin')->user()->email,
+                    'id' => Auth::guard('admin')->user()->id,
+                    'user_type' => Auth::guard('admin')->user()->user_type,
+                );
+                Session::push('logindata', $loginData);
+                $return['status'] = 'success';
+                $return['message'] = "Well Done login Successfully!";
+                $return['redirect'] = route('dashboard');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = "Invaild Id Or Password";
+            }
+            echo json_encode($return);
+            exit();
+        }
 //        else if (Auth::guard('agencies')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'user_type' => 'AGENCIES'])) {
 //
 //            $loginData = array(
@@ -61,7 +71,7 @@ class LoginController extends Controller
         $data['css'] = array();
         $data['plugincss'] = array();
         $data['pluginjs'] = array('jquery.validate.min.js');
-        $data['js'] = array('login.js');
+        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'login.js');
         $data['funinit'] = array('Login.init()');
         return view('admin.pages.loginpage', $data);
     }
@@ -89,7 +99,7 @@ class LoginController extends Controller
         $data['css'] = array();
         $data['plugincss'] = array();
         $data['pluginjs'] = array('jquery.validate.min.js');
-        $data['js'] = array('login.js');
+        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'login.js');
         $data['funinit'] = array('Login.init()');
         return view('admin.pages.register', $data);
     }
@@ -117,4 +127,5 @@ class LoginController extends Controller
         Auth::guard('user')->logout();
         Session::forget('logindata');
     }
+
 }

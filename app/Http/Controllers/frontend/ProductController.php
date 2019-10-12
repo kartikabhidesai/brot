@@ -26,6 +26,6 @@ class ProductController extends Controller
             'breadcrumb' => array(
                 'Home' => 'home',
                 'Product' => 'product'));
-        return view("frontend.pages.product",$data);
+        return view("frontend.pages.product.product",$data);
     }
 }

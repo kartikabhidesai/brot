@@ -30,15 +30,11 @@
 <script src="{{ url('frontend/assets/js/comman_function.js') }}" ></script>
 
 <script>
-jQuery(document).ready(function () {
-    @if (!empty($funinit))
+    jQuery(document).ready(function () {
+        @if (!empty($funinit))
             @foreach ($funinit as $value)
-            {
-            {
-            $value
-                    }
-            }
-    @endforeach
-            @endif
-});
+                {{ $value }}
+            @endforeach
+        @endif
+    });
 </script>

@@ -9,7 +9,7 @@ $currRoute = Route::current()->getName();
                     <div class="col-lg-2 col-md-6 col-6 position-static">
                         <div class="logo">
                             <a href="{{ route('home') }}">
-                                <img src=" {{ url('frontend/assets/img/logo/logo.png') }}" alt="Brand logo">
+                              <img src="{{ url('frontend/assets/img/logo/logo.png') }}" alt="Brand logo">
                             </a>
                         </div>
                     </div>
@@ -30,7 +30,7 @@ $currRoute = Route::current()->getName();
                         <div class="header-setting-option setting-style-2">
                             <div class="user-account">
                                 <div class="user-icon">
-                                    <a  href="{{ route('my-account') }}">
+                                    <a  href="{{ route('login') }}">
                                         <i class="ion-ios-person fa-lg"></i>
                                     </a>
                                 </div>

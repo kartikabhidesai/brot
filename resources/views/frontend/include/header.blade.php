@@ -18,6 +18,7 @@
     <link href=" {{ url('frontend/assets/css/plugins.css') }}" rel="stylesheet">
     <!-- Main Style CSS -->
     <link href=" {{ url('frontend/assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ url('admin/assets/css/toastr.min.css') }}" rel="stylesheet">
     <script>
         var baseurl = "{{ asset('/') }}";
     </script>

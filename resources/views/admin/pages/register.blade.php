@@ -3,7 +3,7 @@
     <div class="limiter">
 		<div class="container-login100 page-background">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" id="addagenciesform" action="{{ route('register') }}" method="post">{{ csrf_field() }}
+				<form class="login100-form validate-form" id="registerform" action="{{ route('register') }}" method="post">{{ csrf_field() }}
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-flower"></i>
 					</span>

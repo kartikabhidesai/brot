@@ -16,14 +16,21 @@
 //});
 
 Route::match(['get', 'post'], '/', ['as' => 'home', 'uses' => 'frontend\DashboardController@dashboard']);
+Route::match(['get', 'post'], 'front-dashboard', ['as' => 'front-dashboard', 'uses' => 'frontend\DashboardController@dashboard']);
+Route::match(['get', 'post'], 'ajaxaction', ['as' => 'ajaxaction', 'uses' => 'frontend\DashboardController@ajaxaction']);
+
+
 Route::match(['get', 'post'], 'contact-us', ['as' => 'contact-us', 'uses' => 'frontend\ContactusController@contactus']);
 Route::match(['get', 'post'], 'product', ['as' => 'product', 'uses' => 'frontend\ProductController@product']);
-Route::match(['get', 'post'], 'my-account', ['as' => 'my-account', 'uses' => 'frontend\MyaccountController@myaccount']);
-Route::match(['get', 'post'], 'login', ['as' => 'login', 'uses' => 'frontend\DashboardController@login']);
+Route::match(['get', 'post'], 'login', ['as' => 'login', 'uses' => 'frontend\LoginController@login']);
+Route::match(['get', 'post'], 'front-logout', ['as' => 'front-logout', 'uses' => 'frontend\LoginController@logout']);
+Route::match(['get', 'post'], 'front-register', ['as' => 'front-register', 'uses' => 'frontend\LoginController@register']);
 Route::match(['get', 'post'], 'checkout', ['as' => 'checkout', 'uses' => 'frontend\DashboardController@checkout']);
 Route::match(['get', 'post'], 'cart', ['as' => 'cart', 'uses' => 'frontend\DashboardController@cart']);
+$customerPrefix = "";
+Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], function() {
 
-
+});
 
 
 // Admin Route
@@ -34,9 +41,6 @@ Route::match(['get', 'post'], 'forgotpassword', ['as' => 'forgotpassword', 'uses
 $adminPrefix = "";
 Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
 Route::match(['get', 'post'], 'dashboard', ['as' => 'dashboard', 'uses' => 'admin\dashboard\DashboardController@dashboard']);
-
-
-
 
 //category
 Route::match(['get', 'post'], 'add-category', ['as' => 'add-category', 'uses' => 'admin\category\CategoryController@newcategory']);
