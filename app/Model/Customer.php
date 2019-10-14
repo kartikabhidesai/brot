@@ -31,7 +31,6 @@ class Customer extends Model {
             $objCustomer->lname = $request->input('lname');
             $objCustomer->mobile = $request->input('mobile');
             $objCustomer->email = $request->input('email');
-            $objCustomer->password = Hash::make($request->input('password'));
             $objCustomer->created_at = date("Y-m-d h:i:s");
             $objCustomer->updated_at = date("Y-m-d h:i:s");
             return $objCustomer->save();
