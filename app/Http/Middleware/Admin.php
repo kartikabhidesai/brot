@@ -19,11 +19,10 @@ class Admin
         if (Auth::guard($guard)->guest()) {
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
-            } else {
+            } else {        
                 return redirect()->route('admin-login');
             }
         } 
-
         return $next($request);
     }
 }

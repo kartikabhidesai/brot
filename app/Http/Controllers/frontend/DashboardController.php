@@ -16,6 +16,8 @@ class DashboardController extends Controller
         
         $objProduct = new Product();
         $data['result'] = $objProduct->getProduct();
+        $session = $request->session()->all();
+        $items = Session::get('logindata')[0];
         $data['title'] = 'Dashboard | Brot';
         $data['css'] = array();
         $data['plugincss'] = array();
@@ -52,17 +54,5 @@ class DashboardController extends Controller
             'breadcrumb' => array(
                 'Cart' => 'cart'));
         return view("frontend.pages.cart.cart",$data);
-    }
-    public function ajaxaction(Request $request){
-        $action = $request->input('action');
-        switch ($action) {
-            case 'getdata':
-                $id = $request->input('data');
-                $objProduct = new Product();
-                $data['result'] = $objProduct->getProductmodel($id);
-                $res = view('frontend.pages.productmodal', $data);
-                return $res;
-                break;
-        }
     }
 }

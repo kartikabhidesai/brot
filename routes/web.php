@@ -14,26 +14,31 @@
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+//Customer Route
 
-Route::match(['get', 'post'], '/', ['as' => 'home', 'uses' => 'frontend\DashboardController@dashboard']);
-Route::match(['get', 'post'], 'front-dashboard', ['as' => 'front-dashboard', 'uses' => 'frontend\DashboardController@dashboard']);
-Route::match(['get', 'post'], 'ajaxaction', ['as' => 'ajaxaction', 'uses' => 'frontend\DashboardController@ajaxaction']);
-
-
-Route::match(['get', 'post'], 'contact-us', ['as' => 'contact-us', 'uses' => 'frontend\ContactusController@contactus']);
-Route::match(['get', 'post'], 'product', ['as' => 'product', 'uses' => 'frontend\ProductController@product']);
-Route::match(['get', 'post'], 'login', ['as' => 'login', 'uses' => 'frontend\LoginController@login']);
-Route::match(['get', 'post'], 'front-logout', ['as' => 'front-logout', 'uses' => 'frontend\LoginController@logout']);
-Route::match(['get', 'post'], 'front-register', ['as' => 'front-register', 'uses' => 'frontend\LoginController@register']);
-Route::match(['get', 'post'], 'checkout', ['as' => 'checkout', 'uses' => 'frontend\DashboardController@checkout']);
-Route::match(['get', 'post'], 'cart', ['as' => 'cart', 'uses' => 'frontend\DashboardController@cart']);
 $customerPrefix = "";
 Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], function() {
 
 });
 
+Route::match(['get', 'post'], '/', ['as' => 'home', 'uses' => 'frontend\DashboardController@dashboard']);
+Route::match(['get', 'post'], 'front-dashboard', ['as' => 'front-dashboard', 'uses' => 'frontend\DashboardController@dashboard']);
 
-// Admin Route
+Route::match(['get', 'post'], 'login', ['as' => 'login', 'uses' => 'frontend\LoginController@login']);
+Route::match(['get', 'post'], 'front-logout', ['as' => 'front-logout', 'uses' => 'frontend\LoginController@logout']);
+Route::match(['get', 'post'], 'front-register', ['as' => 'front-register', 'uses' => 'frontend\LoginController@register']);
+
+Route::match(['get', 'post'], 'contact-us', ['as' => 'contact-us', 'uses' => 'frontend\ContactusController@contactus']);
+//Product
+Route::match(['get', 'post'], 'product', ['as' => 'product', 'uses' => 'frontend\ProductController@product']);
+Route::match(['get', 'post'], 'product-details/{id}', ['as' => 'product-details', 'uses' => 'frontend\ProductController@productdetails']);
+
+Route::match(['get', 'post'], 'checkout', ['as' => 'checkout', 'uses' => 'frontend\DashboardController@checkout']);
+Route::match(['get', 'post'], 'cart', ['as' => 'cart', 'uses' => 'frontend\DashboardController@cart']);
+
+//Customer Route End
+
+// Admin Route Start
 
 Route::match(['get', 'post'], 'admin-login', ['as' => 'admin-login', 'uses' => 'admin\LoginController@login']);
 Route::match(['get', 'post'], 'register', ['as' => 'register', 'uses' => 'admin\LoginController@register']);
@@ -69,3 +74,5 @@ Route::match(['get', 'post'], 'edit-product/{id}', ['as' => 'edit-product', 'use
 Route::match(['get', 'post'], 'product-ajaxaction', ['as' => 'product-ajaxaction', 'uses' => 'admin\product\ProductController@ajaxaction']);
 
 });
+
+//Admin Route End

@@ -138,60 +138,6 @@
 
                     <!-- single sidebar start -->
                     <div class="sidebar-single">
-                        <div class="sidebar-title">
-                            <h3>popular product</h3>
-                        </div>
-                        <div class="sidebar-body">
-                            <div class="popular-item-inner">
-                                <div class="popular-item">
-                                    <div class="pop-item-thumb">
-                                        <a href="product-details.html">
-                                            <img src=" {{ url('frontend/assets/img/product/product-6.jpg') }}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="pop-item-des">
-                                        <h4><a href="product-details.html">Arbor Swoon Camber</a></h4>
-                                        <div class="price-box">
-                                            <span class="regular-price">$100.00</span>
-                                            <span class="old-price"><del>$120.00</del></span>
-                                        </div>
-                                    </div>
-                                </div> <!-- end single popular item -->
-                                <div class="popular-item">
-                                    <div class="pop-item-thumb">
-                                        <a href="product-details.html">
-                                            <img src=" {{ url('frontend/assets/img/product/product-7.jpg') }}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="pop-item-des">
-                                        <h4><a href="product-details.html">Arbor Swoon Camber</a></h4>
-                                        <div class="price-box">
-                                            <span class="regular-price">$100.00</span>
-                                            <span class="old-price"><del>$120.00</del></span>
-                                        </div>
-                                    </div>
-                                </div> <!-- end single popular item -->
-                                <div class="popular-item">
-                                    <div class="pop-item-thumb">
-                                        <a href="product-details.html">
-                                            <img src=" {{ url('frontend/assets/img/product/product-8.jpg') }}" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="pop-item-des">
-                                        <h4><a href="product-details.html">Arbor Swoon Camber</a></h4>
-                                        <div class="price-box">
-                                            <span class="regular-price">$100.00</span>
-                                            <span class="old-price"><del>$120.00</del></span>
-                                        </div>
-                                    </div>
-                                </div> <!-- end single popular item -->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- single sidebar end -->
-
-                    <!-- single sidebar start -->
-                    <div class="sidebar-single">
                         <div class="advertising-thumb fix">
                             <a href="#">
                                 <img src=" {{ url('frontend/assets/img/banner/advertising.jpg') }}" alt="">
@@ -244,13 +190,9 @@
                         <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
                             <div class="product-item mb-30">
                                 <div class="product-thumb">
-                                    <a href="product-details.html">
+                                    <a href="{{ route('product-details',$result[$i]->id) }}">
                                         <img src=" {{ url('uploads/product/'.$result[$i]->image) }}" alt="product image">
                                     </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                    </div>
                                 </div>
                                 <div class="product-description text-center">
                                     <div class="product-name">

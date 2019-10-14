@@ -19,6 +19,7 @@ class LoginController extends Controller {
     }
 
     public function login(Request $request) {
+        
         if ($request->isMethod('post')) {
             if (Auth::guard('customer')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'user_type' => 'CUSTOMER'])) {
                 $loginData = array(
@@ -29,7 +30,8 @@ class LoginController extends Controller {
                     'id' => Auth::guard('customer')->user()->id,
                     'user_type' => Auth::guard('customer')->user()->user_type,
                 );
-                Session::push('logindata', $loginData);
+                Session::push('logindata', $loginData); 
+                $data = $request->session()->all();
                 $return['status'] = 'success';
                 $return['message'] = "Well Done login Successfully!";
                 $return['redirect'] = route('front-dashboard');
@@ -37,7 +39,7 @@ class LoginController extends Controller {
                 $return['status'] = 'error';
                 $return['message'] = "Invaild Id Or Password";
             }
-            echo json_encode($return);
+            return json_encode($return);
             exit();
         }
         $data['title'] = 'Brot Customer | Login';
@@ -83,5 +85,17 @@ class LoginController extends Controller {
             'breadcrumb' => array(
                 'Register' => 'register'));
         return view("frontend.pages.login.register", $data);
+    }
+    public function logout(Request $request) {
+
+        $this->resetGuard();
+        return redirect()->route('login');
+    }
+
+    public function resetGuard() {
+        Auth::logout();
+        Auth::guard('customer')->logout();
+        Auth::guard('user')->logout();
+        Session::forget('logindata');
     }
 }

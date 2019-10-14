@@ -28,9 +28,22 @@ var Login = function () {
             }
         });
     }
+    var login = function(){
+        var form = $('#loginform');
+        var rules = {
+            email: {required: true, email: true},
+                password: {required: true},
+        };
+        handleFormValidate(form, rules, function (form) {
+             handleAjaxFormSubmit(form);
+        });
+    }
     return {
         init: function () {
             register();
+        },
+        add: function(){
+            login();
         }
     }
 }();

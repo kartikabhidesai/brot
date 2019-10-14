@@ -9,7 +9,7 @@ use Session;
 class DashboardController extends Controller
 {
     public function __construct() {
-        parent::__construct();
+    
         $this->middleware('admin');
     }
     public function dashboard(Request $request){

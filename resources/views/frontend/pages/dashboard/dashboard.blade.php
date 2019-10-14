@@ -71,13 +71,9 @@
                     @for($i=0;$i < count($result); $i++)
                     <div class="product-item mt-30">
                         <div class="product-thumb">
-                            <a href="product-details.html">
+                            <a href="{{ route('product-details',$result[$i]->id) }}">
                                 <img src="{{ url('/uploads/product/'.$result[$i]->image) }}" height="250px" width="200px" alt="product image">
                             </a>
-                            <div class="product-action-link ">
-                                <a href="#" data-toggle="modal"  data-target="#quick_view" class="zoomimage" data-id="{{ $result[$i]->id }}"> <span
-                                        data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                            </div>
                         </div>
                         <div class="product-description text-center">
                             <div class="product-name">

@@ -28,4 +28,21 @@ class ProductController extends Controller
                 'Product' => 'product'));
         return view("frontend.pages.product.product",$data);
     }
+    public function productdetails(Request $request, $id){
+
+        $objProduct = new Product();
+        $data['result'] = $objProduct->getProductdetailsNew($id);
+        $data['title'] = 'Product Details | Brot';
+        $data['css'] = array();
+        $data['plugincss'] = array();
+        $data['pluginjs'] = array('jquery.validate.min.js');
+        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'product.js');
+        $data['funinit'] = array('Product.init()');
+        $data['header'] = array(
+            'title' => 'Product Details',
+            'breadcrumb' => array(
+                'Home' => 'home',
+                'Product Details' => 'product-details'));
+        return view("frontend.pages.product.productdetails",$data);
+    }
 }

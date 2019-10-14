@@ -1,10 +1,10 @@
 <footer>
         <!-- footer widget area start -->
-        <div class="footer-widget-area gray-bg bdr-top section-padding">
+<!--        <div class="footer-widget-area gray-bg bdr-top section-padding">
             <div class="container custom-container">
                 <div class="row mtn-40">
                     <div class="col-xl-3 col-lg-2 col-md-6">
-                        <!-- footer single widget start -->
+                         footer single widget start 
                         <div class="footer-single-widget mt-40">
                             <h5 class="widget-title">Information</h5>
                             <div class="widget-body">
@@ -17,11 +17,11 @@
                                 </ul>
                             </div>
                         </div>
-                        <!-- footer single widget start -->
+                         footer single widget start 
                     </div>
 
                     <div class="col-xl-3 col-lg-2 col-md-6">
-                        <!-- footer single widget start -->
+                         footer single widget start 
                         <div class="footer-single-widget mt-40">
                             <h5 class="widget-title">Our Services</h5>
                             <div class="widget-body">
@@ -34,11 +34,11 @@
                                 </ul>
                             </div>
                         </div>
-                        <!-- footer single widget start -->
+                         footer single widget start 
                     </div>
 
                     <div class="col-xl-3 col-lg-4 col-md-6">
-                        <!-- footer single widget start -->
+                         footer single widget start 
                         <div class="footer-single-widget mt-40">
                             <h5 class="widget-title">Contact Us</h5>
                             <div class="widget-body">
@@ -49,11 +49,11 @@
                                 </ul>
                             </div>
                         </div>
-                        <!-- footer single widget start -->
+                         footer single widget start 
                     </div>
 
                     <div class="col-xl-3 col-lg-4 col-md-6">
-                        <!-- footer single widget start -->
+                         footer single widget start 
                         <div class="footer-single-widget mt-40">
                             <h5 class="widget-title">Newsletter</h5>
                             <div class="widget-body">
@@ -64,21 +64,21 @@
                                             placeholder="Your Email Address">
                                         <button class="news-btn" id="mc-submit">Sign Up</button>
                                     </form>
-                                    <!-- mailchimp-alerts Start -->
+                                     mailchimp-alerts Start 
                                     <div class="mailchimp-alerts">
-                                        <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                                        <div class="mailchimp-success"></div><!-- mailchimp-success end -->
-                                        <div class="mailchimp-error"></div><!-- mailchimp-error end -->
+                                        <div class="mailchimp-submitting"></div> mailchimp-submitting end 
+                                        <div class="mailchimp-success"></div> mailchimp-success end 
+                                        <div class="mailchimp-error"></div> mailchimp-error end 
                                     </div>
-                                    <!-- mailchimp-alerts end -->
+                                     mailchimp-alerts end 
                                 </div>
                             </div>
                         </div>
-                        <!-- footer single widget start -->
+                         footer single widget start 
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
         <!-- footer widget area end -->
 
         <!-- footer botton area start -->

@@ -188,12 +188,13 @@ class Product extends Model {
                 ->get();
         return $result;
     }
-    public function getProductmodel($id) {
-        $result = Product::select('product_image.image', 'product.price', 'product.description', 'product.productcode', 'product.productname', 'product.id')
+    public function getProductdetailsNew($id) {
+        $result = Product::select('size.size','product_size.quantity','category.categoryname', 'subcategory.subcategoryname', 'product_image.image', 'product.price', 'product.description', 'product.productcode', 'product.productname', 'product.id')
+                ->leftjoin('category', 'category.id', '=', 'product.catagory')
+                ->leftjoin('subcategory', 'subcategory.id', '=', 'product.subcatagory')
                 ->leftjoin('product_size', 'product_size.productid', '=', 'product.id')
                 ->leftjoin('size', 'size.id', '=', 'product_size.size')
                 ->leftjoin('product_image', 'product_image.productid', '=', 'product.id')
-                ->where('product_image.productid',$id)
                 ->where('product.id',$id)
                 ->get();
         return $result;

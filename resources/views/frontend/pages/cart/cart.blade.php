@@ -26,9 +26,9 @@
                                 <td class="pro-title"><a href="#">{{ $result[$i]->productname }}</a></td>
                                 <td class="pro-price"><span>{{ 'INR '.$result[$i]->price }}</span></td>
                                 <td class="pro-quantity">
-                                    <div class="pro-qty"><input type="text" value="1"></div>
+                                    <div class="pro-qty" id='multiple'><input type="text" value="1" id='kontity'></div>
                                 </td>
-                                <td class="pro-subtotal"><span>$295.00</span></td>
+                                <td class="pro-subtotal subtotal"><span class='remove'>$295.00</span></td>
                                 <td class="pro-remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
                             </tr>
                             @endfor 

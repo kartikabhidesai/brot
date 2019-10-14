@@ -1,10 +1,10 @@
-var Cart = function(){
-   
-    var getdata = function(){
+var Cart = function () {
+
+    var getdata = function () {
 
     }
     return{
-        init: function() {
+        init: function () {
             getdata();
         }
     }

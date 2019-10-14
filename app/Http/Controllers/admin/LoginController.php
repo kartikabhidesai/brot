@@ -39,7 +39,7 @@ class LoginController extends Controller {
                 $return['status'] = 'error';
                 $return['message'] = "Invaild Id Or Password";
             }
-            echo json_encode($return);
+            return json_encode($return);
             exit();
         }
 //        else if (Auth::guard('agencies')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'user_type' => 'AGENCIES'])) {
@@ -72,7 +72,7 @@ class LoginController extends Controller {
         $data['plugincss'] = array();
         $data['pluginjs'] = array('jquery.validate.min.js');
         $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'login.js');
-        $data['funinit'] = array('Login.init()');
+        $data['funinit'] = array('Login.add()');
         return view('admin.pages.loginpage', $data);
     }
 

@@ -39,9 +39,16 @@
             <div class="col-lg-6">
                 <div class="contact-info contact-info-2 pt-0">
                     <h2>contact us</h2>
-                    <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum
-                        est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum
-                        formas human.</p>
+                    <b><p>The main aim of U-Ray Infotech is the whole team is to satisfy clients and give the best possible outcome to my clients. After 4 years of providing services, today I can say I have achieved my client’s satisfaction and for this the credit goes to our team.
+                        Our company mainly provides the following services.</p>
+
+                        PHP Development.<br>
+                        Open-Source Development<br>
+                        Android App Development.<br>
+                        Word-press Development.<br>
+                        Laravel Development.<br>
+                        SEO Service.<br>
+                        Web-site Maintenance.<br><br><br></b>
                     <ul>
                         <li><i class="fa fa-fax"></i> Address : G-106 Titanium City Center, Satellite, Ahmedabad, Gujarat, India</li>
                         <li><i class="fa fa-mobile"></i>+91 88666 20260</li>
