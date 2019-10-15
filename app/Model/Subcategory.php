@@ -41,7 +41,7 @@ class Subcategory extends Model {
             } else {
                 $return['status'] = 'success';
                 $return['message'] = ($alradyExist == '') ? 'Subcategory created successfully.' : 'Subcategory created successfully But ' . $alradyExist . ' is already exist in our system';
-                $return['redirect'] = route('Subcategory-list');
+                $return['redirect'] = route('subcategory-list');
             }
         }
 

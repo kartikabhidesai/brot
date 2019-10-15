@@ -92,7 +92,7 @@ class SubcategoryController extends Controller
                     if ($result) {
                         $return['status'] = 'success';
                         $return['message'] = 'Subcategory deleted successfully.';
-                        $return['redirect'] = route('Subcategory-list');
+                        $return['redirect'] = route('subcategory-list');
                     } else {
                         $return['status'] = 'error';
                         $return['message'] = 'Subcategory Not Deleted';

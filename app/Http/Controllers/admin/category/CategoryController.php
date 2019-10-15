@@ -20,7 +20,7 @@ class CategoryController extends Controller
             if ($result) {
                 $return['status'] = 'success';
                 $return['message'] = 'Category created successfully.';
-                $return['redirect'] = route('Category-List');
+                $return['redirect'] = route('category-list');
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'Category already exist.';
@@ -66,7 +66,7 @@ class CategoryController extends Controller
             if ($result) {
                 $return['status'] = 'success';
                 $return['message'] = 'Category Edited successfully.';
-                $return['redirect'] = route('Category-List');
+                $return['redirect'] = route('category-list');
             } else {
                 $return['status'] = 'error';
                 $return['message'] = 'Category already exist.';
@@ -100,7 +100,7 @@ class CategoryController extends Controller
                 if ($result) {
                     $return['status'] = 'success';
                     $return['message'] = 'Category deleted successfully.';
-                    $return['redirect'] = route('Category-List');
+                    $return['redirect'] = route('category-list');
                 } else {
                     $return['status'] = 'error';
                     $return['message'] = 'Category Not Deleted';

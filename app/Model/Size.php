@@ -53,7 +53,7 @@ class Size extends Model {
             } else {
                 $return['status'] = 'success';
                 $return['message'] = ($alradyExist == '') ? 'size created successfully.' : 'size created successfully But ' . $alradyExist . ' is already exist in our system';
-                $return['redirect'] = route('Size-list');
+                $return['redirect'] = route('size-list');
             }
         }
         
@@ -107,7 +107,7 @@ class Size extends Model {
                 } else {
                     $return['status'] = 'success';
                     $return['message'] = ($alradyExist == '') ? 'Size Edited successfully.' : 'Size Edited successfully But ' . $alradyExist . ' is already exist in our system';
-                    $return['redirect'] = route('Size-list');
+                    $return['redirect'] = route('size-list');
                 }
             }
             return $return;

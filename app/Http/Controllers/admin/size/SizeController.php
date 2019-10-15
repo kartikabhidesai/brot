@@ -27,7 +27,7 @@ class SizeController extends Controller
             'title' => 'Size List',
             'breadcrumb' => array(
                 'Dashboard' => 'dashboard',
-                'Size List' => 'Size-list'));
+                'Size List' => 'size-list'));
         return view('admin.pages.size.list', $data);
     }
     public function add(Request $request){
@@ -49,7 +49,7 @@ class SizeController extends Controller
             'title' => 'Size List',
             'breadcrumb' => array(
                 'Dashboard' => 'dashboard',
-                'Size List' => 'Size-list'));
+                'Size List' => 'size-list'));
         return view('admin.pages.size.add', $data);
     }
     
@@ -77,7 +77,7 @@ class SizeController extends Controller
             'title' => 'Size List',
             'breadcrumb' => array(
                 'Dashboard' => 'dashboard',
-                'Size List' => 'Size-list'));
+                'Size List' => 'size-list'));
         return view('admin.pages.size.edit', $data);
     }
 
@@ -96,7 +96,7 @@ class SizeController extends Controller
                     if ($result) {
                         $return['status'] = 'success';
                         $return['message'] = 'Size deleted successfully.';
-                        $return['redirect'] = route('Size-list');
+                        $return['redirect'] = route('size-list');
                     } else {
                         $return['status'] = 'error';
                         $return['message'] = 'Size Not Deleted';

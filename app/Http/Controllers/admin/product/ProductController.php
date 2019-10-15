@@ -87,7 +87,7 @@ class ProductController extends Controller {
             'title' => 'Edit Product',
             'breadcrumb' => array(
                 'Dashboard' => 'dashboard',
-                'Edit-Product' => 'Product-list'));
+                'Edit-Product' => 'product-list'));
         return view('admin.pages.product.edit', $data);
     }
 
