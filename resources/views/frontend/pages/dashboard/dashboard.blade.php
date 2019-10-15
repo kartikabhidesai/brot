@@ -123,480 +123,122 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-3 col-lg-4">
-                <div class="tab-menu-vertical vertical-bdr">
+            <div class="col-xl-3 col-lg-3">
+                <div class="tab-menu-vertical vertical">
                     <ul class="nav flex-column">
                         <li>
-                            <a data-toggle="tab" href="#tab_one">Men Collection</a>
+                            <a data-toggle="tab" href="#tab_one" class="men">Men Collection</a>
                         </li>
                         <li>
-                            <a class="active" data-toggle="tab" href="#tab_two">Women Collection</a>
+                            <a data-toggle="tab" href="#tab_four" class="women">Women Collection</a>
                         </li>
                         <li>
-                            <a data-toggle="tab" href="#tab_three">Kids Collection</a>
+                            <a class="active" data-toggle="tab" href="#tab_two">All Collection</a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#tab_three" class="kids">Kids Collection</a>
                         </li>
                     </ul>
                 </div>
             </div>  
             <div class="col-xl-9 col-lg-8">
                 <div class="tab-content">
-                    <div class="tab-pane fade" id="tab_one">
+                    <div class="tab-pane fade mencollection" id="tab_one">
                         <div class="feature-category-carousel slick-row-15">
-                            <!-- product single item start -->
-                            <div class="product-item">
+                            @for($i=0;$i < count($men); $i++)
+                            <div class="product-item mt-30">
                                 <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src=" {{ url('frontend/assets/img/product/product-1.jpg') }}" alt="product image">
+                                    <a href="{{ route('product-details',$men[$i]->id) }}">
+                                        <img class="productdetails" src="{{ url('/uploads/product/'.$men[$i]->image) }}" height="250px" width="200px" alt="product image">
                                     </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        <a href="compare.html" data-toggle="tooltip" title="Compare"><i
-                                                class="ion-ios-loop"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" title="Wishlist"><i
-                                                class="ion-ios-shuffle"></i></a>
-                                    </div>
                                 </div>
                                 <div class="product-description text-center">
                                     <div class="product-name">
-                                        <h3><a href="product-details.html">Dopo Designs Woolri</a></h3>
+                                        <h3><a href="product-details.html">{{ $men[$i]->productname }}</a></h3>
                                     </div>
                                     <div class="price-box">
-                                        <span class="regular-price">$100.00</span>
-                                        <span class="old-price"><del>$120.00</del></span>
+                                        <span class="regular-price">{{ 'INR '.$men[$i]->price }}</span>
                                     </div>
                                     <div class="product-btn">
-                                        <a href="cart.html">add to cart</a>
+                                        <a href="{{ route('cart') }}">add to cart</a>
                                     </div>
                                 </div>
                             </div>
-                            <!-- product single item end -->
-
-                            <!-- product single item start -->
-                            <div class="product-item">
+                            @endfor 
+                        </div>
+                    </div>
+                    <div class="tab-pane fade womencollection" id="tab_four">
+                        <div class="feature-category-carousel slick-row-15">
+                            @for($i=0;$i < count($women); $i++)
+                            <div class="product-item mt-30">
                                 <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src=" {{ url('frontend/assets/img/product/product-2.jpg') }}" alt="product image">
+                                    <a href="{{ route('product-details',$women[$i]->id) }}">
+                                        <img class="productdetails" src="{{ url('/uploads/product/'.$women[$i]->image) }}" height="250px" width="200px" alt="product image">
                                     </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        <a href="compare.html" data-toggle="tooltip" title="Compare"><i
-                                                class="ion-ios-loop"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" title="Wishlist"><i
-                                                class="ion-ios-shuffle"></i></a>
-                                    </div>
                                 </div>
                                 <div class="product-description text-center">
                                     <div class="product-name">
-                                        <h3><a href="product-details.html">Ropo Designs Fullrich</a></h3>
+                                        <h3><a href="product-details.html">{{ $women[$i]->productname }}</a></h3>
                                     </div>
                                     <div class="price-box">
-                                        <span class="regular-price">$90.00</span>
-                                        <span class="old-price"><del>$100.00</del></span>
+                                        <span class="regular-price">{{ 'INR '.$women[$i]->price }}</span>
                                     </div>
                                     <div class="product-btn">
-                                        <a href="cart.html">add to cart</a>
+                                        <a href="{{ route('cart') }}">add to cart</a>
                                     </div>
                                 </div>
                             </div>
-                            <!-- product single item end -->
-
-                            <!-- product single item start -->
-                            <div class="product-item">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src=" {{ url('frontend/assets/img/product/product-3.jpg') }}" alt="product image">
-                                    </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        <a href="compare.html" data-toggle="tooltip" title="Compare"><i
-                                                class="ion-ios-loop"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" title="Wishlist"><i
-                                                class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-description text-center">
-                                    <div class="product-name">
-                                        <h3><a href="product-details.html">Bopo Designs Roolri</a></h3>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$70.00</span>
-                                        <span class="old-price"><del>$80.00</del></span>
-                                    </div>
-                                    <div class="product-btn">
-                                        <a href="cart.html">add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product single item end -->
-
-                            <!-- product single item start -->
-                            <div class="product-item">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src=" {{ url('frontend/assets/img/product/product-4.jpg') }}" alt="product image">
-                                    </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        <a href="compare.html" data-toggle="tooltip" title="Compare"><i
-                                                class="ion-ios-loop"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" title="Wishlist"><i
-                                                class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-description text-center">
-                                    <div class="product-name">
-                                        <h3><a href="product-details.html">Pure Fashion Woolri</a></h3>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$80.00</span>
-                                        <span class="old-price"><del>$90.00</del></span>
-                                    </div>
-                                    <div class="product-btn">
-                                        <a href="cart.html">add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product single item end -->
-
-                            <!-- product single item start -->
-                            <div class="product-item">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src=" {{ url('frontend/assets/img/product/product-5.jpg') }}" alt="product image">
-                                    </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        <a href="compare.html" data-toggle="tooltip" title="Compare"><i
-                                                class="ion-ios-loop"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" title="Wishlist"><i
-                                                class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-description text-center">
-                                    <div class="product-name">
-                                        <h3><a href="product-details.html">Dopo Designs Woolri</a></h3>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$50.00</span>
-                                        <span class="old-price"><del>$60.00</del></span>
-                                    </div>
-                                    <div class="product-btn">
-                                        <a href="cart.html">add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product single item end -->
+                            @endfor 
                         </div>
                     </div>
                     <div class="tab-pane fade show active" id="tab_two">
                         <div class="feature-category-carousel slick-row-15">
                             <!-- product single item start -->
-                            <div class="product-item">
+                            @for($i=0;$i < count($result); $i++)
+                            <div class="product-item mt-30">
                                 <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src=" {{ url('frontend/assets/img/product/product-6.jpg') }}" alt="product image">
+                                    <a href="{{ route('product-details',$result[$i]->id) }}">
+                                        <img class="productdetails" src="{{ url('/uploads/product/'.$result[$i]->image) }}" height="250px" width="200px" alt="product image">
                                     </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        <a href="compare.html" data-toggle="tooltip" title="Compare"><i
-                                                class="ion-ios-loop"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" title="Wishlist"><i
-                                                class="ion-ios-shuffle"></i></a>
-                                    </div>
                                 </div>
                                 <div class="product-description text-center">
                                     <div class="product-name">
-                                        <h3><a href="product-details.html">Dopo Designs Woolri</a></h3>
+                                        <h3><a href="product-details.html">{{ $result[$i]->productname }}</a></h3>
                                     </div>
                                     <div class="price-box">
-                                        <span class="regular-price">$100.00</span>
-                                        <span class="old-price"><del>$120.00</del></span>
+                                        <span class="regular-price">{{ 'INR '.$result[$i]->price }}</span>
                                     </div>
                                     <div class="product-btn">
-                                        <a href="cart.html">add to cart</a>
+                                        <a href="{{ route('cart') }}">add to cart</a>
                                     </div>
                                 </div>
                             </div>
-                            <!-- product single item end -->
-
-                            <!-- product single item start -->
-                            <div class="product-item">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src=" {{ url('frontend/assets/img/product/product-7.jpg') }}" alt="product image">
-                                    </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        <a href="compare.html" data-toggle="tooltip" title="Compare"><i
-                                                class="ion-ios-loop"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" title="Wishlist"><i
-                                                class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-description text-center">
-                                    <div class="product-name">
-                                        <h3><a href="product-details.html">Ropo Designs Fullrich</a></h3>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$90.00</span>
-                                        <span class="old-price"><del>$100.00</del></span>
-                                    </div>
-                                    <div class="product-btn">
-                                        <a href="cart.html">add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product single item end -->
-
-                            <!-- product single item start -->
-                            <div class="product-item">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src=" {{ url('frontend/assets/img/product/product-8.jpg') }}" alt="product image">
-                                    </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        <a href="compare.html" data-toggle="tooltip" title="Compare"><i
-                                                class="ion-ios-loop"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" title="Wishlist"><i
-                                                class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-description text-center">
-                                    <div class="product-name">
-                                        <h3><a href="product-details.html">Bopo Designs Roolri</a></h3>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$70.00</span>
-                                        <span class="old-price"><del>$80.00</del></span>
-                                    </div>
-                                    <div class="product-btn">
-                                        <a href="cart.html">add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product single item end -->
-
-                            <!-- product single item start -->
-                            <div class="product-item">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src=" {{ url('frontend/assets/img/product/product-9.jpg') }}" alt="product image">
-                                    </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        <a href="compare.html" data-toggle="tooltip" title="Compare"><i
-                                                class="ion-ios-loop"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" title="Wishlist"><i
-                                                class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-description text-center">
-                                    <div class="product-name">
-                                        <h3><a href="product-details.html">Pure Fashion Woolri</a></h3>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$80.00</span>
-                                        <span class="old-price"><del>$90.00</del></span>
-                                    </div>
-                                    <div class="product-btn">
-                                        <a href="cart.html">add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product single item end -->
-
-                            <!-- product single item start -->
-                            <div class="product-item">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src=" {{ url('frontend/assets/img/product/product-10.jpg') }}" alt="product image">
-                                    </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        <a href="compare.html" data-toggle="tooltip" title="Compare"><i
-                                                class="ion-ios-loop"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" title="Wishlist"><i
-                                                class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-description text-center">
-                                    <div class="product-name">
-                                        <h3><a href="product-details.html">Dopo Designs Woolri</a></h3>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$50.00</span>
-                                        <span class="old-price"><del>$60.00</del></span>
-                                    </div>
-                                    <div class="product-btn">
-                                        <a href="cart.html">add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
+                            @endfor 
                             <!-- product single item end -->
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="tab_three">
-                        <div class="feature-category-carousel slick-row-15">
-                            <!-- product single item start -->
-                            <div class="product-item">
+                    <div class="tab-pane fade kidscollection" id="tab_three">
+                        <div class="feature-category-carousel slick-row-15 ">
+                            @for($i=0;$i < count($kids); $i++)
+                            <div class="product-item mt-30">
                                 <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src=" {{ url('frontend/assets/img/product/product-1.jpg') }}" alt="product image">
+                                    <a href="{{ route('product-details',$kids[$i]->id) }}">
+                                        <img class="productdetails" src="{{ url('/uploads/product/'.$kids[$i]->image) }}" height="250px" width="200px" alt="product image">
                                     </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        <a href="compare.html" data-toggle="tooltip" title="Compare"><i
-                                                class="ion-ios-loop"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" title="Wishlist"><i
-                                                class="ion-ios-shuffle"></i></a>
-                                    </div>
                                 </div>
                                 <div class="product-description text-center">
                                     <div class="product-name">
-                                        <h3><a href="product-details.html">Dopo Designs Woolri</a></h3>
+                                        <h3><a href="product-details.html">{{ $kids[$i]->productname }}</a></h3>
                                     </div>
                                     <div class="price-box">
-                                        <span class="regular-price">$100.00</span>
-                                        <span class="old-price"><del>$120.00</del></span>
+                                        <span class="regular-price">{{ 'INR '.$kids[$i]->price }}</span>
                                     </div>
                                     <div class="product-btn">
-                                        <a href="cart.html">add to cart</a>
+                                        <a href="{{ route('cart') }}">add to cart</a>
                                     </div>
                                 </div>
                             </div>
-                            <!-- product single item end -->
-
-                            <!-- product single item start -->
-                            <div class="product-item">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src=" {{ url('frontend/assets/img/product/product-2.jpg') }}" alt="product image">
-                                    </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        <a href="compare.html" data-toggle="tooltip" title="Compare"><i
-                                                class="ion-ios-loop"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" title="Wishlist"><i
-                                                class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-description text-center">
-                                    <div class="product-name">
-                                        <h3><a href="product-details.html">Ropo Designs Fullrich</a></h3>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$90.00</span>
-                                        <span class="old-price"><del>$100.00</del></span>
-                                    </div>
-                                    <div class="product-btn">
-                                        <a href="cart.html">add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product single item end -->
-
-                            <!-- product single item start -->
-                            <div class="product-item">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src=" {{ url('frontend/assets/img/product/product-3.jpg') }}" alt="product image">
-                                    </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        <a href="compare.html" data-toggle="tooltip" title="Compare"><i
-                                                class="ion-ios-loop"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" title="Wishlist"><i
-                                                class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-description text-center">
-                                    <div class="product-name">
-                                        <h3><a href="product-details.html">Bopo Designs Roolri</a></h3>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$70.00</span>
-                                        <span class="old-price"><del>$80.00</del></span>
-                                    </div>
-                                    <div class="product-btn">
-                                        <a href="cart.html">add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product single item end -->
-
-                            <!-- product single item start -->
-                            <div class="product-item">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src=" {{ url('frontend/assets/img/product/product-4.jpg') }}" alt="product image">
-                                    </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        <a href="compare.html" data-toggle="tooltip" title="Compare"><i
-                                                class="ion-ios-loop"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" title="Wishlist"><i
-                                                class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-description text-center">
-                                    <div class="product-name">
-                                        <h3><a href="product-details.html">Pure Fashion Woolri</a></h3>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$80.00</span>
-                                        <span class="old-price"><del>$90.00</del></span>
-                                    </div>
-                                    <div class="product-btn">
-                                        <a href="cart.html">add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product single item end -->
-
-                            <!-- product single item start -->
-                            <div class="product-item">
-                                <div class="product-thumb">
-                                    <a href="product-details.html">
-                                        <img src=" {{ url('frontend/assets/img/product/product-5.jpg') }}" alt="product image">
-                                    </a>
-                                    <div class="product-action-link">
-                                        <a href="#" data-toggle="modal" data-target="#quick_view"> <span
-                                                data-toggle="tooltip" title="Quick View"><i class="ion-ios-eye-outline"></i></span> </a>
-                                        <a href="compare.html" data-toggle="tooltip" title="Compare"><i
-                                                class="ion-ios-loop"></i></a>
-                                        <a href="wishlist.html" data-toggle="tooltip" title="Wishlist"><i
-                                                class="ion-ios-shuffle"></i></a>
-                                    </div>
-                                </div>
-                                <div class="product-description text-center">
-                                    <div class="product-name">
-                                        <h3><a href="product-details.html">Dopo Designs Woolri</a></h3>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">$50.00</span>
-                                        <span class="old-price"><del>$60.00</del></span>
-                                    </div>
-                                    <div class="product-btn">
-                                        <a href="cart.html">add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- product single item end -->
+                            @endfor 
                         </div>
                     </div>
                 </div>
@@ -606,49 +248,6 @@
 </div>
 <!-- feature category area end -->
 
-<!-- banner feature start -->
-<div class="banner-feature-area bg-navy-blue">
-    <div class="container">
-        <div class="banner-feature-inner">
-            <div class="row mtn-40">
-                <div class="col-md-4">
-                    <div class="banner-feature-item mt-40">
-                        <div class="banner-feature-icon">
-                            <img src=" {{ url('frontend/assets/img/icon/icon-1.png') }}" alt="icon">
-                        </div>
-                        <div class="banner-feature-content">
-                            <h4>FREE SHIPPING</h4>
-                            <p>Lorem khaled ipsum is a major</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="banner-feature-item mt-40">
-                        <div class="banner-feature-icon">
-                            <img src=" {{ url('frontend/assets/img/icon/icon-2.png') }}" alt="icon">
-                        </div>
-                        <div class="banner-feature-content">
-                            <h4>online support</h4>
-                            <p>Lorem khaled ipsum is a major</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="banner-feature-item mt-40">
-                        <div class="banner-feature-icon">
-                            <img src=" {{ url('frontend/assets/img/icon/icon-3.png') }}" alt="icon">
-                        </div>
-                        <div class="banner-feature-content">
-                            <h4>LIFETIME WARRANTY</h4>
-                            <p>Lorem khaled ipsum is a major</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- banner feature end -->
 <!-- Quick view modal start -->
 <div class="modal" id="quick_view">
     <div class="modal-dialog modal-lg modal-dialog-centered">

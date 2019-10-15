@@ -16,6 +16,9 @@ class DashboardController extends Controller
         
         $objProduct = new Product();
         $data['result'] = $objProduct->getProduct();
+        $data['men'] = $objProduct->getcollection(1);
+        $data['women'] = $objProduct->getcollection(2);
+        $data['kids'] = $objProduct->getcollection(3);
         $session = $request->session()->all();
         $items = Session::get('logindata')[0];
         $data['title'] = 'Dashboard | Brot';

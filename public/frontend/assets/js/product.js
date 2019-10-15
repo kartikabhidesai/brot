@@ -1,10 +1,11 @@
-var Product = function(){
-   
-    var getdata = function(){
+var Product = function () {
 
+    var getdata = function () {
+
+        
     }
     return{
-        init: function() {
+        init: function () {
             getdata();
         }
     }

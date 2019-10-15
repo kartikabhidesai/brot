@@ -9,12 +9,12 @@
         <!-- product details inner end -->
         <div class="product-details-inner">
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-3">
                     <img src=" {{ url('uploads/product/'.$value->image) }}" alt="">
                     <div class="product-large-slider mb-20 slick-initialized slick-slider">
                     </div>
                 </div>
-                <div class="col-lg-7">
+                <div class="col-lg-4">
                     <div class="product-details-des">
                         <h3>{{ $value->productname }}</h3>
                         <div class="pro-review">
@@ -42,13 +42,42 @@
                             <a href="#"><i class="fa fa-twitter"></i></a>
                             <a href="#"><i class="fa fa-pinterest"></i></a>
                             <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </div><br>
+                        <div class="product-review-info">
+                            <ul class="nav review-tab">
+                                <li>
+                                    <a data-toggle="tab" href="#tab_one">description</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#tab_two">information</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
+                </div>
+                <div class="tab-pane fade" id="tab_two">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>size</td>
+                                <td>{{ $result[0]->size }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane fade" id="tab_one">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>{{ $result[0]->description }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
         <!-- product details inner end -->
     </div>
 </div>
-<!-- page main wrapper end -->
+<!-- page main wrapper end -->  
 @endsection

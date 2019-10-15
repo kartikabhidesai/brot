@@ -33,6 +33,7 @@ class Product extends Model {
                         ->where('product.catagory', $request->input('category'))
                         ->where('product.subcatagory', $request->input('subcategory'))
                         ->where('product_size.size', $sub)
+                        ->where('product.productname',$request->input('productname'))
                         ->get()
                         ->toArray();
                 if (!empty($findSize)) {
@@ -110,6 +111,7 @@ class Product extends Model {
                     ->where('product.catagory', $request->input('category'))
                     ->where('product.subcatagory', $request->input('subcategory'))
                     ->where('product_size.size', $sub)
+                    ->where('product.productname',$request->input('productname'))
                     ->get()
                     ->toArray();
             if (!empty($findSize)) {
@@ -188,6 +190,7 @@ class Product extends Model {
                 ->get();
         return $result;
     }
+    
     public function getProductdetailsNew($id) {
         $result = Product::select('size.size','product_size.quantity','category.categoryname', 'subcategory.subcategoryname', 'product_image.image', 'product.price', 'product.description', 'product.productcode', 'product.productname', 'product.id')
                 ->leftjoin('category', 'category.id', '=', 'product.catagory')
@@ -196,6 +199,16 @@ class Product extends Model {
                 ->leftjoin('size', 'size.id', '=', 'product_size.size')
                 ->leftjoin('product_image', 'product_image.productid', '=', 'product.id')
                 ->where('product.id',$id)
+                ->get();
+        return $result;
+    }
+    
+    public function getcollection($id) {
+        $result = Product::select('product_image.image', 'product.price','category.categoryname', 'product.description', 'product.productcode', 'product.productname', 'product.id')
+                ->leftjoin('subcategory', 'subcategory.id', '=', 'product.subcatagory')
+                ->leftjoin('category', 'category.id', '=', 'product.catagory')
+                ->leftjoin('product_image', 'product_image.productid', '=', 'product.id')
+                ->where('product.catagory',$id)
                 ->get();
         return $result;
     }

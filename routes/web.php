@@ -23,6 +23,7 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
 
 Route::match(['get', 'post'], '/', ['as' => 'home', 'uses' => 'frontend\DashboardController@dashboard']);
 Route::match(['get', 'post'], 'front-dashboard', ['as' => 'front-dashboard', 'uses' => 'frontend\DashboardController@dashboard']);
+Route::match(['get', 'post'], 'dashboard-ajaxaction', ['as' => 'dashboard-ajaxaction', 'uses' => 'frontend\DashboardController@ajaxaction']);
 
 Route::match(['get', 'post'], 'login', ['as' => 'login', 'uses' => 'frontend\LoginController@login']);
 Route::match(['get', 'post'], 'front-logout', ['as' => 'front-logout', 'uses' => 'frontend\LoginController@logout']);
