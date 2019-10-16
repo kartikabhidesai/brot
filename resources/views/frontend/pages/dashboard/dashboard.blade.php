@@ -83,7 +83,7 @@
                                 <span class="regular-price">{{ 'INR '.$result[$i]->price }}</span>
                             </div>
                             <div class="product-btn">
-                                <a href="{{ route('cart') }}">add to cart</a>
+                                <a href="{{ route('cart',$result[$i]->id) }}">add to cart</a>
                             </div>
                         </div>
                     </div>
@@ -160,7 +160,7 @@
                                         <span class="regular-price">{{ 'INR '.$men[$i]->price }}</span>
                                     </div>
                                     <div class="product-btn">
-                                        <a href="{{ route('cart') }}">add to cart</a>
+                                        <a href="{{ route('cart',$result[$i]->id) }}">add to cart</a>
                                     </div>
                                 </div>
                             </div>
@@ -184,7 +184,7 @@
                                         <span class="regular-price">{{ 'INR '.$women[$i]->price }}</span>
                                     </div>
                                     <div class="product-btn">
-                                        <a href="{{ route('cart') }}">add to cart</a>
+                                        <a href="{{ route('cart',$result[$i]->id) }}">add to cart</a>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@
                                         <span class="regular-price">{{ 'INR '.$result[$i]->price }}</span>
                                     </div>
                                     <div class="product-btn">
-                                        <a href="{{ route('cart') }}">add to cart</a>
+                                        <a href="{{ route('cart',$result[$i]->id) }}">add to cart</a>
                                     </div>
                                 </div>
                             </div>
@@ -234,7 +234,7 @@
                                         <span class="regular-price">{{ 'INR '.$kids[$i]->price }}</span>
                                     </div>
                                     <div class="product-btn">
-                                        <a href="{{ route('cart') }}">add to cart</a>
+                                        <a href="{{ route('cart',$result[$i]->id) }}">add to cart</a>
                                     </div>
                                 </div>
                             </div>

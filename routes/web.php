@@ -35,7 +35,9 @@ Route::match(['get', 'post'], 'product', ['as' => 'product', 'uses' => 'frontend
 Route::match(['get', 'post'], 'product-details/{id}', ['as' => 'product-details', 'uses' => 'frontend\ProductController@productdetails']);
 
 Route::match(['get', 'post'], 'checkout', ['as' => 'checkout', 'uses' => 'frontend\DashboardController@checkout']);
-Route::match(['get', 'post'], 'cart', ['as' => 'cart', 'uses' => 'frontend\DashboardController@cart']);
+Route::match(['get', 'post'], 'cart/{id}', ['as' => 'cart', 'uses' => 'frontend\CartController@cart']);
+Route::match(['get', 'post'], 'cart-list', ['as' => 'cart-list', 'uses' => 'frontend\CartController@cartlist']);
+Route::match(['get', 'post'], 'cart-ajaxaction', ['as' => 'cart-ajaxaction', 'uses' => 'frontend\CartController@ajaxaction']);
 
 //Customer Route End
 

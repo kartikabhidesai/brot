@@ -19,7 +19,7 @@ class LoginController extends Controller {
     }
 
     public function login(Request $request) {
-        
+
         if ($request->isMethod('post')) {
             if (Auth::guard('customer')->attempt(['email' => $request->input('email'), 'password' => $request->input('password'), 'user_type' => 'CUSTOMER'])) {
                 $loginData = array(
@@ -30,7 +30,7 @@ class LoginController extends Controller {
                     'id' => Auth::guard('customer')->user()->id,
                     'user_type' => Auth::guard('customer')->user()->user_type,
                 );
-                Session::push('logindata', $loginData); 
+                Session::push('logindata', $loginData);
                 $data = $request->session()->all();
                 $return['status'] = 'success';
                 $return['message'] = "Well Done login Successfully!";
@@ -46,7 +46,7 @@ class LoginController extends Controller {
         $data['css'] = array();
         $data['plugincss'] = array();
         $data['pluginjs'] = array('jquery.validate.min.js');
-        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js','login.js');
+        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'login.js');
         $data['funinit'] = array('Login.add()');
         $data['header'] = array(
             'title' => 'Login',
@@ -78,7 +78,7 @@ class LoginController extends Controller {
         $data['css'] = array();
         $data['plugincss'] = array();
         $data['pluginjs'] = array('jquery.validate.min.js');
-        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js','login.js');
+        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'login.js');
         $data['funinit'] = array('Login.init()');
         $data['header'] = array(
             'title' => 'Register',
@@ -86,6 +86,7 @@ class LoginController extends Controller {
                 'Register' => 'register'));
         return view("frontend.pages.login.register", $data);
     }
+
     public function logout(Request $request) {
 
         $this->resetGuard();
@@ -98,4 +99,5 @@ class LoginController extends Controller {
         Auth::guard('user')->logout();
         Session::forget('logindata');
     }
+
 }

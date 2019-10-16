@@ -38,10 +38,11 @@ class ProductController extends Controller {
     public function add(Request $request) {
 
         if ($request->isMethod('post')) {
-            
+
             $objProduct = new Product();
             $result = $objProduct->addProduct($request);
-            echo json_encode($result); exit;
+            echo json_encode($result);
+            exit;
         }
         $objSubcategory = new Category();
         $data['result'] = $objSubcategory->getCategory();
@@ -59,9 +60,9 @@ class ProductController extends Controller {
         return view('admin.pages.product.add', $data);
     }
 
-    public function edit(Request $request , $id) {
+    public function edit(Request $request, $id) {
         if ($request->isMethod('post')) {
-            
+
             $objProduct = new Product();
             $result = $objProduct->editproduct($request, $id);
             echo json_encode($result);
@@ -74,13 +75,13 @@ class ProductController extends Controller {
         $objProductimage = new Product_image;
         $data['image'] = $objProductimage->getProductimage($id);
         $objSubcategory = new Subcategory();
-        $data['subcategory']= $objSubcategory->getSubcategorylist($data['product'][0]->catagory); 
+        $data['subcategory'] = $objSubcategory->getSubcategorylist($data['product'][0]->catagory);
         $objSize = new Product_size();
-        $data['size']= $objSize->getproductSizeDetailsNew($id); 
+        $data['size'] = $objSize->getproductSizeDetailsNew($id);
         $data['title'] = 'Edit Product | Brot';
         $data['css'] = array();
         $data['plugincss'] = array('select2/css/select2.css', 'select2/css/select2-bootstrap.min.css');
-        $data['pluginjs'] = array('jquery.validate.min.js','plugins/select2/js/select2.js', 'pages/select2/select2-init.js');
+        $data['pluginjs'] = array('jquery.validate.min.js', 'plugins/select2/js/select2.js', 'pages/select2/select2-init.js');
         $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'product.js');
         $data['funinit'] = array('Product.edit()');
         $data['header'] = array(
@@ -91,36 +92,35 @@ class ProductController extends Controller {
         return view('admin.pages.product.edit', $data);
     }
 
-        function ajaxaction(Request $request) {
-            $action = $request->input('action');
-            switch ($action) {
-                case 'changecategory':
-                    $objSubcategory = new Subcategory();
-                    $result = $objSubcategory->getSubcategorylist($request->input('id'));
-                    return json_encode($result);
-                    break;
-                case 'changesize':
-                    $objSize = new Size();
-                    $result = $objSize->getSizelist($request);
-                    return json_encode($result);
-                    break;
-                case 'deleteProduct':
-                    $data = $request->input('data');
-                    $objProduct = new Product();
-                    $result = $objProduct->deleteProduct($data);  
-                    if ($result) {
-                        $return['status'] = 'success';
-                        $return['message'] = 'Product deleted successfully.';
-                        $return['redirect'] = route('product-list');
-                    } else {
-                        $return['status'] = 'error';
-                        $return['message'] = 'Product Not Deleted';
-                    }
+    function ajaxaction(Request $request) {
+        $action = $request->input('action');
+        switch ($action) {
+            case 'changecategory':
+                $objSubcategory = new Subcategory();
+                $result = $objSubcategory->getSubcategorylist($request->input('id'));
+                return json_encode($result);
+                break;
+            case 'changesize':
+                $objSize = new Size();
+                $result = $objSize->getSizelist($request);
+                return json_encode($result);
+                break;
+            case 'deleteProduct':
+                $data = $request->input('data');
+                $objProduct = new Product();
+                $result = $objProduct->deleteProduct($data);
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Product deleted successfully.';
+                    $return['redirect'] = route('product-list');
+                } else {
+                    $return['status'] = 'error';
+                    $return['message'] = 'Product Not Deleted';
+                }
 
-                    return json_encode($return);
-                    break;    
-            }
+                return json_encode($return);
+                break;
         }
-
     }
-    
+
+}

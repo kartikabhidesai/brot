@@ -152,6 +152,7 @@ var Product = function () {
                     '</div>';
             $(".appendproduct").append(html);
         });
+        
         $('body').on("click", ".removeimage", function () {
             $(this).closest('.removediv').remove();
         });

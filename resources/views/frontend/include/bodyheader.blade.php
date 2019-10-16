@@ -34,15 +34,15 @@ $items = Session::get('logindata');
                 <div class="col-lg-2 col-md-6 col-6 ml-auto position-static">
                     <div class="header-setting-option setting-style-2">
                         @if ($items == '') 
-                        @if($currRoute != "login")
-                        <div class="user-account">
-                            <div class="user-icon">
-                                <a  href="{{ route('login') }}">
-                                    <i class="ion-ios-person fa-lg"></i>
-                                </a>
+                            @if($currRoute != "login")
+                            <div class="user-account">
+                                <div class="user-icon">
+                                    <a  href="{{ route('login') }}">
+                                        <i class="ion-ios-person fa-lg"></i>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        @endif
+                            @endif  
                         @else
                         <div class="user-account">
                             <div class="user-icon">
@@ -51,6 +51,7 @@ $items = Session::get('logindata');
                                 </a>
                             </div>
                         </div>
+                        @if($currRoute != "cart-list")
                         <div class="header-mini-cart">
                             <div class="mini-cart-btn">
                                 <i class="ion-bag"></i>
@@ -88,10 +89,11 @@ $items = Session::get('logindata');
                                     <span class="subtotal-price ml-auto">$110.00</span>
                                 </li>
                                 <li class="checkout-btn">
-                                    <a href="{{ route('cart') }}">CART</a>
+                                    <a href="{{ route('cart-list') }}">CART</a>
                                 </li>
                             </ul>
                         </div>
+                        @endif
                         @endif
                     </div>
                 </div>

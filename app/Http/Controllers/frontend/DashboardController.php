@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Product;
 use Session;
+use App\Model\Cart;
 
 class DashboardController extends Controller
 {
@@ -20,7 +21,7 @@ class DashboardController extends Controller
         $data['women'] = $objProduct->getcollection(2);
         $data['kids'] = $objProduct->getcollection(3);
         $session = $request->session()->all();
-        $items = Session::get('logindata')[0];
+        $items = Session::get('logindata');
         $data['title'] = 'Dashboard | Brot';
         $data['css'] = array();
         $data['plugincss'] = array();
@@ -42,20 +43,5 @@ class DashboardController extends Controller
                 'Checkout' => 'checkout'));
         return view("frontend.pages.checkout.checkout",$data);
     }
-    public function cart(){
-        
-        $objProduct = new Product();
-        $data['result'] = $objProduct->getProduct();
-        $data['title'] = 'Dashboard | Brot';
-        $data['css'] = array();
-        $data['plugincss'] = array();
-        $data['pluginjs'] = array('jquery.validate.min.js');
-        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'cart.js');
-        $data['funinit'] = array('Cart.init()');
-        $data['header'] = array(
-            'title' => 'Cart',
-            'breadcrumb' => array(
-                'Cart' => 'cart'));
-        return view("frontend.pages.cart.cart",$data);
-    }
+    
 }
