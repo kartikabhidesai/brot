@@ -5,7 +5,7 @@
     <meta name="description" content="meta description">
 
     <!-- Site title -->
-    <title>Brot - Fashion Shop HTML Template</title>
+    <title>Brot</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href=" {{ url('frontend/assets/img/favicon.ico') }}" type="image/x-icon" />
     <!-- Bootstrap CSS -->
