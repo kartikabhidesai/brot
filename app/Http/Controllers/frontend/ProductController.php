@@ -4,15 +4,21 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Model\Product;          
+use App\Model\Product;  
+use Session;
+use App\Model\Cart;
 
 class ProductController extends Controller
 {
     function __construct() {
         
     }
-    public function product(){
+    public function product(Request $request){
         
+        $session = $request->session()->all();
+        $items = Session::get('logindata');
+        $objCart = new Cart();
+        $data['cart'] = $objCart->getCartitem($items[0]['id']);
         $objProduct = new Product();
         $data['result'] = $objProduct->getProduct();
         $data['title'] = 'Product | Brot';
@@ -32,6 +38,10 @@ class ProductController extends Controller
 
         $objProduct = new Product();
         $data['result'] = $objProduct->getProductdetailsNew($id);
+        $session = $request->session()->all();
+        $items = Session::get('logindata');
+        $objCart = new Cart();
+        $data['cart'] = $objCart->getCartitem($items[0]['id']);
         $data['title'] = 'Product Details | Brot';
         $data['css'] = array();
         $data['plugincss'] = array();

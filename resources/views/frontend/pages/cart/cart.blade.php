@@ -7,7 +7,7 @@
                 <div class="col-lg-12">
                     <!-- Cart Table Area -->
                     <div class="cart-table table-responsive">
-                        <table class="table table-bordered">{{ csrf_field() }}
+                        <table class="table table-bordered" name="mytable">{{ csrf_field() }}
                             <thead>
                             <tr>
                                 <th class="pro-thumbnail">Thumbnail</th>
@@ -26,9 +26,9 @@
                                 <td class="pro-title"><a href="#">{{ $result[$i]->productname }}</a></td>
                                 <td class="pro-price"><span>{{ 'INR '.$result[$i]->price }}</span></td>
                                 <td class="pro-quantity">
-                                    <div class="pro-qty" id='multiple'><input type="text" value="1" id='kontity'></div>
+                                    <div class="pro-qty" id='multiple' data-productid="{{ $result[$i]->id }}" data-productrate="{{ $result[$i]->price }}"><input type="text" class="quantity" value="1"></div>
                                 </td>
-                                <td class="pro-subtotal subtotal" id="total" value="{{ $result[$i]->price }}"><span class='remove' >{{ 'INR '.$result[$i]->price }}</span></td>
+                                <td class="pro-subtotal subtotal" id="total"><span class='remove' >{{ 'INR '.$result[$i]->price }}</span></td>
                                 <td class="center">
                                     <a data-toggle="modal" data-target="#deletemodal" data-id="{{ $result[$i]->id }}" class="delete"><i class="fa fa-trash-o"></i></a>
                                 </td>

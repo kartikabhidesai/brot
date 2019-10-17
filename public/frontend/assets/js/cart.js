@@ -26,11 +26,13 @@ var Cart = function () {
         });
 
         $('body').on('click', '.qtybtn', function () {
-
-//            var value = $('#kontity').val();
-//            var total = document.getElementById('total').getAttribute('value');
-//            var html = 'INR ' + (value * total) + '.00';
-//            $(".subtotal").html(html);
+            var quantity = $(this).parent().find(".quantity").val();
+            var rate = $(this).closest('.pro-qty').attr('data-productrate');
+            var html = 'INR ' + (quantity * rate) + '.00';
+            $(this).parent().parent().parent().find(".remove").text(html);
+            
+//            var total = $(this).children().children().find(".remove").val();
+//            alert(total);
         });
 
     }

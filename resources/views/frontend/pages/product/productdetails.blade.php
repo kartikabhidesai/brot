@@ -29,8 +29,8 @@
                                 <div class="pro-qty"><span class="dec qtybtn">-</span><input type="text" value="1"><span class="inc qtybtn">+</span></div>
                             </div>
                         </div>
-                        <div class="sqr-btn">
-                            <a href="cart.html">Add to cart</a>
+                        <div class="product-btn">
+                            <a href="{{ route('cart',$value->id) }}">Add to cart</a>
                         </div><br><br>
                         <div class="availability mb-20">
                             <h5>Availability:</h5>

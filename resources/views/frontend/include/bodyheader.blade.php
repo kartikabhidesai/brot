@@ -51,43 +51,28 @@ $items = Session::get('logindata');
                                 </a>
                             </div>
                         </div>
-                        @if($currRoute != "cart-list")
+                        @if($currRoute != "cart-list" && $currRoute != "cart")
                         <div class="header-mini-cart">
                             <div class="mini-cart-btn">
                                 <i class="ion-bag"></i>
-                                <span class="cart-notification">2</span>
+                                <span class="cart-notification">{{ count($cart) }}</span>
                             </div>
                             <ul class="cart-list">
+                                @for($i = 0;$i < count($cart); $i++)
                                 <li>
                                     <div class="cart-img">
-                                        <a href="product-details.html"><img src=" {{ url('frontend/assets/img/cart/cart-1.jpg') }}"
+                                        <a href="product-details.html"><img src="{{ url('/uploads/product/'.$cart[$i]->image) }}"
                                                                             alt=""></a>
                                     </div>
                                     <div class="cart-info">
-                                        <h4><a href="product-details.html">simple product 09</a></h4>
-                                        <span>$60.00</span>
+                                        <h4><a href="product-details.html">{{ $cart[$i]->productname }}</a></h4>
+                                        <span>{{ 'INR '.$cart[$i]->price }}</span>
                                     </div>
                                     <div class="del-icon">
-                                        <i class="fa fa-times"></i>
+                                        <a data-toggle="modal" data-target="#deletemodal" data-id="{{ $cart[$i]->id }}" class="delete"><i class="fa fa-times"></i></a>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="cart-img">
-                                        <a href="product-details.html"><img src=" {{ url('frontend/assets/img/cart/cart-2.jpg') }}"
-                                                                            alt=""></a>
-                                    </div>
-                                    <div class="cart-info">
-                                        <h4><a href="product-details.html">virtual product 10</a></h4>
-                                        <span>$50.00</span>
-                                    </div>
-                                    <div class="del-icon">
-                                        <i class="fa fa-times"></i>
-                                    </div>
-                                </li>
-                                <li class="mini-cart-price">
-                                    <span class="subtotal">Subtotal : </span>
-                                    <span class="subtotal-price ml-auto">$110.00</span>
-                                </li>
+                                @endfor
                                 <li class="checkout-btn">
                                     <a href="{{ route('cart-list') }}">CART</a>
                                 </li>

@@ -13,28 +13,36 @@ class CartController extends Controller {
 
     function __construct() {
 
-        $this->middleware('customer');
     }
 
     public function cart(Request $request, $id) {
-
+        
         $session = $request->session()->all();
         $items = Session::get('logindata');
-        $userid = $items[0]['id'];
-        $objCart = new Cart();
-        $objCart->AddToCart($id, $userid);
-        $data['result'] = $objCart->getCartitem($userid);
-        $data['title'] = 'Cart | Brot';
-        $data['css'] = array();
-        $data['plugincss'] = array();
-        $data['pluginjs'] = array('jquery.validate.min.js');
-        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'cart.js');
-        $data['funinit'] = array('Cart.init()');
-        $data['header'] = array(
-            'title' => 'Cart',
-            'breadcrumb' => array(
-                'Cart' => 'cart'));
-        return view("frontend.pages.cart.cart", $data);
+        if(!empty($items))
+        {
+            $userid = $items[0]['id'];
+            $objCart = new Cart();
+            $objCart->AddToCart($id, $userid);
+            $data['cart'] = $objCart->getCartitem($items[0]['id']);
+            $data['result'] = $objCart->getCartitem($userid);
+            $data['title'] = 'Cart | Brot';
+            $data['css'] = array();
+            $data['plugincss'] = array();
+            $data['pluginjs'] = array('jquery.validate.min.js');
+            $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'cart.js');
+            $data['funinit'] = array('Cart.init()');
+            $data['header'] = array(
+                'title' => 'Cart',
+                'breadcrumb' => array(
+                    'Cart' => 'cart'));
+            return view("frontend.pages.cart.cart", $data);
+        }else{
+           
+            $request->session()->push('cart', $id);
+            return redirect('login');
+        }
+        
     }
 
     public function cartlist(Request $request) {
@@ -42,6 +50,7 @@ class CartController extends Controller {
         $items = Session::get('logindata');
         $userid = $items[0]['id'];
         $objCart = new Cart();
+        $data['cart'] = $objCart->getCartitem($items[0]['id']);
         $data['result'] = $objCart->getCartitem($userid);
         $data['title'] = 'Cart | Brot';
         $data['css'] = array();

@@ -22,6 +22,8 @@ class DashboardController extends Controller
         $data['kids'] = $objProduct->getcollection(3);
         $session = $request->session()->all();
         $items = Session::get('logindata');
+        $objCart = new Cart();
+        $data['cart'] = $objCart->getCartitem($items[0]['id']);
         $data['title'] = 'Dashboard | Brot';
         $data['css'] = array();
         $data['plugincss'] = array();

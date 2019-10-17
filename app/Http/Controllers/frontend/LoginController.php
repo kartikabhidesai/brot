@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Model\Customer;
+use App\Model\Cart;
 use Redirect;
 use Session;
 
@@ -32,9 +33,22 @@ class LoginController extends Controller {
                 );
                 Session::push('logindata', $loginData);
                 $data = $request->session()->all();
-                $return['status'] = 'success';
-                $return['message'] = "Well Done login Successfully!";
-                $return['redirect'] = route('front-dashboard');
+                if($request->session()->has('cart')){   
+                   
+                    $items = Session::get('logindata');
+                    $productid = Session::get('cart');
+                    $userid = $items[0]['id'];
+                    $objCart = new Cart();
+                    $objCart->AddToCart($productid[0], $userid);
+                    Session::forget('cart');
+                    $return['status'] = 'success';
+                    $return['message'] = "Well Done login Successfully!";
+                    $return['redirect'] = route('cart-list');
+                }else{
+                    $return['status'] = 'success';
+                    $return['message'] = "Well Done login Successfully!";
+                    $return['redirect'] = route('front-dashboard');
+                }
             } else {
                 $return['status'] = 'error';
                 $return['message'] = "Invaild Id Or Password";
