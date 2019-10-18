@@ -68,9 +68,6 @@ $items = Session::get('logindata');
                                         <h4><a href="product-details.html">{{ $cart[$i]->productname }}</a></h4>
                                         <span>{{ 'INR '.$cart[$i]->price }}</span>
                                     </div>
-                                    <div class="del-icon">
-                                        <a data-toggle="modal" data-target="#deletemodal" data-id="{{ $cart[$i]->id }}" class="delete"><i class="fa fa-times"></i></a>
-                                    </div>
                                 </li>
                                 @endfor
                                 <li class="checkout-btn">

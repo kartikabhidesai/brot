@@ -36,5 +36,12 @@ class Customer extends Model {
             return $objCustomer->save();
         }
     }
+    public function getCustomer($userid){
+            
+        $result = Customer::select('*')
+                ->where('id',$userid)
+                ->get();
+        return $result;
+    }
 
 }

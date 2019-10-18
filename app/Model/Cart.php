@@ -23,9 +23,17 @@ class Cart extends Model
         return $return;
     }
     
+    public function Addquantity($data,$userid){
+
+       $return = DB::table('cart')
+                    ->where('productid', $data['id'])
+                    ->update(['quantity' => $data['quantity']]);
+        return $return;
+    }
+    
     public function getCartitem($userid){
 
-        $result = Cart::select('product_image.image', 'product.price', 'product.description','product.productname','product.id')
+        $result = Cart::select('product_image.image', 'product.price', 'product.description','product.productname','product.id','cart.quantity')
                 ->leftjoin('product', 'product.id', '=', 'cart.productid')
                 ->join('product_image', 'product_image.productid', '=', 'cart.productid')
                 ->where('cart.userid',$userid)

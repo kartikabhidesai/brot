@@ -77,7 +77,7 @@
                         </div>
                         <div class="product-description text-center">
                             <div class="product-name">
-                                <h3><a href="product-details.html">{{ $result[$i]->productname }}</a></h3>
+                                <h3><a href="{{ url('/uploads/product/'.$result[$i]->image) }}">{{ $result[$i]->productname }}</a></h3>
                             </div>
                             <div class="price-box">
                                 <span class="regular-price">{{ 'INR '.$result[$i]->price }}</span>

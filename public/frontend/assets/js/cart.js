@@ -26,13 +26,26 @@ var Cart = function () {
         });
 
         $('body').on('click', '.qtybtn', function () {
-            var quantity = $(this).parent().find(".quantity").val();
-            var rate = $(this).closest('.pro-qty').attr('data-productrate');
-            var html = 'INR ' + (quantity * rate) + '.00';
-            $(this).parent().parent().parent().find(".remove").text(html);
             
-//            var total = $(this).children().children().find(".remove").val();
-//            alert(total);
+            var quantity = $(this).parent().find(".quantity").val();
+            
+            var rate = $(this).closest('.pro-qty').attr('data-productrate');
+            var productid = $(this).closest('.pro-qty').attr('data-productid');
+            var html = 'INR ' + (quantity * rate) + '.00';
+            
+            var data = {quantity: quantity, 'id':productid, _token: $('#_token').val()};
+            $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "cart-ajaxaction",
+                data: {'action': 'addquantity', 'data': data},
+                success: function (data) {
+                    handleAjaxResponse(data);
+//                    $(this).parent().parent().parent().find(".remove").text(html);
+                }
+            });
         });
 
     }

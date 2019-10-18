@@ -36,14 +36,4 @@ class DashboardController extends Controller
                 'Home' => 'home'));
         return view("frontend.pages.dashboard.dashboard",$data);
     }
-   
-    public function checkout(){
-        
-        $data['header'] = array(
-            'title' => 'Checkout',
-            'breadcrumb' => array(
-                'Checkout' => 'checkout'));
-        return view("frontend.pages.checkout.checkout",$data);
-    }
-    
 }

@@ -6,9 +6,7 @@
         @include('frontend.include.breadcrumb')
         @yield('content')
         @include('frontend.include.bodyfooter')
-        <div class="scroll-top not-visible">
-            <i class="fa fa-angle-up"></i>
-        </div>
+        
         @include('frontend.include.footer')
     </body>
 </html>

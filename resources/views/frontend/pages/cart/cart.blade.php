@@ -1,7 +1,6 @@
 @extends('frontend.layout.app')
 @section('content')
 <!-- cart main wrapper start -->
-    <div class="cart-main-wrapper section-padding">
         <div class="container custom-container">
             <div class="row">
                 <div class="col-lg-12">
@@ -19,18 +18,24 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @for($i=0;$i < count($result); $i++)    
+                            @php $subtotal = 0; $ship = 50; $shipp = 100; @endphp
+                            @for($i=0;$i < count($cart); $i++)    
+                            @php 
+                                $total = ""; 
+                                $total = ($cart[$i]->price)*($cart[$i]->quantity); 
+                                $subtotal = ($subtotal + $total);
+                            @endphp 
                             <tr>
-                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="{{ url('/uploads/product/'.$result[$i]->image) }}"
+                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="{{ url('/uploads/product/'.$cart[$i]->image) }}"
                                                                             alt="Product"/></a></td>
-                                <td class="pro-title"><a href="#">{{ $result[$i]->productname }}</a></td>
-                                <td class="pro-price"><span>{{ 'INR '.$result[$i]->price }}</span></td>
+                                <td class="pro-title"><a href="#">{{ $cart[$i]->productname }}</a></td>
+                                <td class="pro-price"><span>{{ 'INR '.$cart[$i]->price }}</span></td>
                                 <td class="pro-quantity">
-                                    <div class="pro-qty" id='multiple' data-productid="{{ $result[$i]->id }}" data-productrate="{{ $result[$i]->price }}"><input type="text" class="quantity" value="1"></div>
+                                    <div class="pro-qty" id='multiple' data-productid="{{ $cart[$i]->id }}" data-productrate="{{ $cart[$i]->price }}"><input type="text" min="0.00000001" class="quantity" value="{{ $cart[$i]->quantity }}"></div>
                                 </td>
-                                <td class="pro-subtotal subtotal" id="total"><span class='remove' >{{ 'INR '.$result[$i]->price }}</span></td>
+                                <td class="pro-subtotal" id="total"><span class='remove' >{{ 'INR '.$total }}</span></td>
                                 <td class="center">
-                                    <a data-toggle="modal" data-target="#deletemodal" data-id="{{ $result[$i]->id }}" class="delete"><i class="fa fa-trash-o"></i></a>
+                                    <a data-toggle="modal" data-target="#deletemodal" data-id="{{ $cart[$i]->id }}" class="delete"><i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                             @endfor 
@@ -38,7 +43,7 @@
                         </table>
                     </div>
                     <!-- Cart Update Option -->
-                    <div class="cart-update-option d-block d-md-flex justify-content-between">
+<!--                    <div class="cart-update-option d-block d-md-flex justify-content-between">
                         <div class="apply-coupon-wrapper">
                             <form action="#" method="post" class=" d-block d-md-flex">
                                 <input type="text" placeholder="Enter Your Coupon Code" required />
@@ -48,7 +53,7 @@
                         <div class="cart-update mt-sm-16">
                             <a href="#" class="sqr-btn">Update Cart</a>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
             <div class="row">
@@ -59,26 +64,40 @@
                             <h3>Cart Totals</h3>
                             <div class="table-responsive">
                                 <table class="table">
-                                    <tr>
+<!--                                    <tr>
                                         <td>Sub Total</td>
-                                        <td>$230</td>
-                                    </tr>
+                                        <td>{{ 'INR '.$subtotal }}</td>
+                                    </tr>-->
+<!--                                    @if($subtotal > 10000)
                                     <tr>
                                         <td>Shipping</td>
-                                        <td>$70</td>
+                                        <td>{{ 'INR '.$ship }}</td>
                                     </tr>
                                     <tr class="total">
                                         <td>Total</td>
-                                        <td class="total-amount">$300</td>
+                                        <td class="total-amount">{{ 'INR '.($subtotal + $ship) }}</td>
+                                    </tr>
+                                    @else
+                                    <tr>
+                                        <td>Shipping</td>
+                                        <td>{{ 'INR '.$shipp }}</td>
+                                    </tr>
+                                    <tr class="total">
+                                        <td>Total</td>
+                                        <td class="total-amount">{{ 'INR '.($subtotal + $shipp) }}</td>
+                                    </tr>
+                                    @endif-->
+                                    <tr class="total">
+                                        <td>Sub Total</td>
+                                        <td class="total-amount">{{ 'INR '.($subtotal) }}</td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
-                        <a href="{{ route('checkout') }}" class="sqr-btn d-block">Proceed To Checkout</a>
+                        <a href="{{ route('checkout') }}" class="sqr-btn d-block">Proceed To Checkout</a><br>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     <!-- cart main wrapper end -->
 @endsection
