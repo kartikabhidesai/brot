@@ -7,28 +7,44 @@ use Illuminate\Http\Request;
 use Session;
 use App\Model\Cart;
 use DB;
-use App\Model\Checkout;
 use App\Model\Customer;
+use App\Model\OrderDetails;
+use App\Model\Order;
 
-class CheckoutController extends Controller
-{
+class CheckoutController extends Controller {
+
     function __construct() {
-        
+
         $this->middleware('customer');
     }
-    public function checkout(Request $request){
-        
-        if($request->isMethod('post')){
-            
-        }
+
+    public function checkout(Request $request) {
+
         $items = Session::get('logindata');
         $userid = $items[0]['id'];
-        $objCustomer= new Customer();
+        if ($request->isMethod('post')) {
+
+            $objCart = new Cart();
+            $cart = $objCart->getCartDetails($userid);
+            $objOrderdetails = new OrderDetails();
+            $result = $objOrderdetails->createOrder($request, $cart);
+            if ($result) {
+                $objCart = new Cart();
+                $cart = $objCart->deleteOrder($userid);
+                $return['status'] = 'success';
+                $return['message'] = 'Thanks for Ordering.';
+                $return['redirect'] = route('front-dashboard');
+            } else {
+                $return['status'] = 'error';
+                $return['message'] = 'Something Wrong';
+            }
+            return json_encode($return);
+            exit;
+        }
+        $objCustomer = new Customer();
         $data['customer'] = $objCustomer->getCustomer($userid);
         $objCart = new Cart();
         $data['cart'] = $objCart->getCartitem($userid);
-        $objCheckout = new Checkout();
-        $data['country'] = $objCheckout->getCountry();
         $data['title'] = 'Brot | Checkout';
         $data['css'] = array();
         $data['plugincss'] = array();
@@ -39,23 +55,7 @@ class CheckoutController extends Controller
             'title' => 'Checkout',
             'breadcrumb' => array(
                 'Checkout' => 'checkout'));
-        return view("frontend.pages.checkout.checkout",$data);
+        return view("frontend.pages.checkout.checkout", $data);
     }
-    function ajaxaction(Request $request) {
-        $action = $request->input('action');
-        switch ($action) {
-            case 'getstate':
-                $data = $request->input('data');
-                $objCheckout = new Checkout();
-                $return = $objCheckout->getState($data);
-                return json_encode($return);
-                break;
-        case 'getcity':
-            $data = $request->input('data');
-            $objCheckout = new Checkout();
-            $return = $objCheckout->getCity($data);
-            return json_encode($return);
-            break;
-        }
-    }
+
 }

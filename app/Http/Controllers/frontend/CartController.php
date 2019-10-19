@@ -12,7 +12,8 @@ use App\Model\Product;
 class CartController extends Controller {
 
     function __construct() {
-        $this->middleware('customer');
+    
+        
     }
 
     public function cart(Request $request, $id) {
@@ -38,7 +39,6 @@ class CartController extends Controller {
                     'Cart' => 'cart'));
             return view("frontend.pages.cart.cart", $data);
         }else{
-           
             $request->session()->push('cart', $id);
             return redirect('login');
         }

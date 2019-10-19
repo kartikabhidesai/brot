@@ -5,7 +5,10 @@ namespace App\Model;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
-class Checkout extends Model
-{
+class Order extends Model {
+
+    protected $table = "order";
+
+    
 
 }

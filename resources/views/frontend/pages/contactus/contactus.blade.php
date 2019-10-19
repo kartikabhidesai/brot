@@ -54,7 +54,6 @@
                         <li><i class="fa fa-mobile"></i>+91 88666 20260</li>
                         <li><i class="fa fa-envelope-o"></i> info@mototivewebsolution.com </li>
                     </ul>
-                    
                 </div>
             </div>
         </div>

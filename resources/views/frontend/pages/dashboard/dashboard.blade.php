@@ -82,7 +82,7 @@
                             <div class="price-box">
                                 <span class="regular-price">{{ 'INR '.$result[$i]->price }}</span>
                             </div>
-                            <div class="product-btn" id="{{ $result[$i]->id }}">
+                            <div class="product-btn">
                                 <a href="{{ route('cart',$result[$i]->id) }}">add to cart</a>
                             </div>
                         </div>

@@ -40,10 +40,23 @@ class Cart extends Model
                 ->get();
         return $result;
     }
+    public function getCartDetails($userid){
+
+        $result = Cart::select('cart.id','cart.productid','cart.userid','cart.quantity')
+                ->where('cart.userid',$userid)
+                ->get();
+        return $result;
+    }
     public function deleteProduct($data) {
 
         $data = DB::table('cart')
                     ->where('productid', $data['id'])->delete();
+        return $data;
+    }
+    public function deleteOrder($userid) {
+
+        $data = DB::table('cart')
+                    ->where('userid', $userid)->delete();
         return $data;
     }
 }

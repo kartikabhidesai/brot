@@ -47,7 +47,7 @@ var Cart = function () {
                 }
             });
         });
-
+        
     }
     return{
         init: function () {
