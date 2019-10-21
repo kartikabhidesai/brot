@@ -51,6 +51,22 @@ class OrderController extends Controller {
 
                 return json_encode($return);
                 break;
+                
+            case 'confirmstatus':
+                $orderid = $request->input('data');
+                $objOrder = new Order();
+                $result = $objOrder->confirmStatus($orderid);
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Order Is Ready For Delevery...';
+                    $return['redirect'] = route('order');
+                } else {
+                    $return['status'] = 'error';
+                    $return['message'] = 'Order Not Confirm For Delevery';
+                }
+
+                return json_encode($return);
+                break;
         }
     }
 }

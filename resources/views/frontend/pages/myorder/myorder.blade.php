@@ -39,11 +39,25 @@
                                 <div>{{ $order[$i]->quantity }}</div>
                             </td>
                             <td class="pro-subtotal" id="total"><span class='remove' >{{ 'INR '.$total }}</span></td>
+                            @if($order[$i]->status == 'pending')
                             <td class="center">
                                 <div class="product-btn">
-                                    <a><button style="color: #FFFFFF" type="button">{{ $order[$i]->status }}</button></a>
+                                    <a><b style='color: #FFFFDF' >{{ $order[$i]->status }}</b></a>
                                 </div>
                             </td>
+                            @elseif($order[$i]->status == 'confirm')
+                            <td class="center">
+                                <div class="product-btn">
+                                    <a style="background: skyblue">{{ $order[$i]->status }}</a>
+                                </div>
+                            </td>
+                            @else
+                            <td class="center">
+                                <div class="product-btn">
+                                    <a class='btn btn-danger'>{{ $order[$i]->status }}</a>
+                                </div>
+                            </td>
+                            @endif
                         </tr>
                         @endfor 
                     </tbody>

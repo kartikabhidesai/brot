@@ -61,11 +61,11 @@ $items = Session::get('logindata');
                                 @for($i = 0;$i < count($cart); $i++)
                                 <li>
                                     <div class="cart-img">
-                                        <a href="product-details.html"><img src="{{ url('/public/uploads/product/'.$cart[$i]->image) }}"
+                                        <a href="{{ route('product-details',$cart[$i]->id) }}"><img src="{{ url('/public/uploads/product/'.$cart[$i]->image) }}"
                                                                             alt=""></a>
                                     </div>
                                     <div class="cart-info">
-                                        <h4><a href="product-details.html">{{ $cart[$i]->productname }}</a></h4>
+                                        <h4><a href="{{ route('product-details',$cart[$i]->id) }}">{{ $cart[$i]->productname }}</a></h4>
                                         <span>{{ 'INR '.$cart[$i]->price }}</span>
                                     </div>
                                 </li>
