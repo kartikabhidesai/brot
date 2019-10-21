@@ -34,15 +34,15 @@ $items = Session::get('logindata');
                 <div class="col-lg-2 col-md-6 col-6 ml-auto position-static">
                     <div class="header-setting-option setting-style-2">
                         @if ($items == '') 
-                            @if($currRoute != "login")
-                            <div class="user-account">
-                                <div class="user-icon">
-                                    <a  href="{{ route('login') }}">
-                                        <i class="ion-ios-person fa-lg"></i>
-                                    </a>
-                                </div>
+                        @if($currRoute != "login")
+                        <div class="user-account">
+                            <div class="user-icon">
+                                <a  href="{{ route('login') }}">
+                                    <i class="ion-ios-person fa-lg"></i>
+                                </a>
                             </div>
-                            @endif  
+                        </div>
+                        @endif  
                         @else
                         <div class="user-account">
                             <div class="user-icon">
@@ -76,6 +76,15 @@ $items = Session::get('logindata');
                             </ul>
                         </div>
                         @endif
+                        @endif
+                        @if($currRoute == "cart-list" || $currRoute == "cart")
+                        <div class="user-account">
+                            <div class="user-icon">
+                                <a  href="{{ route('myorder') }}">
+                                    <img src=" {{ url('frontend/assets/img/order-icon.jpg') }}" height="25px" width="25px" alt="banner image">
+                                </a>
+                            </div>
+                        </div>
                         @endif
                     </div>
                 </div>

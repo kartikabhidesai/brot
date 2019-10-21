@@ -45,6 +45,9 @@ Route::match(['get', 'post'], 'contact-us', ['as' => 'contact-us', 'uses' => 'fr
 //Checkout
 Route::match(['get', 'post'], 'checkout', ['as' => 'checkout', 'uses' => 'frontend\CheckoutController@checkout']);
 
+//My Order
+Route::match(['get', 'post'], 'myorder', ['as' => 'myorder', 'uses' => 'frontend\CheckoutController@myorder']);
+
 
 //Customer Route End
 

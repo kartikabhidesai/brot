@@ -7,5 +7,5 @@ use DB;
 
 class Checkout extends Model
 {
-
+    
 }
