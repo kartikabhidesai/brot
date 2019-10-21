@@ -10,11 +10,6 @@
                         © <b> Brot </b> {{ date('Y') }} All Rights Reserved
                     </div>
                 </div>
-                <div class="col-md-4 ml-auto order-2 order-md-3">
-                    <div class="footer-payment">
-                        <img src=" {{ url('public/frontend/assets/img/payment.png') }}" alt="">
-                    </div>
-                </div>
             </div>
         </div>
     </div>

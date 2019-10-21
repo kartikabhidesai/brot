@@ -2,7 +2,7 @@
 @section('content')
 <!-- cart main wrapper start -->
 @if(count($order) == 0)
-    <img src='{{ url('/frontend/assets/img/order.jpg') }}' width='100%'>
+    <img src='{{ url('/public/frontend/assets/img/order.jpg') }}' width='100%'>
 @else
 <div class="container custom-container">
     <div class="row">
@@ -14,6 +14,7 @@
                         <tr>
                             <th class="pro-thumbnail">Thumbnail</th>
                             <th class="pro-title">Product</th>
+                            <th class="pro-title">Order Id</th>
                             <th class="pro-price">Price</th>
                             <th class="pro-quantity">Quantity</th>
                             <th class="pro-subtotal">Total</th>
@@ -29,9 +30,10 @@
                         $subtotal = ($subtotal + $total);
                         @endphp
                         <tr>
-                            <td class="pro-thumbnail"><img class="img-fluid" src="{{ url('/uploads/product/'.$order[$i]->image) }}"
+                            <td class="pro-thumbnail"><img class="img-fluid" src="{{ url('/public/uploads/product/'.$order[$i]->image) }}"
                                                                        alt="Product"/></td>
                             <td class="pro-title">{{ $order[$i]->productname }}</td>
+                            <td class="pro-price"><span>{{ $order[$i]->orderid }}</span></td>
                             <td class="pro-price"><span>{{ 'INR '.$order[$i]->price }}</span></td>
                             <td class="pro-quantity">
                                 <div>{{ $order[$i]->quantity }}</div>

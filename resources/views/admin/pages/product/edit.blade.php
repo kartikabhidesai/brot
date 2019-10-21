@@ -87,7 +87,7 @@
                         <div class="row col-md-12 col-sm-12">
                             @foreach($image as $image)
                             <div class="margin-right-10 margin-top-10">
-                                <img height="100px" width="100px" src="{{ url('/uploads/product/'.$image->image) }}" alt="product Image" value="{{ $image->image }}">
+                                <img height="100px" width="100px" src="{{ url('/public/uploads/product/'.$image->image) }}" alt="product Image" value="{{ $image->image }}">
                             </div>
                             @endforeach
                         </div>

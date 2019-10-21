@@ -17,7 +17,7 @@ class CartController extends Controller {
     }
 
     public function cart(Request $request, $id) {
-        
+
         $session = $request->session()->all();
         $items = Session::get('logindata');
         if(!empty($items))

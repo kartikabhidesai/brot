@@ -10,7 +10,7 @@
         <div class="product-details-inner">
             <div class="row">
                 <div class="col-lg-3">
-                    <img src=" {{ url('uploads/product/'.$value->image) }}" alt="">
+                    <img src=" {{ url('/public/uploads/product/'.$value->image) }}" alt="">
                     <div class="product-large-slider mb-20 slick-initialized slick-slider">
                     </div>
                 </div>

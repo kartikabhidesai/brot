@@ -2,7 +2,7 @@
 @section('content')
 <!-- cart main wrapper start -->
 @if(count($cart) == 0)
-<img src='{{ url('/frontend/assets/img/empty_cart.jpg') }}' width='100%'>
+<img src='{{ url('/public/frontend/assets/img/empty_cart.jpg') }}' width='100%'>
 @else
 <div class="container custom-container">
     <div class="row">
@@ -29,7 +29,7 @@
                         $subtotal = ($subtotal + $total);
                         @endphp 
                         <tr>
-                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="{{ url('/uploads/product/'.$cart[$i]->image) }}"
+                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="{{ url('/public/uploads/product/'.$cart[$i]->image) }}"
                                                                        alt="Product"/></a></td>
                             <td class="pro-title"><a href="#">{{ $cart[$i]->productname }}</a></td>
                             <td class="pro-price"><span>{{ 'INR '.$cart[$i]->price }}</span></td>
@@ -75,7 +75,7 @@
                             <tfoot>
                                 <tr>
                                     <td>Total Amount</td>
-                                    <td colspan="2">INR <b style="color: red">{{ ($subtotal) }}</b></td>
+                                    <td colspan="2" class='text-center'>INR <b style="color: red">{{ ($subtotal) }}</b></td>
                                 </tr>
                             </tfoot>
                         </table>

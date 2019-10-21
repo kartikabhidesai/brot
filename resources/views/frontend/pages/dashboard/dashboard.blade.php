@@ -9,7 +9,7 @@
                     <div class="slider-content">
                         <h3>Trending 2019</h3>
                         <h1>Cover Up!<br>Winter Is Coming</h1>
-                        <a href="shop-grid-left-sidebar.html" class="slider-btn slider-btn__white">shop now</a>
+                        <a href="{{ route('product') }}" class="slider-btn slider-btn__white">shop now</a>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                     <div class="slider-content">
                         <h3>trending 2018</h3>
                         <h1>cover up!<br>winter is coming</h1>
-                        <a href="shop-grid-left-sidebar.html" class="slider-btn slider-btn__white">shop now</a>
+                        <a href="{{ route('product') }}" class="slider-btn slider-btn__white">shop now</a>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
             <div class="col-12">
                 <div class="product-carousel-5 slick-row-15">
                     <!-- product single item start -->
-                    @for($i=0;$i < count($result); $i++)
+                    @for($i=0;$i < 5; $i++)
                     <div class="product-item mt-30">
                         <div class="product-thumb">
                             <a href="{{ route('product-details',$result[$i]->id) }}">
@@ -94,7 +94,7 @@
     </div>
 </div>
 <!-- featured product area end -->
-
+    
 <!-- banner statistics start -->
 <div class="banner-statistics-area bg-img" data-bg="{{ url('public/frontend/assets/img/banner/banner-bg.jpg') }}">
     <div class="container custom-container">
@@ -103,49 +103,14 @@
                 <div class="banner-content text-center">
                     <h2 class="banner-title">Every Piece Comes With</h2>
                     <h5 class="banner-subtitle">All Products Sale Up To <span>40% Off</span></h5>
-                    <a href="shop-grid-left-sidebar.html" class="shop-btn">SHOP NOW</a>
+                    <a href="{{ route('product') }}" class="shop-btn">SHOP NOW</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- banner statistics end -->
 
-<!-- feature category area start -->
-<div class="feature-category-vertical section-padding">
-    <div class="container custom-container">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-title text-center pb-44">
-                    <p>Available Now</p>
-                    <h2>popular items</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-3 col-lg-3">
-                <div class="tab-menu-vertical vertical">
-                    <ul class="nav flex-column">
-                        <li>
-                            <a data-toggle="tab" href="#tab_one" class="men">Men Collection</a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#tab_four" class="women">Women Collection</a>
-                        </li>
-                        <li>
-                            <a class="active" data-toggle="tab" href="#tab_two">All Collection</a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#tab_three" class="kids">Kids Collection</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>  
-            
-        </div>
-    </div>
-</div>
-<!-- feature category area end -->
+<!-- banner statistics end -->
 
 <!-- Quick view modal start -->
 <div class="modal" id="quick_view">

@@ -86,6 +86,9 @@ Route::match(['get', 'post'], 'add-product', ['as' => 'add-product', 'uses' => '
 Route::match(['get', 'post'], 'edit-product/{id}', ['as' => 'edit-product', 'uses' => 'admin\product\ProductController@edit']);
 Route::match(['get', 'post'], 'product-ajaxaction', ['as' => 'product-ajaxaction', 'uses' => 'admin\product\ProductController@ajaxaction']);
 
+//product
+Route::match(['get', 'post'], 'order', ['as' => 'order', 'uses' => 'admin\order\OrderController@order']);
+Route::match(['get', 'post'], 'order-ajaxaction', ['as' => 'order-ajaxaction', 'uses' => 'admin\order\OrderController@ajaxaction']);
 });
 
 //Admin Route End

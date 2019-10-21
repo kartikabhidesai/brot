@@ -16,4 +16,22 @@ class Order extends Model {
                 ->get();
         return $result;
     }
+    
+    public function getOrdernew(){
+        
+        $result = Order::select('product.productname','product_image.image','product.price','product.description','order.orderid','order.quantity','order.status')
+                ->join('product','product.id','=','order.productid')
+                ->join('product_image','product_image.productid','=','product.id')
+                ->groupBy('order.orderid')
+                ->get();
+        return $result;
+    }
+    
+    public function changestatusOrder($orderid){
+        
+        $result = DB::table('order')
+                ->where('orderid', $orderid['id'])
+                ->update(['status' => "confirm"]);
+        return $result;
+    }
 }

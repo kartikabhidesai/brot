@@ -61,7 +61,7 @@ $items = Session::get('logindata');
                                 @for($i = 0;$i < count($cart); $i++)
                                 <li>
                                     <div class="cart-img">
-                                        <a href="product-details.html"><img src="{{ url('/uploads/product/'.$cart[$i]->image) }}"
+                                        <a href="product-details.html"><img src="{{ url('/public/uploads/product/'.$cart[$i]->image) }}"
                                                                             alt=""></a>
                                     </div>
                                     <div class="cart-info">

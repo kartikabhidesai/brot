@@ -46,6 +46,12 @@ $items = Session::get('logindata');
                         <span class="title">Product</span>
                     </a>
                 </li>
+                <li class="nav-item {{ ($currRoute == 'order')   ? 'active' : '' }}">
+                    <a href="{{ route('order') }}" class="nav-link nav-toggle">
+                        <i class="fa fa-list-alt" aria-hidden="true"></i>
+                        <span class="title">Order</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

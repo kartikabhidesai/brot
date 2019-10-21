@@ -70,22 +70,12 @@ class LoginController extends Controller {
     }
 
     public function register(Request $request) {
-
+        
         if ($request->isMethod('post')) {
 
             $objCustomer = new Customer();
             $result = $objCustomer->addCustomer($request);
-            if ($result) {
-                $return['status'] = 'success';
-                $return['message'] = "Register Successfully!";
-                $return['redirect'] = route('login');
-            } else {
-                $return['status'] = 'error';
-                $return['message'] = "Something went wrong!";
-                $return['redirect'] = route('front-register');
-            }
-
-            echo json_encode($return);
+            echo json_encode($result);
             exit();
         }
         $data['title'] = 'Brot Customer | Login';

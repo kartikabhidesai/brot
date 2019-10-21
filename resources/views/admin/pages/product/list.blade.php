@@ -50,7 +50,7 @@
                                 <td class="center">{{ $i }}</td>
                                 <td class="user-circle-img center">
                                     @if($value->image != '' || $value->image != NULL)
-                                    <img height="50px"  width="50px" src="{{ url('/uploads/product/'.$value->image) }}" alt="User's Profile Picture">
+                                    <img height="50px"  width="50px" src="{{ url('/public/uploads/product/'.$value->image) }}" alt="User's Profile Picture">
                                     @else
                                     <img  height="50px" width="50px" src="{{ url('admin/assets/img/mega-img1.jpg') }}" alt="User's Profile Picture">
                                     @endif
