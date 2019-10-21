@@ -11,7 +11,7 @@ $items = Session::get('logindata');
                     @if($items == '')
                     <div class="logo">
                         <a href="{{ route('home') }}">
-                            <img src="{{ url('frontend/assets/img/logo/logo.png') }}" alt="Brand logo">
+                            <img src="{{ url('public/frontend/assets/img/logo/logo.png') }}" alt="Brand logo">
                         </a>
                     </div>
                     @else
@@ -81,7 +81,7 @@ $items = Session::get('logindata');
                         <div class="user-account">
                             <div class="user-icon">
                                 <a  href="{{ route('myorder') }}">
-                                    <img src=" {{ url('frontend/assets/img/order-icon.jpg') }}" height="25px" width="25px" alt="banner image">
+                                    <img src=" {{ url('public/frontend/assets/img/order-icon.jpg') }}" height="25px" width="25px" alt="banner image">
                                 </a>
                             </div>
                         </div>

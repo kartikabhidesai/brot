@@ -6,7 +6,7 @@ $items = Session::get('logindata');
         <!-- logo start -->
         <div class="page-logo">
             <a href="{{ route('dashboard') }}">
-                <img alt="" src="{{ url('admin/assets/img/logo.png') }}">
+                <img alt="" src="{{ url('public/admin/assets/img/logo.png') }}">
                 <span class="logo-default">Brot</span> </a>
         </div>
         <!-- logo end -->
@@ -26,7 +26,7 @@ $items = Session::get('logindata');
                 <!-- start manage user dropdown -->
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <img alt="" class="img-circle " src="{{ url('admin/assets/img/dp.jpg') }}" />
+                        <img alt="" class="img-circle " src="{{ url('public/admin/assets/img/dp.jpg') }}" />
                         <span class="username username-hide-on-mobile"> {{ $items[0]['fname'] }} </span>
                         <i class="fa fa-angle-down"></i>
                     </a>

@@ -4,7 +4,7 @@
 <div class="hero-area">
     <div class="hero-slider-active slider-arrow-style slick-dot-style">
         <div class="hero-single-slide hero-overlay hero-overlay-black">
-            <div class="hero-slider-item hero-slider-item__style-2 bg-img" data-bg="{{ url('frontend/assets/img/slider/slide-3.jpg') }}">
+            <div class="hero-slider-item hero-slider-item__style-2 bg-img" data-bg="{{ url('public/frontend/assets/img/slider/slide-3.jpg') }}">
                 <div class="container">
                     <div class="slider-content">
                         <h3>Trending 2019</h3>
@@ -16,7 +16,7 @@
         </div>
 
         <div class="hero-single-slide hero-overlay hero-overlay-black">
-            <div class="hero-slider-item hero-slider-item__style-2 bg-img" data-bg="{{ url('frontend/assets/img/slider/slide-4.jpg') }}">
+            <div class="hero-slider-item hero-slider-item__style-2 bg-img" data-bg="{{ url('public/frontend/assets/img/slider/slide-4.jpg') }}">
                 <div class="container">
                     <div class="slider-content">
                         <h3>trending 2018</h3>
@@ -37,14 +37,14 @@
             <div class="col-md-6">
                 <div class="img-container img-full fix mt-30">
                     <a href="#">
-                        <img src=" {{ url('frontend/assets/img/banner/cms_2.4.jpg') }}" alt="banner image">
+                        <img src=" {{ url('public/frontend/assets/img/banner/cms_2.4.jpg') }}" alt="banner image">
                     </a>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="img-container img-full fix mt-30">
                     <a href="#">
-                        <img src=" {{ url('frontend/assets/img/banner/cms_2.5.jpg') }}" alt="banner image">
+                        <img src=" {{ url('public/frontend/assets/img/banner/cms_2.5.jpg') }}" alt="banner image">
                     </a>
                 </div>
             </div>
@@ -72,12 +72,12 @@
                     <div class="product-item mt-30">
                         <div class="product-thumb">
                             <a href="{{ route('product-details',$result[$i]->id) }}">
-                                <img src="{{ url('/uploads/product/'.$result[$i]->image) }}" height="250px" width="200px" alt="product image">
+                                <img src="{{ url('/public/uploads/product/'.$result[$i]->image) }}" height="250px" width="200px" alt="product image">
                             </a>
                         </div>
                         <div class="product-description text-center">
                             <div class="product-name">
-                                <h3><a href="{{ url('/uploads/product/'.$result[$i]->image) }}">{{ $result[$i]->productname }}</a></h3>
+                                <h3><a href="{{ url('/public/uploads/product/'.$result[$i]->image) }}">{{ $result[$i]->productname }}</a></h3>
                             </div>
                             <div class="price-box">
                                 <span class="regular-price">{{ 'INR '.$result[$i]->price }}</span>
@@ -96,7 +96,7 @@
 <!-- featured product area end -->
 
 <!-- banner statistics start -->
-<div class="banner-statistics-area bg-img" data-bg="{{ url('frontend/assets/img/banner/banner-bg.jpg') }}">
+<div class="banner-statistics-area bg-img" data-bg="{{ url('public/frontend/assets/img/banner/banner-bg.jpg') }}">
     <div class="container custom-container">
         <div class="row">
             <div class="col-12">
@@ -141,108 +141,7 @@
                     </ul>
                 </div>
             </div>  
-            <div class="col-xl-9 col-lg-8">
-                <div class="tab-content">
-                    <div class="tab-pane fade mencollection" id="tab_one">
-                        <div class="feature-category-carousel slick-row-15">
-                            @for($i=0;$i < count($men); $i++)
-                            <div class="product-item mt-30">
-                                <div class="product-thumb">
-                                    <a href="{{ route('product-details',$men[$i]->id) }}">
-                                        <img class="productdetails" src="{{ url('/uploads/product/'.$men[$i]->image) }}" height="250px" width="200px" alt="product image">
-                                    </a>
-                                </div>
-                                <div class="product-description text-center">
-                                    <div class="product-name">
-                                        <h3><a href="product-details.html">{{ $men[$i]->productname }}</a></h3>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">{{ 'INR '.$men[$i]->price }}</span>
-                                    </div>
-                                    <div class="product-btn">
-                                        <a href="{{ route('cart',$result[$i]->id) }}">add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            @endfor 
-                        </div>
-                    </div>
-                    <div class="tab-pane fade womencollection" id="tab_four">
-                        <div class="feature-category-carousel slick-row-15">
-                            @for($i=0;$i < count($women); $i++)
-                            <div class="product-item mt-30">
-                                <div class="product-thumb">
-                                    <a href="{{ route('product-details',$women[$i]->id) }}">
-                                        <img class="productdetails" src="{{ url('/uploads/product/'.$women[$i]->image) }}" height="250px" width="200px" alt="product image">
-                                    </a>
-                                </div>
-                                <div class="product-description text-center">
-                                    <div class="product-name">
-                                        <h3><a href="product-details.html">{{ $women[$i]->productname }}</a></h3>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">{{ 'INR '.$women[$i]->price }}</span>
-                                    </div>
-                                    <div class="product-btn">
-                                        <a href="{{ route('cart',$result[$i]->id) }}">add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            @endfor 
-                        </div>
-                    </div>
-                    <div class="tab-pane fade show active" id="tab_two">
-                        <div class="feature-category-carousel slick-row-15">
-                            <!-- product single item start -->
-                            @for($i=0;$i < count($result); $i++)
-                            <div class="product-item mt-30">
-                                <div class="product-thumb">
-                                    <a href="{{ route('product-details',$result[$i]->id) }}">
-                                        <img class="productdetails" src="{{ url('/uploads/product/'.$result[$i]->image) }}" height="250px" width="200px" alt="product image">
-                                    </a>
-                                </div>
-                                <div class="product-description text-center">
-                                    <div class="product-name">
-                                        <h3><a href="product-details.html">{{ $result[$i]->productname }}</a></h3>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">{{ 'INR '.$result[$i]->price }}</span>
-                                    </div>
-                                    <div class="product-btn">
-                                        <a href="{{ route('cart',$result[$i]->id) }}">add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            @endfor 
-                            <!-- product single item end -->
-                        </div>
-                    </div>
-                    <div class="tab-pane fade kidscollection" id="tab_three">
-                        <div class="feature-category-carousel slick-row-15 ">
-                            @for($i=0;$i < count($kids); $i++)
-                            <div class="product-item mt-30">
-                                <div class="product-thumb">
-                                    <a href="{{ route('product-details',$kids[$i]->id) }}">
-                                        <img class="productdetails" src="{{ url('/uploads/product/'.$kids[$i]->image) }}" height="250px" width="200px" alt="product image">
-                                    </a>
-                                </div>
-                                <div class="product-description text-center">
-                                    <div class="product-name">
-                                        <h3><a href="product-details.html">{{ $kids[$i]->productname }}</a></h3>
-                                    </div>
-                                    <div class="price-box">
-                                        <span class="regular-price">{{ 'INR '.$kids[$i]->price }}</span>
-                                    </div>
-                                    <div class="product-btn">
-                                        <a href="{{ route('cart',$result[$i]->id) }}">add to cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                            @endfor 
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </div>
 </div>

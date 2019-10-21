@@ -12,7 +12,7 @@
                 </div>
                 <div class="col-md-4 ml-auto order-2 order-md-3">
                     <div class="footer-payment">
-                        <img src=" {{ url('frontend/assets/img/payment.png') }}" alt="">
+                        <img src=" {{ url('public/frontend/assets/img/payment.png') }}" alt="">
                     </div>
                 </div>
             </div>
