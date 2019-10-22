@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Model\Product;  
 use Session;
 use App\Model\Cart;
+use App\Model\Details;
 
 class ProductController extends Controller
 {
@@ -17,6 +18,9 @@ class ProductController extends Controller
         
         $session = $request->session()->all();
         $items = Session::get('logindata');
+        $objDetails = new Details();
+        $data['getdetails'] = $objDetails->getdetails();
+        
         $objCart = new Cart();
         $data['cart'] = $objCart->getCartitem($items[0]['id']);
         $objProduct = new Product();
@@ -35,7 +39,9 @@ class ProductController extends Controller
         return view("frontend.pages.product.product",$data);
     }
     public function productdetails(Request $request, $id){
-
+        $objDetails = new Details();
+        $data['getdetails'] = $objDetails->getdetails();
+        
         $objProduct = new Product();
         $data['result'] = $objProduct->getProductdetailsNew($id);
         $session = $request->session()->all();

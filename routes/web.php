@@ -63,6 +63,12 @@ $adminPrefix = "";
 Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
 Route::match(['get', 'post'], 'dashboard', ['as' => 'dashboard', 'uses' => 'admin\dashboard\DashboardController@dashboard']);
 
+Route::match(['get', 'post'], 'details', ['as' => 'details', 'uses' => 'admin\details\DetailsController@index']);
+
+Route::match(['get', 'post'], 'slider', ['as' => 'slider', 'uses' => 'admin\slider\SliderController@index']);
+Route::match(['get', 'post'], 'add-slider', ['as' => 'add-slider', 'uses' => 'admin\slider\SliderController@add']);
+Route::match(['get', 'post'], 'slider-ajaxAction', ['as' => 'slider-ajaxAction', 'uses' => 'admin\slider\SliderController@ajaxAction']);
+
 //category
 Route::match(['get', 'post'], 'add-category', ['as' => 'add-category', 'uses' => 'admin\category\CategoryController@newcategory']);
 Route::match(['get', 'post'], 'category-list', ['as' => 'category-list', 'uses' => 'admin\category\CategoryController@categorylist']);

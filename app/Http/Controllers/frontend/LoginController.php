@@ -10,7 +10,7 @@ use App\Model\Customer;
 use App\Model\Cart;
 use Redirect;
 use Session;
-
+use App\Model\Details;
 class LoginController extends Controller {
 
     protected $redirectTo = '/';
@@ -56,6 +56,8 @@ class LoginController extends Controller {
             return json_encode($return);
             exit();
         }
+        $objDetails = new Details();
+        $data['getdetails'] = $objDetails->getdetails();
         $data['title'] = 'Brot Customer | Login';
         $data['css'] = array();
         $data['plugincss'] = array();
@@ -78,6 +80,8 @@ class LoginController extends Controller {
             echo json_encode($result);
             exit();
         }
+        $objDetails = new Details();
+        $data['getdetails'] = $objDetails->getdetails();
         $data['title'] = 'Brot Customer | Login';
         $data['css'] = array();
         $data['plugincss'] = array();

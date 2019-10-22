@@ -8,6 +8,7 @@ use DB;
 use Session;
 use App\Model\Cart;
 use App\Model\Product;
+use App\Model\Details;
 
 class CartController extends Controller {
 
@@ -23,6 +24,10 @@ class CartController extends Controller {
         if(!empty($items))
         {
             $userid = $items[0]['id'];
+            
+            $objDetails = new Details();
+            $data['getdetails'] = $objDetails->getdetails();
+        
             $objCart = new Cart();
             $objCart->AddToCart($id, $userid);
             $data['cart'] = $objCart->getCartitem($items[0]['id']);
@@ -46,7 +51,8 @@ class CartController extends Controller {
     }
 
     public function cartlist(Request $request) {
-
+        $objDetails = new Details();
+        $data['getdetails'] = $objDetails->getdetails();
         $items = Session::get('logindata');
         $userid = $items[0]['id'];
         $objCart = new Cart();

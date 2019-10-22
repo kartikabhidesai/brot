@@ -19,6 +19,23 @@ $items = Session::get('logindata');
                         <span class="selected"></span>
                     </a>
                 </li>
+                
+                <li class="nav-item start {{ ($currRoute == 'details')  ? 'active' : '' }}">
+                    <a href="{{ route('details') }}" class="nav-link nav-toggle">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i>
+                        <span class="title">Details</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                
+                <li class="nav-item start {{ ($currRoute == 'slider' || $currRoute == 'add-slider')  ? 'active' : '' }}">
+                    <a href="{{ route('slider') }}" class="nav-link nav-toggle">
+                        <i class="fa fa-sliders" aria-hidden="true"></i>
+                        <span class="title">Home page Slider</span>
+                        <span class="selected"></span>
+                    </a>
+                </li>
+                
                 <li class="nav-item start {{ ($currRoute == 'category-list')  ? 'active' : '' }}">
                     <a href="{{ route('category-list') }}" class="nav-link nav-toggle">
                         <i class="fa fa-list-alt" aria-hidden="true"></i>

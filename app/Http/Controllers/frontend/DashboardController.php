@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Model\Product;
 use Session;
 use App\Model\Cart;
+use App\Model\Details;
 
 class DashboardController extends Controller
 {
@@ -15,6 +16,8 @@ class DashboardController extends Controller
     }
     public function dashboard(Request $request){
         
+        $objDetails = new Details();
+        $data['getdetails'] = $objDetails->getdetails();
         $objProduct = new Product();
         $data['result'] = $objProduct->getProduct();
         $data['men'] = $objProduct->getcollection(1);

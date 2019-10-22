@@ -11,6 +11,7 @@ use App\Model\Customer;
 use App\Model\OrderDetails;
 use App\Model\Order;
 use App\Model\SendSMS;
+use App\Model\Details;
 
 class CheckoutController extends Controller {
 
@@ -24,7 +25,8 @@ class CheckoutController extends Controller {
         $items = Session::get('logindata');
         $userid = $items[0]['id'];
         if ($request->isMethod('post')) {
-
+              $objDetails = new Details();
+            $data['getdetails'] = $objDetails->getdetails();
             $objCart = new Cart();
             $cart = $objCart->getCartDetails($userid);
             $objOrderdetails = new OrderDetails();
