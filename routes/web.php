@@ -46,8 +46,10 @@ Route::match(['get', 'post'], 'contact-us', ['as' => 'contact-us', 'uses' => 'fr
 Route::match(['get', 'post'], 'checkout', ['as' => 'checkout', 'uses' => 'frontend\CheckoutController@checkout']);
 
 //My Order
-Route::match(['get', 'post'], 'myorder', ['as' => 'myorder', 'uses' => 'frontend\CheckoutController@myorder']);
+Route::match(['get', 'post'], 'myorder', ['as' => 'myorder', 'uses' => 'frontend\OrderController@myorder']);
 
+//Emial
+Route::match(['get', 'post'], 'testingmail', ['as' => 'testingmail', 'uses' => 'admin\LoginController@testingmail']);
 
 //Customer Route End
 
@@ -56,6 +58,7 @@ Route::match(['get', 'post'], 'myorder', ['as' => 'myorder', 'uses' => 'frontend
 Route::match(['get', 'post'], 'admin-login', ['as' => 'admin-login', 'uses' => 'admin\LoginController@login']);
 Route::match(['get', 'post'], 'register', ['as' => 'register', 'uses' => 'admin\LoginController@register']);
 Route::match(['get', 'post'], 'forgotpassword', ['as' => 'forgotpassword', 'uses' => 'admin\LoginController@forgotpassword']);
+Route::match(['get', 'post'], 'createpassword', ['as' => 'createpassword', 'uses' => 'admin\LoginController@createpassword']);
 $adminPrefix = "";
 Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {
 Route::match(['get', 'post'], 'dashboard', ['as' => 'dashboard', 'uses' => 'admin\dashboard\DashboardController@dashboard']);

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 use App\Model\Order;
+use App\Model\SendSMS;
 
 class OrderController extends Controller {
 
@@ -41,6 +42,8 @@ class OrderController extends Controller {
                 $objOrder = new Order();
                 $result = $objOrder->changestatusOrder($orderid);
                 if ($result) {
+                    $objSendSms = new SendSMS();
+                    $sendSMS = $objSendSms->sendMailltesting();
                     $return['status'] = 'success';
                     $return['message'] = 'Order Confirm successfully';
                     $return['redirect'] = route('order');
@@ -51,12 +54,14 @@ class OrderController extends Controller {
 
                 return json_encode($return);
                 break;
-                
+
             case 'confirmstatus':
                 $orderid = $request->input('data');
                 $objOrder = new Order();
                 $result = $objOrder->confirmStatus($orderid);
                 if ($result) {
+                    $objSendSms = new SendSMS();
+                    $sendSMS = $objSendSms->sendMailltesting();
                     $return['status'] = 'success';
                     $return['message'] = 'Order Is Ready For Delevery...';
                     $return['redirect'] = route('order');
@@ -69,5 +74,5 @@ class OrderController extends Controller {
                 break;
         }
     }
+
 }
-    

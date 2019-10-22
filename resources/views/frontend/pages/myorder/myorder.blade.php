@@ -25,8 +25,10 @@
                         @php $subtotal = 0; $ship = 50; $shipp = 100; @endphp
                         @for($i=0;$i < count($order); $i++)    
                         @php 
-                        $total = ""; 
+                        $total = 0; 
+                        if($order[$i]->status == 'pending' || $order[$i]->status == 'confirm'){
                         $total = ($order[$i]->price)*($order[$i]->quantity); 
+                        }
                         $subtotal = ($subtotal + $total);
                         @endphp
                         <tr>
@@ -38,22 +40,25 @@
                             <td class="pro-quantity">
                                 <div>{{ $order[$i]->quantity }}</div>
                             </td>
-                            <td class="pro-subtotal" id="total"><span class='remove' >{{ 'INR '.$total }}</span></td>
+                            
                             @if($order[$i]->status == 'pending')
+                            <td class="pro-subtotal" id="total"><span class='remove' >{{ 'INR '.$total }}</span></td>
                             <td class="center">
                                 <div class="product-btn">
                                     <a><b style='color: #FFFFDF' >{{ $order[$i]->status }}</b></a>
                                 </div>
                             </td>
                             @elseif($order[$i]->status == 'confirm')
+                            <td class="pro-subtotal" id="total"><span class='remove' >{{ 'INR '.$total }}</span></td>
                             <td class="center">
-                                <div class="product-btn">
-                                    <a style="background: skyblue">{{ $order[$i]->status }}</a>
+                                <div class="btn-group">
+                                    <a class='btn btn-success'>{{ $order[$i]->status }}</a>
                                 </div>
                             </td>
                             @else
+                            <td class="pro-subtotal" id="total"><span class='remove' >-</span></td>
                             <td class="center">
-                                <div class="product-btn">
+                                <div class="btn-group">
                                     <a class='btn btn-danger'>{{ $order[$i]->status }}</a>
                                 </div>
                             </td>
@@ -65,29 +70,17 @@
             </div>
         </div>
     </div>
-    <br>
+    <br><br><br>
+    @if($subtotal != 0)
     <div class="row">
         <div class="col-lg-5 ml-auto">
             <!-- Cart Calculation Area -->
             <div class="cart-calculator-wrapper">
                 <div class="cart-calculate-items">
-                    <h3>Amount To Be Pay</h3>
+                    <h3>Total Amount</h3>
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
-                                @php $subtotal = 0; $ship = 50; $shipp = 100; @endphp
-                                @for($i=0;$i < count($order); $i++)    
-                                @php 
-                                $total = ""; 
-                                $total = ($order[$i]->price)*($order[$i]->quantity); 
-                                $subtotal = ($subtotal + $total);
-                                @endphp 
-                                <tr>
-                                    <td>{{ $order[$i]->productname }}<strong> × {{ $order[$i]->quantity }}</strong></a></td>
-                                    <td>{{ 'INR '.$order[$i]->price }}</td>
-                                    <td>{{ 'INR '.$total }}</td>
-                                </tr>
-                                @endfor 
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -102,6 +95,7 @@
             </div>
         </div>
     </div>
+    @endif
 </div>
 @endif
 <!-- cart main wrapper end -->

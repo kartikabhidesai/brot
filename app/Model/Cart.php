@@ -38,6 +38,7 @@ class Cart extends Model {
                 ->leftjoin('product', 'product.id', '=', 'cart.productid')
                 ->join('product_image', 'product_image.productid', '=', 'cart.productid')
                 ->where('cart.userid', $userid)
+                ->orderBy('cart.id', 'asc')
                 ->get();
         return $result;
     }

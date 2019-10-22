@@ -8,15 +8,11 @@ $items = Session::get('logindata');
         <div class="container custom-container">
             <div class="row align-items-center position-relative">
                 <div class="col-lg-2 col-md-6 col-6 position-static">
-                    @if($items == '')
                     <div class="logo">
                         <a href="{{ route('home') }}">
                             <img src="{{ url('public/frontend/assets/img/logo/logo.png') }}" alt="Brand logo">
                         </a>
                     </div>
-                    @else
-                    <h3> {{  $items[0]['fname'] }} </h3>
-                    @endif
                 </div>
                 <div class="col-lg-8 d-none d-lg-block position-static">
                     <div class="main-header-inner">

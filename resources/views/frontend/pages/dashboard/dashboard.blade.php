@@ -68,7 +68,7 @@
             <div class="col-12">
                 <div class="product-carousel-5 slick-row-15">
                     <!-- product single item start -->
-                    @for($i=0;$i < 5; $i++)
+                    @for($i=0;$i < count($result); $i++)
                     <div class="product-item mt-30">
                         <div class="product-thumb">
                             <a href="{{ route('product-details',$result[$i]->id) }}">

@@ -47,8 +47,7 @@
             </div>
         </div>
     </div>
-
-
+    <br><br><br><br><br>
     <div class="row">
         <div class="col-lg-5 ml-auto">
             <!-- Cart Calculation Area -->
@@ -58,19 +57,7 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
-                                @php $subtotal = 0; $ship = 50; $shipp = 100; @endphp
-                                @for($i=0;$i < count($cart); $i++)    
-                                @php 
-                                $total = ""; 
-                                $total = ($cart[$i]->price)*($cart[$i]->quantity); 
-                                $subtotal = ($subtotal + $total);
-                                @endphp 
-                                <tr>
-                                    <td>{{ $cart[$i]->productname }}<strong> × {{ $cart[$i]->quantity }}</strong></a></td>
-                                    <td>{{ 'INR '.$cart[$i]->price }}</td>
-                                    <td>{{ 'INR '.$total }}</td>
-                                </tr>
-                                @endfor 
+                                
                             </tbody>
                             <tfoot>
                                 <tr>

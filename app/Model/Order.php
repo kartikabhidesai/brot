@@ -13,6 +13,7 @@ class Order extends Model {
         $result = Order::select('product.productname','product_image.image','product.price','product.description','order.orderid','order.quantity','order.status')
                 ->join('product','product.id','=','order.productid')
                 ->join('product_image','product_image.productid','=','product.id')
+                ->orderBy('order.id', 'asc')
                 ->get();
         return $result;
     }

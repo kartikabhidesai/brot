@@ -14,12 +14,12 @@
                             <div class="product-item mb-30">
                                 <div class="product-thumb">
                                     <a href="{{ route('product-details',$result[$i]->id) }}">
-                                        <img src=" {{ url('/public/uploads/product/'.$result[$i]->image) }}" alt="product image">
+                                        <img src=" {{ url('/public/uploads/product/'.$result[$i]->image) }}" height="300px" width="200px" alt="product image">
                                     </a>
                                 </div>
                                 <div class="product-description text-center">
                                     <div class="product-name">
-                                        <h3><a href="product-details.html">{{ $result[$i]->productname }}</a></h3>
+                                        <h3><a href="{{ route('product-details',$result[$i]->id) }}">{{ $result[$i]->productname }}</a></h3>
                                     </div>
                                     <div class="price-box">
                                         <span class="regular-price">{{ 'INR '.$result[$i]->price }}</span>
