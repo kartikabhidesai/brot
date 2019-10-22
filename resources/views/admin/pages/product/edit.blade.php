@@ -80,6 +80,26 @@
                         <input type="text" class="form-control product" id="price" name="price" value="{{ $result->price }}">
                     </div>
                     <div class="form-group">
+                        <label for="simpleFormEmail">Select product discount type</label>
+                        <select class="form-control" name="discount_type" id="discount_type">
+                            <option value="">Select Discount Type</option>
+                            <option value="F" {{ $result->discount_type == 'F' ? 'selected' : ''}}>Flat</option>
+                            <option value="P" {{ $result->discount_type == 'P' ? 'selected' : ''}}>Percantage</option>
+                        </select>
+                    </div>
+                    <div class="form-group ">
+                        <label for="simpleFormEmail">Enter discount</label>
+                        <input type="text" class="form-control" id="discount" name="discount" value="{{ $result->discount }}">
+                    </div>
+                    <div class="form-group ">
+                        <label for="simpleFormEmail">Select Product Status</label>
+                        <select class="form-control" name="status" id="product_status">
+                            <option value="">Select Product Status</option>
+                            <option value="A" {{ $result->status == 'A' ? 'selected' : ''}}>Active</option>
+                            <option value="I" {{ $result->status == 'I' ? 'selected' : ''}}>Inactive</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="simpleFormEmail">Enter product Description</label>
                         <input type="text" class="form-control" id="description" name="description" value="{{ $result->description }}">
                     </div>

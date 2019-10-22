@@ -31,7 +31,7 @@ Route::match(['get', 'post'], 'front-dashboard', ['as' => 'front-dashboard', 'us
 Route::match(['get', 'post'], 'dashboard-ajaxaction', ['as' => 'dashboard-ajaxaction', 'uses' => 'frontend\DashboardController@ajaxaction']);
 
 //Product
-Route::match(['get', 'post'], 'product', ['as' => 'product', 'uses' => 'frontend\ProductController@product']);
+Route::match(['get', 'post'], 'product/{id?}', ['as' => 'product', 'uses' => 'frontend\ProductController@product']);
 Route::match(['get', 'post'], 'product-details/{id}', ['as' => 'product-details', 'uses' => 'frontend\ProductController@productdetails']);
 
 //Cart

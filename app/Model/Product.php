@@ -8,6 +8,8 @@ use File;
 use App\Model\Product;
 use App\Model\Product_image;
 use App\Model\Product_size;
+use App\Model\Category;
+use App\Model\Subcategory;
 
 class Product extends Model {
 
@@ -50,6 +52,9 @@ class Product extends Model {
                         $objProduct->catagory = $request->input('category');
                         $objProduct->subcatagory = $request->input('subcategory');
                         $objProduct->price = $request->input('price');
+                        $objProduct->status = $request->input('status');
+                        $objProduct->discount = $request->input('discount');
+                        $objProduct->discount_type = $request->input('discount_type');
                         $objProduct->description = $request->input('description');
                         $objProduct->created_at = date("Y-m-d h:i:s");
                         $objProduct->updated_at = date("Y-m-d h:i:s");
@@ -129,6 +134,9 @@ class Product extends Model {
                     $objProduct->catagory = $request->input('category');
                     $objProduct->subcatagory = $request->input('subcategory');
                     $objProduct->price = $request->input('price');
+                    $objProduct->status = $request->input('status');
+                    $objProduct->discount = $request->input('discount');
+                    $objProduct->discount_type = $request->input('discount_type');
                     $objProduct->description = $request->input('description');
                     $objProduct->created_at = date("Y-m-d h:i:s");
                     $objProduct->updated_at = date("Y-m-d h:i:s");
@@ -179,15 +187,38 @@ class Product extends Model {
         return $result;
     }
 
-    public function getProduct() {
-        $result = Product::select(DB::raw('group_concat(size.size) as size'),DB::raw('group_concat(product_size.quantity) as quantity'),'category.categoryname', 'subcategory.subcategoryname', 'product_image.image', 'product.price', 'product.description', 'product.productcode', 'product.productname', 'product.id')
+    public function getProduct($id) {
+       
+        if($id){
+       $result = Product::select(
+                 DB::raw('group_concat(DISTINCT(size.size)) as size'),
+                 DB::raw('group_concat(DISTINCT(product_size.quantity)) as quantity'),'category.categoryname', 'subcategory.subcategoryname', 'product_image.image',
+                          'product.price', 'product.description', 'product.productcode', 'product.productname', 'product.id')
                 ->leftjoin('category', 'category.id', '=', 'product.catagory')
+                
+                ->leftjoin('subcategory', 'subcategory.id', '=', 'product.subcatagory')
+                ->leftjoin('product_size', 'product_size.productid', '=', 'product.id')
+                ->leftjoin('size', 'size.id', '=', 'product_size.size')
+                ->leftjoin('product_image', 'product_image.productid', '=', 'product.id')
+                ->where('product.subcatagory', $id)
+                ->groupby('product.productname')
+                ->get();
+        }else{
+             $result = Product::select(
+                 DB::raw('group_concat(DISTINCT(size.size)) as size'),
+                 DB::raw('group_concat(DISTINCT(product_size.quantity)) as quantity'),'category.categoryname', 'subcategory.subcategoryname', 'product_image.image',
+                          'product.price', 'product.description', 'product.productcode', 'product.productname', 'product.id')
+                ->leftjoin('category', 'category.id', '=', 'product.catagory')
+                
                 ->leftjoin('subcategory', 'subcategory.id', '=', 'product.subcatagory')
                 ->leftjoin('product_size', 'product_size.productid', '=', 'product.id')
                 ->leftjoin('size', 'size.id', '=', 'product_size.size')
                 ->leftjoin('product_image', 'product_image.productid', '=', 'product.id')
                 ->groupby('product.productname')
                 ->get();
+        }
+       
+        
         return $result;
     }
     
@@ -221,6 +252,18 @@ class Product extends Model {
         $data['$resultimage'] = DB::table('product_image')
                         ->where('productid', $data['id'])->delete();
         return $data;
+    }
+    
+    public function getCatSubCategory(){
+        $category = Category::select('*')
+                 ->get();  
+       for($i=0; $i<count($category); $i++){
+           $category[$i]->subCategory = Subcategory::select('subcategoryname', 'id')
+                ->where('categoryid', $category[$i]->id)
+                ->get();
+       }
+       
+       return $category;
     }
 
 }

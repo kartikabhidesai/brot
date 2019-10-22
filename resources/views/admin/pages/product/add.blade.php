@@ -55,7 +55,27 @@
                         <input type="text" class="form-control product" id="price" name="price" placeholder="Enter product price">
                     </div>
                     <div class="form-group">
-                        <label for="simpleFormEmail">Enter product Description</label>
+                        <label for="simpleFormEmail">Select product discount type</label>
+                        <select class="form-control" name="discount_type" id="discount_type">
+                            <option value="">Select Discount Type</option>
+                            <option value="F">Flat</option>
+                            <option value="P">Percantage</option>
+                        </select>
+                    </div>
+                    <div class="form-group ">
+                        <label for="simpleFormEmail">Enter discount</label>
+                        <input type="text" class="form-control" id="discount" name="discount" placeholder="Enter discount">
+                    </div>
+                    <div class="form-group ">
+                        <label for="simpleFormEmail">Select Product Status</label>
+                        <select class="form-control" name="status" id="product_status">
+                            <option value="">Select Product Status</option>
+                            <option value="A">Active</option>
+                            <option value="I">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="simpleFormEmail">Enter product description</label>
                         <input type="text" class="form-control product" id="description" name="description" placeholder="Enter product Description">
                     </div>
                     <div class="form-group appendproduct">

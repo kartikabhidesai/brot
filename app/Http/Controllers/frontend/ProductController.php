@@ -14,7 +14,7 @@ class ProductController extends Controller
     function __construct() {
         
     }
-    public function product(Request $request){
+    public function product(Request $request, $id = NULL){
         
         $session = $request->session()->all();
         $items = Session::get('logindata');
@@ -24,7 +24,8 @@ class ProductController extends Controller
         $objCart = new Cart();
         $data['cart'] = $objCart->getCartitem($items[0]['id']);
         $objProduct = new Product();
-        $data['result'] = $objProduct->getProduct();
+        $data['result'] = $objProduct->getProduct($id);
+        $data['cat_sub_cat'] = $objProduct->getCatSubCategory();
         $data['title'] = 'Product | Brot';
         $data['css'] = array();
         $data['plugincss'] = array();

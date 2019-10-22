@@ -42,10 +42,10 @@
                         <div class="footer-single-widget mt-40">
                             <h5 class="widget-title">Contact Us</h5>
                             <div class="widget-body">
-                                <p class="desc">{{ $getdetails[0]->addressline1 }} {{ $getdetails[0]->addressline2 }}</p>
+                                <p class="desc">{{ @$getdetails[0]->addressline1 }} {{ @$getdetails[0]->addressline2 }}</p>
                                 <ul class="contact-info">
-                                    <li>+91 {{ $getdetails[0]->mobileno }}</li>
-                                    <li>{{ $getdetails[0]->email }}</li>
+                                    <li>+91 {{ @$getdetails[0]->mobileno }}</li>
+                                    <li>{{ @$getdetails[0]->email }}</li>
                                 </ul>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                         <div class="footer-single-widget mt-40">
                             <h5 class="widget-title">Newsletter</h5>
                             <div class="widget-body">
-                                <p class="desc">{{ $getdetails[0]->info }}</p>
+                                <p class="desc">{{ @$getdetails[0]->info }}</p>
                                 <div class="newsletter-inner">
                                     <form id="mc-form">
                                         <input type="email" class="news-field" id="mc-email" autocomplete="off"
