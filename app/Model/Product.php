@@ -187,7 +187,7 @@ class Product extends Model {
         return $result;
     }
 
-    public function getProduct($id) {
+    public function getProduct($id = NULL) {
        
         if($id){
        $result = Product::select(
