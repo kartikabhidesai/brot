@@ -10,7 +10,7 @@ $items = Session::get('logindata');
                 <div class="col-lg-2 col-md-6 col-6 position-static">
                     <div class="logo">
                         <a href="{{ route('home') }}">
-                            <img src="{{ url('public/frontend/assets/img/logo/logo.png') }}" alt="Brand logo">
+                            <img src="{{ url('public/uploads/logo.png') }}" alt="Brand logo">
                         </a>
                     </div>
                 </div>
@@ -32,18 +32,29 @@ $items = Session::get('logindata');
                         @if ($items == '') 
                         @if($currRoute != "login")
                         <div class="user-account">
+                            
+                            
                             <div class="user-icon">
                                 <a  href="{{ route('login') }}">
-                                    <i class="ion-ios-person fa-lg"></i>
+                                    <i class="ion-ios-person fa-lg"></i>                                    
                                 </a>
                             </div>
                         </div>
                         @endif  
                         @else
+                        
                         <div class="user-account">
                             <div class="user-icon">
                                 <a  href="{{ route('front-logout') }}">
                                     <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="user-account">
+                            <div class="user-icon">
+                                <a href="{{ route('my-profile') }}">
+                                    <i class="ion-ios-person-outline"></i>
                                 </a>
                             </div>
                         </div>

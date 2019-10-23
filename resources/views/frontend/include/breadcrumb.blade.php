@@ -1,4 +1,5 @@
-<!-- breadcrumb area start 
+ <!--breadcrumb area start--> 
+ @if(isset($header))
 <div class="breadcrumb-area">
     <div class="container custom-container">
         <div class="row">
@@ -28,4 +29,5 @@
         </div>
     </div>
 </div>
- breadcrumb area end -->
+ @endif
+ <!--breadcrumb area end--> 

@@ -8,6 +8,7 @@ use App\Model\Product;
 use Session;
 use App\Model\Cart;
 use App\Model\Details;
+use App\Model\Slider;
 
 class DashboardController extends Controller
 {
@@ -16,8 +17,13 @@ class DashboardController extends Controller
     }
     public function dashboard(Request $request){
         
+        $objSlider = new Slider();
+        $data['getSlider'] = $objSlider->getSlider();
+        
+        
         $objDetails = new Details();
         $data['getdetails'] = $objDetails->getdetails();
+        
         $objProduct = new Product();
         $data['result'] = $objProduct->getProduct();
         $data['men'] = $objProduct->getcollection(1);
@@ -33,10 +39,7 @@ class DashboardController extends Controller
         $data['pluginjs'] = array('jquery.validate.min.js');
         $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'dashboard.js');
         $data['funinit'] = array('Dashboard.init()');
-        $data['header'] = array(
-            'title' => 'HOME',
-            'breadcrumb' => array(
-                'Home' => 'home'));
+        
         return view("frontend.pages.dashboard.dashboard",$data);
     }
 }

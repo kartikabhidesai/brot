@@ -19,6 +19,8 @@ class Details extends Model
         return $result;
     }
     
+    
+    
     public function editDetails($request){
         $objDetails = Details::find(1);
         $objDetails->addressline1 =  $request->input("addressline1");

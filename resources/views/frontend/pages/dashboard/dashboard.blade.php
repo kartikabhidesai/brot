@@ -3,29 +3,19 @@
 <!-- slider area start -->
 <div class="hero-area">
     <div class="hero-slider-active slider-arrow-style slick-dot-style">
-        <div class="hero-single-slide hero-overlay hero-overlay-black">
-            <div class="hero-slider-item hero-slider-item__style-2 bg-img" data-bg="{{ url('public/frontend/assets/img/slider/slide-3.jpg') }}">
-                <div class="container">
-                    <div class="slider-content">
-                        <h3>Trending 2019</h3>
-                        <h1>Cover Up!<br>Winter Is Coming</h1>
-                        <a href="{{ route('product') }}" class="slider-btn slider-btn__white">shop now</a>
+        @foreach($getSlider as $key => $value)
+            <div class="hero-single-slide hero-overlay hero-overlay-black">
+                <div class="hero-slider-item hero-slider-item__style-2 bg-img" data-bg="{{ url('public/uploads/slider/'.$value['image']) }}">
+                    <div class="container">
+                        <div class="slider-content">
+                            <h3>{{ $value['title'] }}</h3>
+                            <h1>{{ $value['text'] }}</h1>
+                            <a href="{{ route('product') }}" class="slider-btn slider-btn__white">shop now</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="hero-single-slide hero-overlay hero-overlay-black">
-            <div class="hero-slider-item hero-slider-item__style-2 bg-img" data-bg="{{ url('public/frontend/assets/img/slider/slide-4.jpg') }}">
-                <div class="container">
-                    <div class="slider-content">
-                        <h3>trending 2018</h3>
-                        <h1>cover up!<br>winter is coming</h1>
-                        <a href="{{ route('product') }}" class="slider-btn slider-btn__white">shop now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
 <!-- slider area end -->

@@ -6,17 +6,21 @@
                     <div class="col-xl-3 col-lg-2 col-md-6">
                         <!-- footer single widget start -->
                         <div class="footer-single-widget mt-40">
-                            <h5 class="widget-title">Information</h5>
+                            <h5 class="widget-title">About Us</h5>
                             <div class="widget-body">
-                                <ul class="useful-links">
-                                    <li><a href="#">Our Services</a></li>
-                                    <li><a href="#">Our Company</a></li>
-                                    <li><a href="#">Vision & Mission</a></li>
-                                    <li><a href="#">Our Product</a></li>
-                                    <li><a href="#">Our Fajlami</a></li>
-                                </ul>
+                                 <p class="desc">{{ @$getdetails[0]->info }}</p>
+                            </div>
+                            <div class="footer-single-widget mt-40">
+                                <div class="position-static">
+                                    <div class="logo">
+                                        <a href="{{ route('home') }}">
+                                            <img src="{{ url('public/uploads/logo.png') }}" alt="Brand logo">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                       
                         <!-- footer single widget start -->
                     </div>
 
@@ -57,7 +61,8 @@
                         <div class="footer-single-widget mt-40">
                             <h5 class="widget-title">Newsletter</h5>
                             <div class="widget-body">
-                                <p class="desc">{{ @$getdetails[0]->info }}</p>
+                                
+                                
                                 <div class="newsletter-inner">
                                     <form id="mc-form">
                                         <input type="email" class="news-field" id="mc-email" autocomplete="off"
