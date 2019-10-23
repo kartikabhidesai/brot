@@ -193,9 +193,8 @@ class Product extends Model {
        $result = Product::select(
                  DB::raw('group_concat(DISTINCT(size.size)) as size'),
                  DB::raw('group_concat(DISTINCT(product_size.quantity)) as quantity'),'category.categoryname', 'subcategory.subcategoryname', 'product_image.image',
-                          'product.price', 'product.description', 'product.productcode', 'product.productname', 'product.id')
+                          'product.price', 'product.description','product.discount_type','product.discount','product.status' ,'product.productcode', 'product.productname', 'product.id')
                 ->leftjoin('category', 'category.id', '=', 'product.catagory')
-                
                 ->leftjoin('subcategory', 'subcategory.id', '=', 'product.subcatagory')
                 ->leftjoin('product_size', 'product_size.productid', '=', 'product.id')
                 ->leftjoin('size', 'size.id', '=', 'product_size.size')
@@ -207,9 +206,8 @@ class Product extends Model {
              $result = Product::select(
                  DB::raw('group_concat(DISTINCT(size.size)) as size'),
                  DB::raw('group_concat(DISTINCT(product_size.quantity)) as quantity'),'category.categoryname', 'subcategory.subcategoryname', 'product_image.image',
-                          'product.price', 'product.description', 'product.productcode', 'product.productname', 'product.id')
-                ->leftjoin('category', 'category.id', '=', 'product.catagory')
-                
+                          'product.price', 'product.description','product.discount_type','product.discount','product.status' ,'product.productcode', 'product.productname', 'product.id')
+                ->leftjoin('category', 'category.id', '=', 'product.catagory')                
                 ->leftjoin('subcategory', 'subcategory.id', '=', 'product.subcatagory')
                 ->leftjoin('product_size', 'product_size.productid', '=', 'product.id')
                 ->leftjoin('size', 'size.id', '=', 'product_size.size')
@@ -223,7 +221,8 @@ class Product extends Model {
     }
     
     public function getProductdetailsNew($id) {
-        $result = Product::select('size.size','product_size.quantity','category.categoryname', 'subcategory.subcategoryname', 'product_image.image', 'product.price', 'product.description', 'product.productcode', 'product.productname', 'product.id')
+        $result = Product::select('size.size','product_size.quantity','category.categoryname', 'subcategory.subcategoryname', 'product_image.image',
+                'product.price', 'product.description','product.discount_type','product.discount','product.status' ,'product.productcode', 'product.productname', 'product.id')
                 ->leftjoin('category', 'category.id', '=', 'product.catagory')
                 ->leftjoin('subcategory', 'subcategory.id', '=', 'product.subcatagory')
                 ->leftjoin('product_size', 'product_size.productid', '=', 'product.id')
@@ -234,15 +233,15 @@ class Product extends Model {
         return $result;
     }
     
-    public function getcollection($id) {
-        $result = Product::select('product_image.image', 'product.price','category.categoryname', 'product.description', 'product.productcode', 'product.productname', 'product.id')
-                ->leftjoin('subcategory', 'subcategory.id', '=', 'product.subcatagory')
-                ->leftjoin('category', 'category.id', '=', 'product.catagory')
-                ->leftjoin('product_image', 'product_image.productid', '=', 'product.id')
-                ->where('product.catagory',$id)
-                ->get();
-        return $result;
-    }
+//    public function getcollection($id) {
+//        $result = Product::select('product_image.image', 'product.price','category.categoryname', 'product.description', 'product.productcode', 'product.productname', 'product.id')
+//                ->leftjoin('subcategory', 'subcategory.id', '=', 'product.subcatagory')
+//                ->leftjoin('category', 'category.id', '=', 'product.catagory')
+//                ->leftjoin('product_image', 'product_image.productid', '=', 'product.id')
+//                ->where('product.catagory',$id)
+//                ->get();
+//        return $result;
+//    }
 
     public function deleteProduct($data) {
 

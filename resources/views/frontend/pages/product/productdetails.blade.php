@@ -21,7 +21,18 @@
                             <span><a href="#">1 review(s)</a></span>
                         </div>
                         <div class="price-box">
-                            <span class="regular-price">{{ 'INR '.$value->price }}</span>
+                            @if($value->discount_type == 'F')
+                                        @php
+                                            $finalPrice = $value->price - $value->discount;
+                                        @endphp
+                                        @elseif($value->discount_type == 'P')
+                                        @php
+                                            $final = ($value->price * $value->discount) / 100;
+                                            $finalPrice = $value->price - $final;
+                                        @endphp
+                                        @endif
+                                        <span class="regular-price">{{ 'INR '.$finalPrice }}</span>
+                                        <span class="old-price"><del>{{ 'INR '.$value->price }}</del></span>
                         </div>
                         <p>{{ $value->description }}</p>
                         

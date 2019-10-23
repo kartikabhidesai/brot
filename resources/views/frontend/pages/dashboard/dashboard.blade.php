@@ -74,8 +74,19 @@
                                 <h3><a href="{{ url('/public/uploads/product/'.$result[$i]->image) }}">{{ $result[$i]->productname }}</a></h3>
                             </div>
                             <div class="price-box">
-                                <span class="regular-price">{{ 'INR '.$result[$i]->price }}</span>
-                                <span class="old-price"><del>$120.00</del></span>
+                                
+                                @if($result[$i]->discount_type == 'F')
+                                @php
+                                    $finalPrice = $result[$i]->price - $result[$i]->discount;
+                                @endphp
+                                @elseif($result[$i]->discount_type == 'P')
+                                @php
+                                    $final = ($result[$i]->price * $result[$i]->discount) / 100;
+                                    $finalPrice = $result[$i]->price - $final;
+                                @endphp
+                                @endif
+                                <span class="regular-price">{{ 'INR '.$finalPrice }}</span>
+                                <span class="old-price"><del>{{ 'INR '.$result[$i]->price }}</del></span>
                             </div>
                             <div class="product-btn">
                                 <a href="{{ route('cart',$result[$i]->id) }}">add to cart</a>
