@@ -46,7 +46,7 @@
                                 <td class="center">{{ $value->subcategoryname }}</td>
                                 <td class="center">{{ $value->names }}</td>
                                 <td class="center">
-                                    <a href="{{ route('edit-size',$value->categoryid) }}" class="btn btn-tbl-edit btn-xs">
+                                    <a href="{{ route('edit-size',$value->subcategoryid) }}" class="btn btn-tbl-edit btn-xs">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                 </td>

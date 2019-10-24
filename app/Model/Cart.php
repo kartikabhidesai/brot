@@ -23,6 +23,21 @@ class Cart extends Model {
         }
         return $return;
     }
+    public function addtocartnew($userid, $quantity, $id) {
+        
+        $findCart = Cart::where('productid', $id)->first();
+        if (!empty($findCart)) {
+            $return = false;
+        } else {
+
+            $objCart = new Cart();
+            $objCart->productid = $id;
+            $objCart->userid = $userid;
+            $objCart->quantity = $quantity;
+            $return = $objCart->save();
+        }
+        return $return;
+    }
 
     public function Addquantity($data, $userid) {
 

@@ -46,7 +46,7 @@
                                         </div>
                                         
                                         <div class="col-lg-6 ">
-                                            <input type="text" name="state" class="form-control" placeholder="Enter your country"  />
+                                            <input type="text" name="state" class="form-control" placeholder="Enter your state"  />
                                         </div>
                                         
                                     </div>
@@ -56,7 +56,7 @@
                                     <div class="row">
                                         
                                         <div class="col-lg-6 city">
-                                            <input type="text" name="city" class="form-control city" placeholder="Enter your country"  />
+                                            <input type="text" name="city" class="form-control city" placeholder="Enter your city"  />
                                         </div>
                                         
                                         <div class="col-lg-6">

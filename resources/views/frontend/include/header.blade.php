@@ -5,7 +5,7 @@
     <meta name="description" content="meta description">
 
     <!-- Site title -->
-    <title>{{ $title }}</title>
+    <title></title>
     <!-- Favicon -->
     <link rel="shortcut icon" href=" {{ url('public/frontend/assets/img/favicon.ico') }}" type="image/x-icon" />
     <!-- Bootstrap CSS -->

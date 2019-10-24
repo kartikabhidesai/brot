@@ -13,7 +13,6 @@ use App\Model\Details;
 class CartController extends Controller {
 
     function __construct() {
-    
         
     }
 
@@ -21,13 +20,12 @@ class CartController extends Controller {
 
         $session = $request->session()->all();
         $items = Session::get('logindata');
-        if(!empty($items))
-        {
+        if (!empty($items)) {
             $userid = $items[0]['id'];
-            
+
             $objDetails = new Details();
             $data['getdetails'] = $objDetails->getdetails();
-        
+
             $objCart = new Cart();
             $objCart->AddToCart($id, $userid);
             $data['cart'] = $objCart->getCartitem($items[0]['id']);
@@ -43,11 +41,10 @@ class CartController extends Controller {
                 'breadcrumb' => array(
                     'Cart' => 'cart'));
             return view("frontend.pages.cart.cart", $data);
-        }else{
+        } else {
             $request->session()->push('cart', $id);
             return redirect('login');
         }
-        
     }
 
     public function cartlist(Request $request) {
@@ -66,6 +63,7 @@ class CartController extends Controller {
         $data['header'] = array(
             'title' => 'Cart',
             'breadcrumb' => array(
+                'Home' => 'home',
                 'Cart' => 'cart'));
         return view("frontend.pages.cart.cart", $data);
     }
@@ -88,24 +86,42 @@ class CartController extends Controller {
 
                 return json_encode($return);
                 break;
-                
+
+            case 'addtocart':
+                $data = $request->input('data');
+                $items = Session::get('logindata');
+                $userid = $items[0]['id'];
+                $quantity = $data['quantity'];
+                $id = $data['id'];
+                $objCart = new Cart();
+                $result = $objCart->addtocartnew($userid, $quantity, $id);
+                if ($result) {
+                    $return['redirect'] = route('cart-list');
+                } else {
+                    $return['status'] = 'error';
+                    $return['message'] = 'Product already in cart';
+                }
+
+                return json_encode($return);
+                break;
+
             case 'addquantity':
                 $data = $request->input('data');
                 $objCart = new Cart();
                 $items = Session::get('logindata');
                 $userid = $items[0]['id'];
-                $result = $objCart->Addquantity($data,$userid);
-                if ($result) {
-                    $return['status'] = 'success';
-                    $return['message'] = 'Product Quantity Edited successfully from cart.';
-                    $return['redirect'] = route('cart-list');
-                } else {
-                    $return['status'] = 'error';
-                    $return['message'] = 'Soething Wrong';
-                }
-
-                return json_encode($return);
-                break;
+                $result = $objCart->Addquantity($data, $userid);
+//                if ($result) {
+//                    $return['status'] = 'success';
+//                    $return['message'] = 'Product Quantity Edited successfully from cart.';
+//                    $return['redirect'] = route('cart-list');
+//                } else {
+//                    $return['status'] = 'error';
+//                    $return['message'] = 'Soething Wrong';
+//                }
+//
+//                return json_encode($return);
+//                break;
         }
     }
 

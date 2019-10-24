@@ -85,7 +85,6 @@ class Subcategory extends Model {
                     $result = true;
                 } else {
                     $objSubcategory = new Subcategory();
-                    $objSubcategory->id = $id;
                     $objSubcategory->categoryid = $request->input('category');
                     $objSubcategory->subcategoryname = $request->input('subcategoryname')[$i];
                     $objSubcategory->created_at = date("Y-m-d h:i:s");
@@ -101,7 +100,7 @@ class Subcategory extends Model {
                 } else {
                     $return['status'] = 'success';
                     $return['message'] = ($alradyExist == '') ? 'Subcategory Edited successfully.' : 'Subcategory Edited successfully But ' . $alradyExist . ' is already exist in our system';
-                    $return['redirect'] = route('Subcategory-list');
+                    $return['redirect'] = route('subcategory-list');
                 }
             }
              return $return;

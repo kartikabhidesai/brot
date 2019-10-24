@@ -9,6 +9,7 @@
                 <div class="myaccount-page-wrapper">
                     <!-- My Account Tab Menu Start -->
                     <div class="row">
+                        {{ csrf_field() }}
                         <div class="col-lg-3 col-md-4">
                             <div class="myaccount-tab-menu nav" role="tablist">
                                 <a href="#dashboad" class="active" data-toggle="tab"><i class="fa fa-dashboard"></i>
@@ -80,19 +81,27 @@
                                     </div>
                                 </div>
                                 <!-- Single Tab Content End -->
-
+                                
                                 <!-- Single Tab Content Start -->
                                 <div class="tab-pane fade" id="address-edit" role="tabpanel">
                                     <div class="myaccount-content">
                                         <h3>Billing Address</h3>
                                         <a href="{{ route('add-address')}}" class="check-btn sqr-btn pull-right"><i class="fa fa-plus"></i></a>
+                                        @if(count($address) == 0)
+                                            <h4>You haven't any saved address!!</h4>
+                                        @endif
+                                        @for($i = 0; $i < count($address); $i++)
                                         <address>
-                                            <p><strong>Alex Tuntuni <a href="#" ><i class="fa fa-edit"></i></a></strong></p>
-                                            <p>1355 Market St, Suite 900 <br>
-                                                San Francisco, CA 94103</p>
-                                            <p>Mobile: (123) 456-7890</p>
+                                            <p><strong>{{ $address[$i]->type }}&nbsp;&nbsp;<a href="{{ route('edit-address',$address[$i]->id) }}"><i class="fa fa-edit"></i>&nbsp;&nbsp;<a data-toggle="modal" data-target="#deletemodal" data-id="{{ $address[$i]->id }}" class="delete"><i class="fa fa-trash-o"></i></a></strong></p>
+                                            <p>{{ $address[$i]->houseno.', '.$address[$i]->line1 }}<br>
+                                                {{ $address[$i]->line2 }}</p>
+                                            <p>{{ $address[$i]->mobileno }}</p>
+                                            <p>{{ $address[$i]->altmobileno }}</p>
+                                            <p>{{ $address[$i]->email }}</p>
+                                            <p>{{ $address[$i]->city.', '.$address[$i]->state.', '.$address[$i]->country }}</p>
                                             
                                         </address>
+                                        @endfor
                                     </div>
                                 </div>
                                 <!-- Single Tab Content End -->

@@ -4,8 +4,9 @@
 @if(count($cart) == 0)
 <img src='{{ url('/public/frontend/assets/img/empty_cart.jpg') }}' width='100%'>
 @else
-<div class="container custom-container">
-    <div class="row">
+<div class="cart-main-wrapper section-padding">
+    <div class="container custom-container">
+        <div class="row">
         <div class="col-lg-12">
             <!-- Cart Table Area -->
             <div class="cart-table table-responsive">
@@ -48,7 +49,7 @@
         </div>
     </div>
     <br><br><br><br><br>
-    <div class="row">
+        <div class="row">
         <div class="col-lg-5 ml-auto">
             <!-- Cart Calculation Area -->
             <div class="cart-calculator-wrapper">
@@ -72,6 +73,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 @endif
 <!-- cart main wrapper end -->

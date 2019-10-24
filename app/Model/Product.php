@@ -221,12 +221,12 @@ class Product extends Model {
     }
     
     public function getProductdetailsNew($id) {
-        $result = Product::select('size.size','product_size.quantity','category.categoryname', 'subcategory.subcategoryname', 'product_image.image',
+        $result = Product::select('size.size', 'product_size.quantity','category.categoryname', 'subcategory.subcategoryname', 'product_image.image',
                 'product.price', 'product.description','product.discount_type','product.discount','product.status' ,'product.productcode', 'product.productname', 'product.id')
                 ->leftjoin('category', 'category.id', '=', 'product.catagory')
                 ->leftjoin('subcategory', 'subcategory.id', '=', 'product.subcatagory')
                 ->leftjoin('product_size', 'product_size.productid', '=', 'product.id')
-                ->leftjoin('size', 'size.id', '=', 'product_size.size')
+                ->join('size', 'size.id', '=', 'product_size.size')
                 ->leftjoin('product_image', 'product_image.productid', '=', 'product.id')
                 ->where('product.id',$id)
                 ->get();

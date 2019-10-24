@@ -73,7 +73,7 @@ class SubcategoryController extends Controller
             'title' => 'Update Sub Category',
             'breadcrumb' => array(
                 'Dashboard' => 'dashboard',
-                'Update Sub Category' => 'Edit-subcategory'));
+                'Update Sub Category' => 'edit-subcategory'));
         $objcategory = new Category();
         $data['result1'] = $objcategory->getCategory();
         $objSubcategory = new Subcategory();

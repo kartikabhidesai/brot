@@ -5,7 +5,7 @@
         <div class="card card-box">
             <div class="card-head">
                 <header>Product List</header>
-                
+
             </div>
             <div class="card-body ">
                 <div class="row p-b-20 pull-right">
@@ -24,7 +24,7 @@
 <!--                                <th class="center">Profile</th>
                                 <th class="center"> First Name </th>
                                 <th class="center"> Last Name</th>
--->                                <th class="center"> No </th>
+                                -->                                <th class="center"> No </th>
                                 <th class="center"> product image</th>
                                 <th class="center"> Category Name</th>
                                 <th class="center"> Sub Category Name</th>
@@ -61,18 +61,32 @@
                                 <td class="center">{{ $value->productcode }}</td>
                                 <td class="center">{{ $value->productname }}</td>
                                 <td class="center">{{ $value->price }}</td>
-                                <td class="center">{{ $value->description }}</td>
-                                <td class="center">{{ $value->quantity }}</td>
-                                <td class="center">
-                                    <a href="{{ route('edit-product',$value->id) }}" class="btn btn-tbl-edit btn-xs">
-                                        <i class="fa fa-pencil"></i>
-                                    </a>
-                                </td>
-                                <td class="center">
-                                    <a data-toggle="modal" data-target="#deletemodal" data-id="{{ $value->id }}" class="btn btn-tbl-delete btn-xs delete"><i class="fa fa-trash-o"></i></a>
-                                </td>
-                            </tr>
-                            @endforeach
+                                @php
+                                $string = strip_tags($value->description);
+                                if (strlen($value->description) > ) {
+
+                                // truncate string
+                                $stringCut = substr($string, 0, 500);
+                                $endPoint = strrpos($stringCut, ' ');
+
+                                //if the string doesn't contain any space then it will cut without word basis.
+                                $string = $endPoint? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                                $string .= '... <a href="/this/story">Read More</a>';
+                                }
+                                echo $string;
+                                @endphp
+                        <td class="center">{{ $value->description }}</td>
+                        <td class="center">{{ $value->quantity }}</td>
+                        <td class="center">
+                            <a href="{{ route('edit-product',$value->id) }}" class="btn btn-tbl-edit btn-xs">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </td>
+                        <td class="center">
+                            <a data-toggle="modal" data-target="#deletemodal" data-id="{{ $value->id }}" class="btn btn-tbl-delete btn-xs delete"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                        </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

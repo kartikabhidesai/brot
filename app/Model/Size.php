@@ -12,7 +12,7 @@ class Size extends Model {
 
     public function getSize() {
 
-        $result = Size::select(DB::raw('group_concat(size) as names'), 'category.categoryname', 'subcategory.subcategoryname', 'size.id', 'size.categoryid')
+        $result = Size::select(DB::raw('group_concat(size) as names'), 'category.categoryname', 'subcategory.subcategoryname', 'size.id', 'size.categoryid', 'size.subcategoryid')
                 ->leftjoin('category', 'category.id', '=', 'size.categoryid')
                 ->leftjoin('subcategory', 'subcategory.id', '=', 'size.subcategoryid')
                 ->groupBy('size.subcategoryid')
@@ -64,15 +64,15 @@ class Size extends Model {
 
         $result = Size::select('size.categoryid', 'size.subcategoryid', 'size.size', 'size.id','product_size.quantity')
                 ->leftjoin('product_size','product_size.size','=','size.id')
-                ->where('categoryid', $id)
+                ->where('subcategoryid', $id)
                 ->get();
        
         return $result;
     }
 
     public function editsize($request, $id) {
-       
-        $result = DB::table('size')->where('categoryid', $request->category)->delete();
+        
+        $result = DB::table('size')->where('subcategoryid', $request->subcategory)->delete();
         if ($result) {
             $alradyExist = "";
             $count = 0;
@@ -90,7 +90,6 @@ class Size extends Model {
                     $result = true;
                 } else {
                     $objSize = new Size();
-                    $objSize->id = $id;
                     $objSize->categoryid = $request->input('category');
                     $objSize->subcategoryid = $request->input('subcategory');
                     $objSize->size = $request->input('size')[$i];

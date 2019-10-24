@@ -1,10 +1,9 @@
 @extends('frontend.layout.app')
 @section('content')
 <!-- cart main wrapper start -->
-@if(count($order) == 0)
-    <img src='{{ url('/public/frontend/assets/img/order.jpg') }}' width='100%'>
-@else
-<div class="container custom-container">
+
+ <div class="checkout-page-wrapper section-padding">
+    <div class="container custom-container">
     <div class="row">
         <div class="col-lg-12">
             <!-- Cart Table Area -->
@@ -22,49 +21,58 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php $subtotal = 0; $ship = 50; $shipp = 100; @endphp
-                        @for($i=0;$i < count($order); $i++)    
                         @php 
-                        $total = 0; 
-                        if($order[$i]->status == 'pending' || $order[$i]->status == 'confirm'){
-                        $total = ($order[$i]->price)*($order[$i]->quantity); 
-                        }
-                        $subtotal = ($subtotal + $total);
+                            $subtotal = 0; $ship = 50; $shipp = 100; 
                         @endphp
-                        <tr>
-                            <td class="pro-thumbnail"><img class="img-fluid" src="{{ url('/public/uploads/product/'.$order[$i]->image) }}"
-                                                                       alt="Product"/></td>
-                            <td class="pro-title">{{ $order[$i]->productname }}</td>
-                            <td class="pro-price"><span>{{ $order[$i]->orderid }}</span></td>
-                            <td class="pro-price"><span>{{ 'INR '.$order[$i]->price }}</span></td>
-                            <td class="pro-quantity">
-                                <div>{{ $order[$i]->quantity }}</div>
-                            </td>
-                            
-                            @if($order[$i]->status == 'pending')
-                            <td class="pro-subtotal" id="total"><span class='remove' >{{ 'INR '.$total }}</span></td>
-                            <td class="center">
-                                <div class="product-btn">
-                                    <a><b style='color: #FFFFDF' >{{ $order[$i]->status }}</b></a>
-                                </div>
-                            </td>
-                            @elseif($order[$i]->status == 'confirm')
-                            <td class="pro-subtotal" id="total"><span class='remove' >{{ 'INR '.$total }}</span></td>
-                            <td class="center">
-                                <div class="btn-group">
-                                    <a class='btn btn-success'>{{ $order[$i]->status }}</a>
-                                </div>
-                            </td>
+                        @if(count($order) > 0)
+                                
+                                    @for($i=0;$i < count($order); $i++)    
+                                        @php 
+                                            $total = 0; 
+                                            if($order[$i]->status == 'pending' || $order[$i]->status == 'confirm'){
+                                                    $total = ($order[$i]->price)*($order[$i]->quantity); 
+                                            }
+                                        $subtotal = ($subtotal + $total);
+                                    @endphp
+                                <tr>
+                                    <td class="pro-thumbnail"><img class="img-fluid" src="{{ url('/public/uploads/product/'.$order[$i]->image) }}"
+                                                                               alt="Product"/></td>
+                                    <td class="pro-title">{{ $order[$i]->productname }}</td>
+                                    <td class="pro-price"><span>{{ $order[$i]->orderid }}</span></td>
+                                    <td class="pro-price"><span>{{ 'INR '.$order[$i]->price }}</span></td>
+                                    <td class="pro-quantity">
+                                        <div>{{ $order[$i]->quantity }}</div>
+                                    </td>
+
+                                    @if($order[$i]->status == 'pending')
+                                    <td class="pro-subtotal" id="total"><span class='remove' >{{ 'INR '.$total }}</span></td>
+                                    <td class="center">
+                                        <div class="product-btn">
+                                            <a><b style='color: #FFFFDF' >{{ $order[$i]->status }}</b></a>
+                                        </div>
+                                    </td>
+                                    @elseif($order[$i]->status == 'confirm')
+                                    <td class="pro-subtotal" id="total"><span class='remove' >{{ 'INR '.$total }}</span></td>
+                                    <td class="center">
+                                        <div class="btn-group">
+                                            <a class='btn btn-success'>{{ $order[$i]->status }}</a>
+                                        </div>
+                                    </td>
+                                    @else
+                                    <td class="pro-subtotal" id="total"><span class='remove' >-</span></td>
+                                    <td class="center">
+                                        <div class="btn-group">
+                                            <a class='btn btn-danger'>{{ $order[$i]->status }}</a>
+                                        </div>
+                                    </td>
+                                    @endif
+                                </tr>
+                                @endfor 
                             @else
-                            <td class="pro-subtotal" id="total"><span class='remove' >-</span></td>
-                            <td class="center">
-                                <div class="btn-group">
-                                    <a class='btn btn-danger'>{{ $order[$i]->status }}</a>
-                                </div>
-                            </td>
+                                <tr>
+                                    <td class="pro-thumbnail" colspan="7"> No any Itema in your cart</td>
+                                </tr>
                             @endif
-                        </tr>
-                        @endfor 
                     </tbody>
                 </table>
             </div>
@@ -96,7 +104,7 @@
         </div>
     </div>
     @endif
-</div>
-@endif
+    </div>
+ </div>
 <!-- cart main wrapper end -->
 @endsection

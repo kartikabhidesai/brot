@@ -21,7 +21,7 @@ Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], functi
     
 //    Profile 
 Route::match(['get', 'post'], 'my-profile', ['as' => 'my-profile', 'uses' => 'frontend\MyprofileController@index']);
-Route::match(['get', 'post'], 'myprofile-ajaxAction', ['as' => 'myprofile-ajaxAction', 'uses' => 'frontend\MyprofileController@ajaxAction']);
+Route::match(['get', 'post'], 'myprofile-ajaxaction', ['as' => 'myprofile-ajaxAction', 'uses' => 'frontend\MyprofileController@ajaxAction']);
 Route::match(['get', 'post'], 'add-address', ['as' => 'add-address', 'uses' => 'frontend\MyprofileController@addaddress']);
 Route::match(['get', 'post'], 'edit-address/{id}', ['as' => 'edit-address', 'uses' => 'frontend\MyprofileController@editaddress']);
 
