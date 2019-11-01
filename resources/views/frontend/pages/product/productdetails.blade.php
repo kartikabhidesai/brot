@@ -1,7 +1,6 @@
 @extends('frontend.layout.app')
 @section('content')
-@foreach($result as $value)
-@endforeach
+
 <div class="product-details-wrapper section-padding">
     <div class="container custom-container">
         <div class="row">
@@ -9,6 +8,7 @@
             <div class="col-lg-12">
                 <!-- product details inner end -->
                 <div class="product-details-inner">
+                    @foreach($result as $value)
                     <div class="row">
                         <div class="col-lg-1">
                         </div>
@@ -75,6 +75,7 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
                 <!-- product details inner end -->
                 <!-- product details reviews start -->
