@@ -10,6 +10,9 @@ use App\Model\Details;
 use App\Model\Cart;
 use App\Model\Product;
 use App\Model\Address;
+use App\Model\Order;
+use App\Model\Users;
+use App\Model\Customer;
 
 class MyprofileController extends Controller {
 
@@ -22,13 +25,16 @@ class MyprofileController extends Controller {
         $session = $request->session()->all();
         $data['userdetails'] = $items = Session::get('logindata');
 
-
         $userid = $items[0]['id'];
+        $objOrder = new Order();
+        $data['order'] = $objOrder->getOrdercustomer($userid);
         $objCart = new Cart();
         $data['cart'] = $objCart->getCartitem($items[0]['id']);
         $data['result'] = $objCart->getCartitem($userid);
         $objAddress = new Address();
         $data['address'] = $objAddress->getAddress($userid);
+        $objCustomer = new Customer();
+        $data['customer'] = $objCustomer->getCustomerNew($userid);
         $objDetails = new Details();
         $data['getdetails'] = $objDetails->getdetails();
         $data['title'] = 'Dashboard | Audible By Aabha';
@@ -146,4 +152,22 @@ class MyprofileController extends Controller {
         }
     }
 
+    public function updateaccount(request $request) {
+
+        $session = $request->session()->all();
+        $items = Session::get('logindata');
+        $userid = $items[0]['id'];
+        $objCustomer = new Customer();
+        $result = $objCustomer->updateCustomer($request, $userid);
+        if ($result) {
+            $return['status'] = 'success';
+            $return['message'] = 'Account Edited Successfully.';
+            $return['redirect'] = route('my-profile');
+        } else {
+            $return['status'] = 'error';
+            $return['message'] = 'Account Not Edited';
+        }
+        return json_encode($return);
+    }
+    
 }

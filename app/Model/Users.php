@@ -31,4 +31,5 @@ class Users extends Model
                  ->get();   
         return $result;
     }
+    
 }

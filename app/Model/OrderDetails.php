@@ -36,6 +36,7 @@ class OrderDetails extends Model {
                 $objOrder->productid = $cart[$i]->productid;
                 $objOrder->userid = $cart[$i]->userid;
                 $objOrder->quantity = $cart[$i]->quantity;
+                $objOrder->size = $cart[$i]->size;
                 $objOrder->created_at = date("Y-m-d h:i:s");
                 $objOrder->updated_at = date("Y-m-d h:i:s");
                 $result = $objOrder->save();

@@ -60,5 +60,21 @@ class Customer extends Model {
                 ->get();
         return $result;
     }
+    public function getCustomerNew($userid) {
+
+        $result = Customer::select('*')
+                ->where('userid', $userid)
+                ->get();
+        return $result;
+    }
+    public function updateCustomer($request, $userid) {
+
+        $result = DB::table('customer')
+                ->where('userid', $userid)
+                ->update(['fname' => $request->input('fname'), 'lname' => $request->input('lname'), 'email' => $request->input('email'), 'mobile' => $request->input('mobile')]);
+        return $result;
+    }
+    
+    
 
 }

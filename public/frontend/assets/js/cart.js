@@ -4,6 +4,7 @@ var Cart = function () {
 
         $('body').on('click', '.delete', function () {
             var id = $(this).data('id');
+            
             setTimeout(function () {
                 $('.yes-sure:visible').attr('data-id', id);
             }, 500);
@@ -26,9 +27,7 @@ var Cart = function () {
         });
 
         $('body').on('click', '.qtybtn', function () {
-            
             var quantity = $(this).parent().find(".quantity").val();
-            
             var rate = $(this).closest('.pro-qty').attr('data-productrate');
             var productid = $(this).closest('.pro-qty').attr('data-productid');
             var html = 'INR ' + (quantity * rate) + '.00';

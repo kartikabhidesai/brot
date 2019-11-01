@@ -2,6 +2,8 @@
 <script src=" {{ url('public/frontend/assets/js/vendor/modernizr-3.6.0.min.js') }}"></script>
 <!-- Jquery Min Js -->
 <script src=" {{ url('public/frontend/assets/js/vendor/jquery-3.3.1.min.js') }}"></script>
+<!--data table-->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <!-- Popper Min Js -->
 <script src=" {{ url('public/frontend/assets/js/vendor/popper.min.js') }}"></script>
 <!-- Bootstrap Min Js -->
@@ -30,12 +32,17 @@
 <script src="{{ url('public/frontend/assets/js/comman_function.js') }}" ></script>
 
 <script>
-    jQuery(document).ready(function () {
-        @if (!empty($funinit))
-            @foreach ($funinit as $value)
-                {{ $value }}
-            @endforeach
+jQuery(document).ready(function () {
+@if (!empty($funinit))
+        @foreach ($funinit as $value)
+{{ $value }}
+@endforeach
         @endif
+});
+</script>
+<script>
+    $(document).ready(function () {
+        $('#mydatatable').DataTable();
     });
 </script>
 <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel">

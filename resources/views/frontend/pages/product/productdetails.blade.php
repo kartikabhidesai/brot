@@ -49,17 +49,17 @@
                                     <div class="quantity">
                                         <div class="pro-qty"><input type="text" id="quantity" value="1"></div>
                                     </div>
-                                    <div class="sqr-btn">
-                                        <a data-id="{{ $value->id }}" class="addtocart ">Add to cart</a>
+                                    <div>
+                                        <select name="size" id="size">
+                                            <option value=''>Select Size</option>
+                                            @for($i=0; $i < count($sizeid); $i++)
+                                            <option value='{{ $sizeid[$i]->size }}'>{{ $result[$i]->size }}</option>
+                                            @endfor
+                                        </select>
                                     </div>
                                 </div>
-                                <div>
-                                    <select name="size">
-                                        <option value=''>Select Size</option>
-                                        @for($i=0; $i < count($result); $i++)
-                                            <option value=''>{{ $result[$i]->size }}</option>
-                                        @endfor
-                                    </select>
+                                <div class="sqr-btn">
+                                    <a data-id="{{ $value->id }}" class="addtocart ">Add to cart</a>
                                 </div><br><br><br>
                                 <div class="availability mb-20">
                                     <h5>Availability:</h5>

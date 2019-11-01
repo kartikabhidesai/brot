@@ -14,7 +14,6 @@ class Product_size extends Model
                 ->leftjoin('product_size','product_size.size','=','size.id')
                 ->where('subcategoryid', $id)
                 ->get();
-        
         return $result;
     }
     public function getproductSizeDetailsNew($id) {
@@ -22,6 +21,14 @@ class Product_size extends Model
         $result = Product_size::select('size.categoryid', 'size.subcategoryid', 'size.size', 'size.id','product_size.quantity')
                 ->leftjoin('size','size.id','=','product_size.size')
                 ->where('product_size.productid', $id)
+                ->get();
+        print_r($result);die();
+        return $result;
+    }
+    public function productsizeid($id) {
+        
+        $result = Product_size::select('size')
+                ->where('productid', $id)
                 ->get();
         return $result;
     }

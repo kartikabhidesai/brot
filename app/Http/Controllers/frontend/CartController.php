@@ -17,7 +17,6 @@ class CartController extends Controller {
     }
 
     public function cart(Request $request, $id) {
-
         $session = $request->session()->all();
         $items = Session::get('logindata');
         if (!empty($items)) {
@@ -25,11 +24,9 @@ class CartController extends Controller {
 
             $objDetails = new Details();
             $data['getdetails'] = $objDetails->getdetails();
-
             $objCart = new Cart();
             $objCart->AddToCart($id, $userid);
-            $data['cart'] = $objCart->getCartitem($items[0]['id']);
-            $data['result'] = $objCart->getCartitem($userid);
+            $data['cart'] = $objCart->getCartitem($userid);
             $data['title'] = 'Cart | Brot';
             $data['css'] = array();
             $data['plugincss'] = array();
@@ -40,6 +37,7 @@ class CartController extends Controller {
                 'title' => 'Cart',
                 'breadcrumb' => array(
                     'Cart' => 'cart'));
+            
             return view("frontend.pages.cart.cart", $data);
         } else {
             $request->session()->push('cart', $id);
@@ -93,8 +91,9 @@ class CartController extends Controller {
                 $userid = $items[0]['id'];
                 $quantity = $data['quantity'];
                 $id = $data['id'];
+                $sizeid = $data['sizeid'];
                 $objCart = new Cart();
-                $result = $objCart->addtocartnew($userid, $quantity, $id);
+                $result = $objCart->addtocartnew($userid, $quantity, $id, $sizeid);
                 if ($result) {
                     $return['redirect'] = route('cart-list');
                 } else {

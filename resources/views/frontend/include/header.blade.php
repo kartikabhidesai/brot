@@ -8,6 +8,8 @@
     <title></title>
     <!-- Favicon -->
     <link rel="shortcut icon" href=" {{ url('public/frontend/assets/img/favicon.ico') }}" type="image/x-icon" />
+    <!--data table-->
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <!-- Bootstrap CSS -->
     <link href=" {{ url('public/frontend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Font-Awesome CSS -->

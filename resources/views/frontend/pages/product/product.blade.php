@@ -61,9 +61,9 @@
                                         <span class="regular-price">{{ 'INR '.$finalPrice }}</span>
                                         <span class="old-price"><del>{{ 'INR '.$result[$i]->price }}</del></span>
                                     </div>
-                                    <div class="product-btn">
+<!--                                    <div class="product-btn">
                                         <a href="{{ route('cart',$result[$i]->id) }}">add to cart</a>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
                         </div> 

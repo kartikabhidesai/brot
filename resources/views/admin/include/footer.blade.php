@@ -6,6 +6,8 @@
 <script src="{{ url('public/admin/assets/plugins/bootstrap/js/bootstrap.min.js') }}" ></script>
 <script src="{{ url('public/admin/assets/plugins/sparkline/jquery.sparkline.min.js') }}" ></script>
 <script src="{{ url('public/admin/assets/js/pages/sparkline/sparkline-data.js') }}" ></script>
+<!--data table-->
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <!-- Common js-->
 <script src="{{ url('public/admin/assets/js/app.js') }}" ></script>
 <script src="{{ url('public/admin/assets/js/layout.js') }}" ></script>
@@ -46,7 +48,11 @@ jQuery(document).ready(function() {
     @endif
 });
 </script>
-
+<script>
+    $(document).ready(function () {
+        $('#mydatatable').DataTable();
+    });
+</script>
 <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="favoritesModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

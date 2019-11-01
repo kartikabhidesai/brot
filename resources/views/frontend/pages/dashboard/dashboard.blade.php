@@ -88,9 +88,9 @@
                                 <span class="regular-price">{{ 'INR '.$finalPrice }}</span>
                                 <span class="old-price"><del>{{ 'INR '.$result[$i]->price }}</del></span>
                             </div>
-                            <div class="product-btn">
+<!--                            <div class="product-btn">
                                 <a href="{{ route('cart',$result[$i]->id) }}">add to cart</a>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                     @endfor 
@@ -119,9 +119,9 @@
                                     <span class="regular-price">$100.00</span>
                                     <span class="old-price"><del>$120.00</del></span>
                                 </div>
-                                <div class="product-btn">
+<!--                                <div class="product-btn">
                                     <a href="cart.html" tabindex="0">add to cart</a>
-                                </div>
+                                </div>-->
                             </div>
                         </div></div><div><div class="product-item mt-30" style="width: 100%; display: inline-block;">
                             <div class="product-thumb">
@@ -142,9 +142,9 @@
                                     <span class="regular-price">$90.00</span>
                                     <span class="old-price"><del>$100.00</del></span>
                                 </div>
-                                <div class="product-btn">
+<!--                                <div class="product-btn">
                                     <a href="cart.html" tabindex="0">add to cart</a>
-                                </div>
+                                </div>-->
                             </div>
                         </div></div></div>
 <!-- banner statistics start -->

@@ -16,6 +16,7 @@
                             <th class="pro-title">Order Id</th>
                             <th class="pro-price">Price</th>
                             <th class="pro-quantity">Quantity</th>
+                            <th class="pro-quantity">Size</th>
                             <th class="pro-subtotal">Total</th>
                             <th class="pro-remove">Status</th>
                         </tr>
@@ -43,7 +44,7 @@
                                     <td class="pro-quantity">
                                         <div>{{ $order[$i]->quantity }}</div>
                                     </td>
-
+                                    <td class="pro-price"><span>{{ $order[$i]->size }}</span></td>
                                     @if($order[$i]->status == 'pending')
                                     <td class="pro-subtotal" id="total"><span class='remove' >{{ 'INR '.$total }}</span></td>
                                     <td class="center">

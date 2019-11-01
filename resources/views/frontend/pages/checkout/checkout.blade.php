@@ -87,6 +87,7 @@
                                 <thead>
                                     <tr>
                                         <th>Products</th>
+                                        <th>Size</th>
                                         <th>Price</th>
                                         <th>Total</th>
                                     </tr>
@@ -101,6 +102,7 @@
                                     @endphp 
                                     <tr>
                                         <td><a href="{{ route('product-details',$customer[0]->id) }}">{{ $cart[$i]->productname }}<strong> × {{ $cart[$i]->quantity }}</strong></a></td>
+                                        <td>{{ $cart[$i]->size }}</td>
                                         <td>{{ 'INR '.$cart[$i]->price }}</td>
                                         <td>{{ 'INR '.$total }}</td>
                                     </tr>
@@ -109,7 +111,7 @@
                                 <tfoot>
                                     <tr>
                                         <td>Total Amount</td>
-                                        <td colspan="2">INR <b style="color: red">{{ ($subtotal) }}</b></td>
+                                        <td colspan="3">INR <b style="color: red">{{ ($subtotal) }}</b></td>
                                     </tr>
                                 </tfoot>
                             </table>

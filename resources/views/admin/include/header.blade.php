@@ -5,16 +5,18 @@
     <meta name="description" content="Responsive Admin Template" />
     <meta name="author" content="SmartUniversity" />
     <title>{{$title}}</title>
-    
+
     <!--<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet" type="text/css" />-->
-    
+
     <link href="{{ url('public/admin/assets/plugins/simple-line-icons/simple-line-icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ url('public/admin/assets/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css"/>
-    
+
     <link href="{{ url('public/admin/assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ url('public/admin/assets/plugins/summernote/summernote.css') }}" rel="stylesheet">
     <!-- morris chart -->
     <link href="{{ url('public/admin/assets/plugins/morris/morris.css') }}" rel="stylesheet" type="text/css" />
+    <!--data table-->
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <!-- Material Design Lite CSS -->
     <link rel="stylesheet" href="{{ url('public/admin/assets/plugins/material/material.min.css') }}">
     <link rel="stylesheet" href="{{ url('public/admin/assets/css/material_style.css') }}">
@@ -30,7 +32,7 @@
     <link rel="shortcut icon" href="{{ url('public/admin/assets/img/favicon.ico') }}" /> 
     <style>.error{color:red}</style>
     <script>
-            var baseurl = "{{ asset('/') }}";
+        var baseurl = "{{ asset('/') }}";
     </script>
     @if (!empty($plugincss)) 
     @foreach ($plugincss as $value) 
@@ -46,5 +48,5 @@
     @endif
     @endforeach
     @endif
-        
+
 </head>

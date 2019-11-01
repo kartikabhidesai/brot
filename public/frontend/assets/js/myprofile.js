@@ -1,5 +1,16 @@
 var Myprofile = function () {
     var list = function () {
+
+        var form = $('#updateaccount');
+        var rules = {
+            fname: {required: true},
+            lname: {required: true},
+            email: {required: true},
+            mobile: {required: true, minlength: 10, maxlength: 10},
+        };
+        handleFormValidate(form, rules, function (form) {
+            handleAjaxFormSubmit(form);
+        });
         
         $('body').on('click', '.delete', function () {
             var id = $(this).data('id');
@@ -47,6 +58,8 @@ var Myprofile = function () {
             });
         });
 
+
+
         $('body').on("change", ".statechnage", function () {
             var id = $(this).val();
             $.ajax({
@@ -88,7 +101,7 @@ var Myprofile = function () {
         });
     }
     var editadress = function () {
-        
+
         var form = $('#editaddress');
         var rules = {
             addresstype: {required: true},

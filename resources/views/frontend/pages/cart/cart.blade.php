@@ -17,6 +17,7 @@
                             <th class="pro-title">Product</th>
                             <th class="pro-price">Price</th>
                             <th class="pro-quantity">Quantity</th>
+                            <th class="pro-quantity">Size</th>
                             <th class="pro-subtotal">Total</th>
                             <th class="pro-remove">Remove</th>
                         </tr>
@@ -37,6 +38,7 @@
                             <td class="pro-quantity">
                                 <div class="pro-qty" id='multiple' data-productid="{{ $cart[$i]->id }}" data-productrate="{{ $cart[$i]->price }}"><input type="text" min="0.00000001" class="quantity" value="{{ $cart[$i]->quantity }}"></div>
                             </td>
+                            <td class="pro-subtotal" id="total"><span class='remove' >{{ $cart[$i]->size }}</span></td>
                             <td class="pro-subtotal" id="total"><span class='remove' >{{ 'INR '.$total }}</span></td>
                             <td class="center">
                                 <a data-toggle="modal" data-target="#deletemodal" data-id="{{ $cart[$i]->id }}" class="delete"><i class="fa fa-trash-o"></i></a>

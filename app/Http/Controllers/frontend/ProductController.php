@@ -8,6 +8,7 @@ use App\Model\Product;
 use Session;
 use App\Model\Cart;
 use App\Model\Details;
+use App\Model\Product_size;
 
 class ProductController extends Controller
 {
@@ -45,6 +46,8 @@ class ProductController extends Controller
         
         $objProduct = new Product();
         $data['result'] = $objProduct->getProductdetailsNew($id);
+        $objSize =  new Product_size();
+        $data['sizeid'] = $objSize->productsizeid($id);
         $session = $request->session()->all();
         $items = Session::get('logindata');
         $objCart = new Cart();
