@@ -9,19 +9,24 @@
                 <!-- product details inner end -->
                 <div class="product-details-inner">
                     @foreach($result as $value)
+                    @endforeach
                     <div class="row">
                         <div class="col-lg-1">
                         </div>
                         <div class="col-lg-4">
                             <div class="product-large-slider mb-20">
+                                @for($i=0; $i < count($result); $i++)
                                 <div class="pro-large-img img-zoom">
-                                    <img src=" {{ url('/public/uploads/product/'.$value->image) }}" height="500px" alt="">
+                                    <img src=" {{ url('/public/uploads/product/'.$result[$i]->image) }}" height="500px" alt="">
                                 </div>
+                                @endfor
                             </div>
                             <div class="pro-nav slick-row-10">
+                                @for($i=0; $i < count($result); $i++)
                                 <div class="pro-nav-thumb">
-                                    <img src=" {{ url('/public/uploads/product/'.$value->image) }}" height="100px" alt="">
+                                    <img src=" {{ url('/public/uploads/product/'.$result[$i]->image) }}" height="100px" alt="">
                                 </div>
+                                @endfor
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -45,14 +50,21 @@
                                     <span class="old-price"><del>{{ 'INR '.$value->price }}</del></span>
                                 </div>
                                 <p>{{ $value->description }}</p>
+                                @if($value->quantity < 10)
+                                <div class="pro-review">
+                                    <span style="color: red"> Hurry!! Only {{ $value->quantity }} Left</span>
+                                </div>
+                                <br>
+                                @endif
                                 <div class="quantity-cart-box d-flex align-items-center mb-20">
                                     <div class="quantity">
                                         <div class="pro-qty"><input type="text" id="quantity" value="1"></div>
                                     </div>
+
                                     <div>
                                         <select name="size" id="size">
                                             <option value=''>Select Size</option>
-                                            @for($i=0; $i < count($sizeid); $i++)
+                                            @for($i=0; $i < count($result); $i++)
                                             <option value='{{ $sizeid[$i]->size }}'>{{ $result[$i]->size }}</option>
                                             @endfor
                                         </select>
@@ -75,7 +87,7 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach
+
                 </div>
                 <!-- product details inner end -->
                 <!-- product details reviews start -->
@@ -100,7 +112,7 @@
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Ipsum metus feugiat sem, quis fermentum turpis eros eget velit. Donec ac tempus ante. Fusce ultricies massa massa. Fusce aliquam, purus eget sagittis vulputate, sapien libero hendrerit est, sed commodo augue nisi non neque.</p>
                                             <div class="review-description">
                                                 <div class="tab-thumb">
-                                                    <img src="assets/img/about/services.jpg" alt="">
+                                                    <img src="{{ url('public/frontend/assets/img/about/services.jpg') }}" alt="">
                                                 </div>
                                                 <div class="tab-des">
                                                     <h3>Product Information :</h3>
@@ -137,7 +149,7 @@
                                             <h5>1 review for <span>Chaz Kangeroo Hoodies</span></h5>
                                             <div class="total-reviews">
                                                 <div class="rev-avatar">
-                                                    <img src="assets/img/about/avatar.jpg" alt="">
+                                                    <img src="{{ url('public/frontend/assets/img/about/avatar.jpg') }}" alt="">
                                                 </div>
                                                 <div class="review-box">
                                                     <div class="ratings">

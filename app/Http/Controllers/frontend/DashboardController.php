@@ -9,6 +9,7 @@ use Session;
 use App\Model\Cart;
 use App\Model\Details;
 use App\Model\Slider;
+use App\Model\Product_size;
 
 class DashboardController extends Controller
 {
@@ -26,10 +27,8 @@ class DashboardController extends Controller
         
         $objProduct = new Product();
         $data['result'] = $objProduct->getProduct();
-//        echo "<pre/>"; print_r($data['result']); exit();
-//        $data['men'] = $objProduct->getcollection(1);
-//        $data['women'] = $objProduct->getcollection(2);
-//        $data['kids'] = $objProduct->getcollection(3);
+//        $objProductsize = new Product_size();
+//        $data['size'] = $objProductsize->productsize();
         $session = $request->session()->all();
         $items = Session::get('logindata');
         $objCart = new Cart();

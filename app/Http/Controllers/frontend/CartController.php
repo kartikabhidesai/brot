@@ -8,6 +8,7 @@ use DB;
 use Session;
 use App\Model\Cart;
 use App\Model\Product;
+use App\Model\Product_size;
 use App\Model\Details;
 
 class CartController extends Controller {
@@ -37,7 +38,7 @@ class CartController extends Controller {
                 'title' => 'Cart',
                 'breadcrumb' => array(
                     'Cart' => 'cart'));
-            
+
             return view("frontend.pages.cart.cart", $data);
         } else {
             $request->session()->push('cart', $id);
@@ -86,21 +87,30 @@ class CartController extends Controller {
                 break;
 
             case 'addtocart':
+
                 $data = $request->input('data');
                 $items = Session::get('logindata');
                 $userid = $items[0]['id'];
                 $quantity = $data['quantity'];
                 $id = $data['id'];
                 $sizeid = $data['sizeid'];
-                $objCart = new Cart();
-                $result = $objCart->addtocartnew($userid, $quantity, $id, $sizeid);
-                if ($result) {
-                    $return['redirect'] = route('cart-list');
+                $objProductsize = new Product_size();
+                $result = $objProductsize->getdatabaseQuantity($id, $sizeid);
+                $dataquantity = $result[0]['quantity'];
+                $minusquantity = ($dataquantity - $quantity);
+                if ($minusquantity > 0) {
+                    $objCart = new Cart();
+                    $result = $objCart->addtocartnew($userid, $quantity, $id, $sizeid, $minusquantity);
+                    if ($result) {
+                        $return['redirect'] = route('cart-list');
+                    } else {
+                        $return['status'] = 'error';
+                        $return['message'] = 'Product already in cart';
+                    }
                 } else {
                     $return['status'] = 'error';
-                    $return['message'] = 'Product already in cart';
+                    $return['message'] = 'Product quantity only '.$dataquantity.' left';
                 }
-
                 return json_encode($return);
                 break;
 

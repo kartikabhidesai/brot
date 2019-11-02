@@ -23,13 +23,18 @@ class Cart extends Model {
         }
         return $return;
     }
-    public function addtocartnew($userid, $quantity, $id, $sizeid) {
-        
+
+    public function addtocartnew($userid, $quantity, $id, $sizeid, $minusquantity) {
+
         $findCart = Cart::where('productid', $id)->first();
         if (!empty($findCart)) {
             $return = false;
         } else {
 
+            DB::table('product_size')
+                    ->where('productid', $id)
+                    ->where('size', $sizeid)
+                    ->update(['quantity' => $minusquantity]);
             $objCart = new Cart();
             $objCart->productid = $id;
             $objCart->userid = $userid;
@@ -50,7 +55,7 @@ class Cart extends Model {
 
     public function getCartitem($userid) {
 
-        $result = Cart::select('product_image.image', 'product.price', 'product.description', 'product.productname', 'product.id', 'cart.quantity','size.size')
+        $result = Cart::select('product_image.image', 'product.price', 'product.description', 'product.productname', 'product.id', 'cart.quantity', 'size.size')
                 ->leftjoin('product', 'product.id', '=', 'cart.productid')
                 ->leftjoin('product_image', 'product_image.productid', '=', 'cart.productid')
                 ->leftjoin('size', 'size.id', '=', 'cart.size')
@@ -62,7 +67,7 @@ class Cart extends Model {
 
     public function getCartDetails($userid) {
 
-        $result = Cart::select('cart.id', 'cart.productid', 'cart.userid', 'cart.quantity','cart.size')
+        $result = Cart::select('cart.id', 'cart.productid', 'cart.userid', 'cart.quantity', 'cart.size')
                 ->where('cart.userid', $userid)
                 ->get();
         return $result;

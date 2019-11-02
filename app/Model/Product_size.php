@@ -22,13 +22,29 @@ class Product_size extends Model
                 ->leftjoin('size','size.id','=','product_size.size')
                 ->where('product_size.productid', $id)
                 ->get();
-        print_r($result);die();
         return $result;
     }
     public function productsizeid($id) {
         
         $result = Product_size::select('size')
                 ->where('productid', $id)
+                ->get();
+        return $result;
+    }
+    
+    public function productsize() {
+        
+        $result = Product_size::select('size.size', 'size.id')
+                ->leftjoin('size','size.id','=','product_size.size')
+                ->get();
+        return $result;
+    }
+    
+    public function getdatabaseQuantity($id, $sizeid) {
+        
+        $result = Product_size::select('quantity')
+                ->where('productid', $id)
+                ->where('size', $sizeid)
                 ->get();
         return $result;
     }

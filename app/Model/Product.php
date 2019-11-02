@@ -186,6 +186,7 @@ class Product extends Model {
                 ->get();
         return $result;
     }
+    
 
     public function getProduct($id = NULL) {
        
