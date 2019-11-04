@@ -192,6 +192,7 @@ class Product extends Model {
        
         if($id){
        $result = Product::select(
+                DB::raw('group_concat(DISTINCT(size.id)) as sizeid'),
                  DB::raw('group_concat(DISTINCT(size.size)) as size'),
                  DB::raw('group_concat(DISTINCT(product_size.quantity)) as quantity'),'category.categoryname', 'subcategory.subcategoryname', 'product_image.image',
                           'product.price', 'product.description','product.discount_type','product.discount','product.status' ,'product.productcode', 'product.productname', 'product.id')
@@ -205,6 +206,7 @@ class Product extends Model {
                 ->get();
         }else{
              $result = Product::select(
+                 DB::raw('group_concat(DISTINCT(size.id)) as sizeid'),
                  DB::raw('group_concat(DISTINCT(size.size)) as size'),
                  DB::raw('group_concat(DISTINCT(product_size.quantity)) as quantity'),'category.categoryname', 'subcategory.subcategoryname', 'product_image.image',
                           'product.price', 'product.description','product.discount_type','product.discount','product.status' ,'product.productcode', 'product.productname', 'product.id')
@@ -216,7 +218,6 @@ class Product extends Model {
                 ->groupby('product.productname')
                 ->get();
         }
-       
         
         return $result;
     }

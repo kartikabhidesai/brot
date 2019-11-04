@@ -1,6 +1,6 @@
 @php
 $currRoute = Route::current()->getName();
-$items = Session::get('logindata');
+$items = Session::get('customerlogindata');
 @endphp
 <header>
     <!-- main menu area start -->

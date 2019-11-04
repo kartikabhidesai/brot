@@ -51,7 +51,7 @@
                                     </a>
                                 </td>
                                 <td class="center">
-                                    <a data-toggle="modal" data-target="#deletemodal" data-id="{{ $value->categoryid }}" class="btn btn-tbl-delete btn-xs delete"><i class="fa fa-trash-o"></i></a>
+                                    <a data-toggle="modal" data-target="#deletemodal" data-id="{{ $value->subcategoryid }}" class="btn btn-tbl-delete btn-xs delete"><i class="fa fa-trash-o"></i></a>
                                 </td>
                             </tr>
                             @endforeach

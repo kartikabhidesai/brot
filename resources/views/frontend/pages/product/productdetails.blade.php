@@ -71,7 +71,7 @@
                                     </div>
                                 </div>
                                 <div class="sqr-btn">
-                                    <a data-id="{{ $value->id }}" class="addtocart ">Add to cart</a>
+                                    <a data-id="{{ $value->id }}" class="addtocart">Add to cart</a>
                                 </div><br><br><br>
                                 <div class="availability mb-20">
                                     <h5>Availability:</h5>

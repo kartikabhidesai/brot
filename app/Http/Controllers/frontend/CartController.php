@@ -19,7 +19,7 @@ class CartController extends Controller {
 
     public function cart(Request $request, $id) {
         $session = $request->session()->all();
-        $items = Session::get('logindata');
+        $items = Session::get('customerlogindata');
         if (!empty($items)) {
             $userid = $items[0]['id'];
 
@@ -49,7 +49,7 @@ class CartController extends Controller {
     public function cartlist(Request $request) {
         $objDetails = new Details();
         $data['getdetails'] = $objDetails->getdetails();
-        $items = Session::get('logindata');
+        $items = Session::get('customerlogindata');
         $userid = $items[0]['id'];
         $objCart = new Cart();
         $data['cart'] = $objCart->getCartitem($userid);
@@ -89,27 +89,36 @@ class CartController extends Controller {
             case 'addtocart':
 
                 $data = $request->input('data');
-                $items = Session::get('logindata');
+                $items = Session::get('customerlogindata');
                 $userid = $items[0]['id'];
                 $quantity = $data['quantity'];
                 $id = $data['id'];
                 $sizeid = $data['sizeid'];
-                $objProductsize = new Product_size();
-                $result = $objProductsize->getdatabaseQuantity($id, $sizeid);
-                $dataquantity = $result[0]['quantity'];
-                $minusquantity = ($dataquantity - $quantity);
-                if ($minusquantity > 0) {
-                    $objCart = new Cart();
-                    $result = $objCart->addtocartnew($userid, $quantity, $id, $sizeid, $minusquantity);
-                    if ($result) {
-                        $return['redirect'] = route('cart-list');
-                    } else {
-                        $return['status'] = 'error';
-                        $return['message'] = 'Product already in cart';
-                    }
+                $objCart = new Cart();
+                $result = $objCart->addtocartnew($userid, $quantity, $id, $sizeid);
+                if ($result) {
+                    $return['redirect'] = route('cart-list');
                 } else {
                     $return['status'] = 'error';
-                    $return['message'] = 'Product quantity only '.$dataquantity.' left';
+                    $return['message'] = 'Product already in cart';
+                }
+                return json_encode($return);
+                break;
+                
+            case 'dashboardaddtocart':
+
+                $data = $request->input('data');
+                $items = Session::get('customerlogindata');
+                $userid = $items[0]['id'];
+                $id = $data['id'];
+                $sizeid = $data['sizeid'];
+                $objCart = new Cart();
+                $result = $objCart->dashboardaddtocartnew($userid, $id, $sizeid);
+                if ($result) {
+                    $return['redirect'] = route('cart-list');
+                } else {
+                    $return['status'] = 'error';
+                    $return['message'] = 'Product already in cart';
                 }
                 return json_encode($return);
                 break;
@@ -117,20 +126,19 @@ class CartController extends Controller {
             case 'addquantity':
                 $data = $request->input('data');
                 $objCart = new Cart();
-                $items = Session::get('logindata');
+                $items = Session::get('customerlogindata');
                 $userid = $items[0]['id'];
                 $result = $objCart->Addquantity($data, $userid);
-//                if ($result) {
+                if ($result) {
 //                    $return['status'] = 'success';
 //                    $return['message'] = 'Product Quantity Edited successfully from cart.';
-//                    $return['redirect'] = route('cart-list');
+                   $return['redirect'] = route('cart-list');
 //                } else {
 //                    $return['status'] = 'error';
 //                    $return['message'] = 'Soething Wrong';
-//                }
-//
-//                return json_encode($return);
-//                break;
+                }
+                return json_encode($return);
+                break;
         }
     }
 

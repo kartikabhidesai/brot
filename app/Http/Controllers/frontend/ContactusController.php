@@ -17,7 +17,7 @@ class ContactusController extends Controller
         $session = $request->session()->all();
         $objDetails = new Details();
         $data['getdetails'] = $objDetails->getdetails();
-        $items = Session::get('logindata');
+        $items = Session::get('customerlogindata');
         $objCart = new Cart();
         $data['cart'] = $objCart->getCartitem($items[0]['id']);
         $data['header'] = array(

@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function product(Request $request, $id = NULL){
         
         $session = $request->session()->all();
-        $items = Session::get('logindata');
+        $items = Session::get('customerlogindata');
         $objDetails = new Details();
         $data['getdetails'] = $objDetails->getdetails();
         
@@ -31,8 +31,8 @@ class ProductController extends Controller
         $data['css'] = array();
         $data['plugincss'] = array();
         $data['pluginjs'] = array('jquery.validate.min.js');
-        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'product.js');
-        $data['funinit'] = array('Product.init()');
+        $data['js'] = array('ajaxfileupload.js', 'jquery.form.min.js', 'dashboard.js');
+        $data['funinit'] = array('Dashboard.init()');
         $data['header'] = array(
             'title' => 'Product',
             'breadcrumb' => array(
@@ -49,7 +49,7 @@ class ProductController extends Controller
         $objSize =  new Product_size();
         $data['sizeid'] = $objSize->productsizeid($id);
         $session = $request->session()->all();
-        $items = Session::get('logindata');
+        $items = Session::get('customerlogindata');
         $objCart = new Cart();
         $data['cart'] = $objCart->getCartitem($items[0]['id']);
         $data['title'] = 'Product Details | Brot';

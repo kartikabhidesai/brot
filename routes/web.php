@@ -15,30 +15,6 @@
 //    return view('welcome');
 //});
 //Customer Route
-
-$customerPrefix = "";
-Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], function() {
-    
-//    Profile 
-Route::match(['get', 'post'], 'my-profile', ['as' => 'my-profile', 'uses' => 'frontend\MyprofileController@index']);
-Route::match(['get', 'post'], 'myprofile-ajaxaction', ['as' => 'myprofile-ajaxAction', 'uses' => 'frontend\MyprofileController@ajaxAction']);
-Route::match(['get', 'post'], 'updateaccount', ['as' => 'updateaccount', 'uses' => 'frontend\MyprofileController@updateaccount']);
-Route::match(['get', 'post'], 'add-address', ['as' => 'add-address', 'uses' => 'frontend\MyprofileController@addaddress']);
-Route::match(['get', 'post'], 'edit-address/{id}', ['as' => 'edit-address', 'uses' => 'frontend\MyprofileController@editaddress']);
-
-
-    //Cart
-Route::match(['get', 'post'], 'cart/{id}', ['as' => 'cart', 'uses' => 'frontend\CartController@cart']);
-Route::match(['get', 'post'], 'cart-list', ['as' => 'cart-list', 'uses' => 'frontend\CartController@cartlist']);
-Route::match(['get', 'post'], 'cart-ajaxaction', ['as' => 'cart-ajaxaction', 'uses' => 'frontend\CartController@ajaxaction']);
-
-
-//Checkout
-Route::match(['get', 'post'], 'checkout', ['as' => 'checkout', 'uses' => 'frontend\CheckoutController@checkout']);
-
-//My Order
-Route::match(['get', 'post'], 'myorder', ['as' => 'myorder', 'uses' => 'frontend\OrderController@myorder']);
-});
 //Login
 Route::match(['get', 'post'], 'login', ['as' => 'login', 'uses' => 'frontend\LoginController@login']);
 Route::match(['get', 'post'], 'front-logout', ['as' => 'front-logout', 'uses' => 'frontend\LoginController@logout']);
@@ -73,6 +49,32 @@ Route::match(['get', 'post'], 'register', ['as' => 'register', 'uses' => 'admin\
 Route::match(['get', 'post'], 'forgotpassword', ['as' => 'forgotpassword', 'uses' => 'admin\LoginController@forgotpassword']);
 Route::match(['get', 'post'], 'createpassword', ['as' => 'createpassword', 'uses' => 'admin\LoginController@createpassword']);
 
+
+
+
+$customerPrefix = "";
+Route::group(['prefix' => $customerPrefix, 'middleware' => ['customer']], function() {
+    
+//    Profile 
+Route::match(['get', 'post'], 'my-profile', ['as' => 'my-profile', 'uses' => 'frontend\MyprofileController@index']);
+Route::match(['get', 'post'], 'myprofile-ajaxaction', ['as' => 'myprofile-ajaxAction', 'uses' => 'frontend\MyprofileController@ajaxAction']);
+Route::match(['get', 'post'], 'updateaccount', ['as' => 'updateaccount', 'uses' => 'frontend\MyprofileController@updateaccount']);
+Route::match(['get', 'post'], 'add-address', ['as' => 'add-address', 'uses' => 'frontend\MyprofileController@addaddress']);
+Route::match(['get', 'post'], 'edit-address/{id}', ['as' => 'edit-address', 'uses' => 'frontend\MyprofileController@editaddress']);
+
+
+    //Cart
+Route::match(['get', 'post'], 'cart/{id}', ['as' => 'cart', 'uses' => 'frontend\CartController@cart']);
+Route::match(['get', 'post'], 'cart-list', ['as' => 'cart-list', 'uses' => 'frontend\CartController@cartlist']);
+Route::match(['get', 'post'], 'cart-ajaxaction', ['as' => 'cart-ajaxaction', 'uses' => 'frontend\CartController@ajaxaction']);
+
+
+//Checkout
+Route::match(['get', 'post'], 'checkout', ['as' => 'checkout', 'uses' => 'frontend\CheckoutController@checkout']);
+
+//My Order
+Route::match(['get', 'post'], 'myorder', ['as' => 'myorder', 'uses' => 'frontend\OrderController@myorder']);
+});
 
 $adminPrefix = "";
 Route::group(['prefix' => $adminPrefix, 'middleware' => ['admin']], function() {

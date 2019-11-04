@@ -23,7 +23,7 @@ class CheckoutController extends Controller {
 
     public function checkout(Request $request) {
 
-        $items = Session::get('logindata');
+        $items = Session::get('customerlogindata');
         $userid = $items[0]['id'];
         if ($request->isMethod('post')) {
             $objDetails = new Details();

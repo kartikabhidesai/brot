@@ -56,69 +56,65 @@ class Size extends Model {
                 $return['redirect'] = route('size-list');
             }
         }
-        
+
         return $return;
     }
 
     public function getSizeDetails($id) {
 
-        $result = Size::select('size.categoryid', 'size.subcategoryid', 'size.size', 'size.id','product_size.quantity')
-                ->leftjoin('product_size','product_size.size','=','size.id')
+        $result = Size::select('size.categoryid', 'size.subcategoryid', 'size.size', 'size.id', 'product_size.quantity')
+                ->leftjoin('product_size', 'product_size.size', '=', 'size.id')
                 ->where('subcategoryid', $id)
                 ->get();
-       
+
         return $result;
     }
 
     public function editsize($request, $id) {
-        
-        $result = DB::table('size')->where('subcategoryid', $request->subcategory)->delete();
-        if ($result) {
-            $alradyExist = "";
-            $count = 0;
-            for ($i = 0; $i < count($request->input('size')); $i++) {
-                $sub = $request->input('size')[$i];
-                $findSize =Size::where('size', $sub)
-                            ->where('categoryid', $request->input('category'))
-                            ->where('subcategoryid', $request->input('subcategory'))
-                            ->get()
-                            ->toArray();
 
-                if (!empty($findSize)) {
-                    $count++;
-                    $alradyExist .= $findSize[0]['size'] . ', ';
-                    $result = true;
-                } else {
-                    $objSize = new Size();
-                    $objSize->categoryid = $request->input('category');
-                    $objSize->subcategoryid = $request->input('subcategory');
-                    $objSize->size = $request->input('size')[$i];
-                    $objSize->created_at = date("Y-m-d h:i:s");
-                    $objSize->updated_at = date("Y-m-d h:i:s");
-                    $result = $objSize->save();
-                }
-            }
+        DB::table('size')->where('subcategoryid', $id)->delete();
+        $alradyExist = "";
+        $count = 0;
+        for ($i = 0; $i < count($request->input('size')); $i++) {
+            $sub = $request->input('size')[$i];
+            $findSize = Size::where('size', $sub)
+                    ->where('categoryid', $request->input('category'))
+                    ->where('subcategoryid', $request->input('subcategory'))
+                    ->where('id', "!=", $id)
+                    ->get()
+                    ->toArray();
 
-            if ($result) {
-                if ($count == count($request->input('size'))) {
-                    $return['status'] = 'error';
-                    $return['message'] = 'this Size is already exists';
-                } else {
-                    $return['status'] = 'success';
-                    $return['message'] = ($alradyExist == '') ? 'Size Edited successfully.' : 'Size Edited successfully But ' . $alradyExist . ' is already exist in our system';
-                    $return['redirect'] = route('size-list');
-                }
+            if (!empty($findSize)) {
+                $count++;
+                $alradyExist .= $findSize[0]['size'] . ', ';
+                $result = true;
+            } else {
+                $objSize = new Size();
+                $objSize->categoryid = $request->input('category');
+                $objSize->subcategoryid = $request->input('subcategory');
+                $objSize->size = $request->input('size')[$i];
+                $objSize->created_at = date("Y-m-d h:i:s");
+                $objSize->updated_at = date("Y-m-d h:i:s");
+                $result = $objSize->save();
             }
-            return $return;
-        } else {
-            $return['status'] = 'error';
-            $return['message'] = 'this size is already exists';
-            return $return;
         }
+
+        if ($result) {
+            if ($count == count($request->input('size'))) {
+                $return['status'] = 'error';
+                $return['message'] = 'this Size is already exists';
+            } else {
+                
+                $return['status'] = 'success';
+                $return['message'] = ($alradyExist == '') ? 'Size Edited successfully.' : 'Size Edited successfully But ' . $alradyExist . ' is already exist in our system';
+                $return['redirect'] = route('size-list');
+            }
+        }
+        return $return;
     }
 
     public function deleteSize($data) {
-        $result = DB::table('size')->where('categoryid', $data['id'])->delete();
+        $result = DB::table('size')->where('subcategoryid', $data['id'])->delete();
         return $result;
     }
 

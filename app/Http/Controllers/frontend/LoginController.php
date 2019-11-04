@@ -31,11 +31,11 @@ class LoginController extends Controller {
                     'id' => Auth::guard('customer')->user()->id,
                     'user_type' => Auth::guard('customer')->user()->user_type,
                 );
-                Session::push('logindata', $loginData);
+                Session::push('customerlogindata', $loginData);
                 $data = $request->session()->all();
                 if($request->session()->has('cart')){   
                    
-                    $items = Session::get('logindata');
+                    $items = Session::get('customerlogindata');
                     $productid = Session::get('cart');
                     $userid = $items[0]['id'];
                     $objCart = new Cart();
@@ -105,7 +105,7 @@ class LoginController extends Controller {
         Auth::logout();
         Auth::guard('customer')->logout();
         Auth::guard('user')->logout();
-        Session::forget('logindata');
+        Session::forget('customerlogindata');
     }
 
 }

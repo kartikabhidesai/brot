@@ -90,19 +90,19 @@
                             </div>
                             <div>
                                 @php
-                                    $sizee[] = $size[$i]->size;
-                                    $sizeid[]  = $size[$i]->id;
+                                    $sizearray = explode(",",$result[$i]->size);
+                                    $sizeidarray = explode(",",$result[$i]->sizeid);
                                 @endphp
-                                <select name="size" id="size">
+                                <select name="size" id="size" class="size">
                                     <option value=''>Select Size</option>
-                                    @for($j = 0; $j < sizeof($sizee); $j++)
-                                    <option value='{{ $sizeid[$j] }}'>{{ $sizee[$j] }}</option>
+                                    @for($j = 0; $j < sizeof($sizearray); $j++)
+                                    <option value='{{ $sizeidarray[$j] }}'>{{ $sizearray[$j] }}</option>
                                     @endfor
                                 </select>
                             </div>
-                            <br><br>
+                            <br><br><br>
                             <div class="product-btn">
-                                <a href="{{ route('cart',$result[$i]->id) }}">add to cart</a>
+                                <a data-id="{{ $result[$i]->id }}" class="addtocart ">add to cart</a>
                             </div>
                         </div>
                     </div>

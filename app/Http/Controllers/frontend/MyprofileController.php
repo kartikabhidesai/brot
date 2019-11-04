@@ -23,7 +23,7 @@ class MyprofileController extends Controller {
 
     public function index(Request $request) {
         $session = $request->session()->all();
-        $data['userdetails'] = $items = Session::get('logindata');
+        $data['userdetails'] = $items = Session::get('customerlogindata');
 
         $userid = $items[0]['id'];
         $objOrder = new Order();
@@ -53,7 +53,7 @@ class MyprofileController extends Controller {
 
     public function addaddress(Request $request) {
         $session = $request->session()->all();
-        $data['userdetails'] = $items = Session::get('logindata');
+        $data['userdetails'] = $items = Session::get('customerlogindata');
         $userid = $items[0]['id'];
 
         if ($request->isMethod('post')) {
@@ -93,7 +93,7 @@ class MyprofileController extends Controller {
 
     public function editaddress(Request $request, $id) {
         $session = $request->session()->all();
-        $data['userdetails'] = $items = Session::get('logindata');
+        $data['userdetails'] = $items = Session::get('customerlogindata');
         $userid = $items[0]['id'];
 
         if ($request->isMethod('post')) {
@@ -155,7 +155,7 @@ class MyprofileController extends Controller {
     public function updateaccount(request $request) {
 
         $session = $request->session()->all();
-        $items = Session::get('logindata');
+        $items = Session::get('customerlogindata');
         $userid = $items[0]['id'];
         $objCustomer = new Customer();
         $result = $objCustomer->updateCustomer($request, $userid);

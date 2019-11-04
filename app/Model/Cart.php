@@ -24,21 +24,33 @@ class Cart extends Model {
         return $return;
     }
 
-    public function addtocartnew($userid, $quantity, $id, $sizeid, $minusquantity) {
+    public function addtocartnew($userid, $quantity, $id, $sizeid) {
 
         $findCart = Cart::where('productid', $id)->first();
         if (!empty($findCart)) {
             $return = false;
         } else {
 
-            DB::table('product_size')
-                    ->where('productid', $id)
-                    ->where('size', $sizeid)
-                    ->update(['quantity' => $minusquantity]);
             $objCart = new Cart();
             $objCart->productid = $id;
             $objCart->userid = $userid;
             $objCart->quantity = $quantity;
+            $objCart->size = $sizeid;
+            $return = $objCart->save();
+        }
+        return $return;
+    }
+    
+    public function dashboardaddtocartnew($userid, $id, $sizeid) {
+
+        $findCart = Cart::where('productid', $id)->where('size', $sizeid)->first();
+        if (!empty($findCart)) {
+            $return = false;
+        } else {
+
+            $objCart = new Cart();
+            $objCart->productid = $id;
+            $objCart->userid = $userid;
             $objCart->size = $sizeid;
             $return = $objCart->save();
         }

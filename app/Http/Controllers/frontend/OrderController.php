@@ -20,7 +20,7 @@ class OrderController extends Controller
     public function myorder() {
         $objDetails = new Details();
         $data['getdetails'] = $objDetails->getdetails();
-        $items = Session::get('logindata');
+        $items = Session::get('customerlogindata');
         $userid = $items[0]['id'];
         $objOrder = new Order();
         $data['order'] = $objOrder->getOrder();
