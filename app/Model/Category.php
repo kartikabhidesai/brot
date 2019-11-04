@@ -38,7 +38,9 @@ class Category extends Model
     }
     public function editCategory($request, $id){
         
-        $findCategory = Category::where('categoryname', $request->input('categoryname'))->first();
+        $findCategory = Category::where('categoryname', $request->input('categoryname'))
+                        ->where('id',"!=",$id)
+                        ->first();
         
         if(!empty($findCategory)) {
             return false;

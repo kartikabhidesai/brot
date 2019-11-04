@@ -27,8 +27,9 @@ class DashboardController extends Controller
         
         $objProduct = new Product();
         $data['result'] = $objProduct->getProduct();
-//        $objProductsize = new Product_size();
-//        $data['size'] = $objProductsize->productsize();
+        
+        $objProductsize = new Product_size();
+        $data['size'] = $objProductsize->productsize();
         $session = $request->session()->all();
         $items = Session::get('logindata');
         $objCart = new Cart();

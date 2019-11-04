@@ -22,8 +22,8 @@ class Details extends Model
     
     
     public function editDetails($request){
-        $objDetails = Details::find(1);
-        $objDetails->addressline1 =  $request->input("addressline1");
+        $objDetails = Details::firstOrNew(array('id' =>1));
+        $objDetails->info =  $request->input("information");
         $objDetails->addressline1 =  $request->input("addressline1");
         $objDetails->addressline2 =  $request->input("addressline2");
         $objDetails->mobileno =  $request->input("mobileno");

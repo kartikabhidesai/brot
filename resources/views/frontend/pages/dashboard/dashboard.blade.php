@@ -89,12 +89,18 @@
                                 <span class="old-price"><del>{{ 'INR '.$result[$i]->price }}</del></span>
                             </div>
                             <div>
+                                @php
+                                    $sizee[] = $size[$i]->size;
+                                    $sizeid[]  = $size[$i]->id;
+                                @endphp
                                 <select name="size" id="size">
                                     <option value=''>Select Size</option>
-                                    <option value=''></option>
+                                    @for($j = 0; $j < sizeof($sizee); $j++)
+                                    <option value='{{ $sizeid[$j] }}'>{{ $sizee[$j] }}</option>
+                                    @endfor
                                 </select>
                             </div>
-                            <br><br><br>
+                            <br><br>
                             <div class="product-btn">
                                 <a href="{{ route('cart',$result[$i]->id) }}">add to cart</a>
                             </div>
