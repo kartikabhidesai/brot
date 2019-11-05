@@ -28,7 +28,7 @@ $items = Session::get('logindata');
                     </a>
                 </li>
                 
-                <li class="nav-item start {{ ($currRoute == 'slider' || $currRoute == 'add-slider')  ? 'active' : '' }}">
+                <li class="nav-item start {{ ($currRoute == 'slider' || $currRoute == 'add-slider' || $currRoute == 'edit-silder')  ? 'active' : '' }}">
                     <a href="{{ route('slider') }}" class="nav-link nav-toggle">
                         <i class="fa fa-sliders" aria-hidden="true"></i>
                         <span class="title">Home page Slider</span>
@@ -36,28 +36,28 @@ $items = Session::get('logindata');
                     </a>
                 </li>
                 
-                <li class="nav-item start {{ ($currRoute == 'category-list')  ? 'active' : '' }}">
+                <li class="nav-item start {{ ($currRoute == 'category-list') || ($currRoute == 'add-category') || ($currRoute == 'update-category') ? 'active' : '' }}">
                     <a href="{{ route('category-list') }}" class="nav-link nav-toggle">
                         <i class="fa fa-list-alt" aria-hidden="true"></i>
                         <span class="title">Category</span>
                         <span class="selected"></span>
                     </a>
                 </li>
-                <li class="nav-item start {{ ($currRoute == 'subcategory-list')  ? 'active' : '' }}">
+                <li class="nav-item start {{ ($currRoute == 'subcategory-list') || ($currRoute == 'add-subcategory') || ($currRoute == 'edit-subcategory') ? 'active' : '' }}">
                     <a href="{{ route('subcategory-list') }}" class="nav-link nav-toggle">
                         <i class="fa fa-list-alt" aria-hidden="true"></i>
                         <span class="title">Sub Category</span>
                         <span class="selected"></span>
                     </a>
                 </li>
-                <li class="nav-item start {{ ($currRoute == 'size-list')  ? 'active' : '' }}">
+                <li class="nav-item start {{ ($currRoute == 'size-list') || ($currRoute == 'add-size') || ($currRoute == 'edit-size')  ? 'active' : '' }}">
                     <a href="{{ route('size-list') }}" class="nav-link nav-toggle">
                         <i class="fa fa-list-alt" aria-hidden="true"></i>
                         <span class="title">Size</span>
                         <span class="selected"></span>
                     </a>
                 </li>
-                <li class="nav-item {{ ($currRoute == 'product-list')   ? 'active' : '' }}">
+                <li class="nav-item {{ ($currRoute == 'product-list') || ($currRoute == 'add-product') || ($currRoute == 'edit-product')   ? 'active' : '' }}">
                     <a href="{{ route('product-list') }}" class="nav-link nav-toggle">
                         <i class="fa fa-product-hunt" aria-hidden="true"></i>
                         <span class="title">Product</span>

@@ -30,9 +30,8 @@
             <div class="col-xl-9 col-lg-8 order-1 order-lg-2">
                 <div class="shop-product-wrapper">
                     <div class="shop-product-wrap grid row">
-
                         @for($i = 0; $i < count($result); $i++)
-                        <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6">
+                        <div class="col-xl-3 col-lg-5 col-md-3 col-sm-5">
                             <div class="product-item mb-30">
                                 <div class="product-thumb">
                                     <a href="{{ route('product-details',$result[$i]->id) }}">
@@ -58,7 +57,7 @@
                                         $finalPrice = $result[$i]->price - $final;
                                         @endphp
                                         @endif
-                                        <span class="regular-price">{{ 'INR '.$finalPrice }}</span>
+                                        <span class="regular-price">{{ 'INR '.$finalPrice }}</span><br>
                                         <span class="old-price"><del>{{ 'INR '.$result[$i]->price }}</del></span>
                                     </div>
                                     <div>

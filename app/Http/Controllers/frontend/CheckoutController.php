@@ -33,6 +33,15 @@ class CheckoutController extends Controller {
             $objOrderdetails = new OrderDetails();
             $result = $objOrderdetails->createOrder($request, $cart);
             if ($result) {
+                for ($i = 0; $i < count($cart); $i++) {
+                    $quantity = $cart[$i]['quantity'];
+                    $productid = $cart[$i]['productid'];
+                    $size = $cart[$i]['size'];
+                    $productsize = new Product_size();
+                    $databasequantity = $productsize->getDatabaseQuantity($productid, $size);
+                    $minusquantity = ($databasequantity[0]['quantity'] - $quantity);
+                    $productsize->updateDatabaseQuantity($productid, $size, $minusquantity);
+                }
                 $objCart = new Cart();
                 $cart = $objCart->deleteOrder($userid);
                 $return['status'] = 'success';
@@ -46,7 +55,7 @@ class CheckoutController extends Controller {
             exit;
         }
         $objCustomer = new Customer();
-        $data['customer'] = $objCustomer->getCustomer($userid);
+        $data['customer'] = $objCustomer->getCustomerNew($userid);
         $objCart = new Cart();
         $data['cart'] = $objCart->getCartitem($userid);
         $data['title'] = 'Brot | Checkout';

@@ -40,12 +40,21 @@ class Product_size extends Model
         return $result;
     }
     
-    public function getdatabaseQuantity($id, $sizeid) {
+    public function getDatabaseQuantity($productid, $size) {
         
         $result = Product_size::select('quantity')
-                ->where('productid', $id)
-                ->where('size', $sizeid)
+                ->where('productid', $productid)
+                ->where('size', $size)
                 ->get();
+        return $result;
+    }
+    
+    public function updateDatabaseQuantity($productid, $size, $minusquantity) {
+        
+        $result = DB::table('product_size')
+                ->where('productid', $productid)
+                ->where('size', $size)
+                ->update(['quantity' => $minusquantity]);
         return $result;
     }
 }
