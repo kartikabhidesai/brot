@@ -125,9 +125,9 @@ class CartController extends Controller {
 
             case 'addquantity':
                 $data = $request->input('data');
-                $objCart = new Cart();
                 $items = Session::get('customerlogindata');
                 $userid = $items[0]['id'];
+                $objCart = new Cart();
                 $result = $objCart->Addquantity($data, $userid);
                 if ($result) {
 //                    $return['status'] = 'success';

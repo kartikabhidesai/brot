@@ -23,12 +23,12 @@
 
                     <div class="form-group">
                         <label for="simpleFormEmail">Mobile No</label>
-                        <input type="text" class="form-control" id="categoryname" value="{{ isset($details[0]) ? $details[0]->mobileno : ''}}" name="mobileno" placeholder="Enter address line 2">
+                        <input type="text" class="form-control" id="categoryname" value="{{ isset($details[0]) ? $details[0]->mobileno : ''}}" name="mobileno" placeholder="Enter Mobile Number">
                     </div>
 
                     <div class="form-group">
                         <label for="simpleFormEmail">Email Id</label>
-                        <input type="text" class="form-control" id="categoryname" value="{{ isset($details[0]) ? $details[0]->email : ''}}" name="email" placeholder="Enter address line 2">
+                        <input type="text" class="form-control" id="categoryname" value="{{ isset($details[0]) ? $details[0]->email : ''}}" name="email" placeholder="Enter Email">
                     </div>
                     <button type="submit" class="btn btn-primary">Edit Details</button>
                 </form>

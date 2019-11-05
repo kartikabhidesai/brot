@@ -26,14 +26,14 @@
         <div class="row mtn-30">
             <div class="col-md-6">
                 <div class="img-container img-full fix mt-30">
-                    <a href="#">
+                    <a href="{{ route('product') }}">
                         <img src=" {{ url('public/frontend/assets/img/banner/cms_2.4.jpg') }}" alt="banner image">
                     </a>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="img-container img-full fix mt-30">
-                    <a href="#">
+                    <a href="{{ route('product') }}">
                         <img src=" {{ url('public/frontend/assets/img/banner/cms_2.5.jpg') }}" alt="banner image">
                     </a>
                 </div>

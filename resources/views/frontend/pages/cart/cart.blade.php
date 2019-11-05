@@ -31,9 +31,9 @@
                         $subtotal = ($subtotal + $total);
                         @endphp 
                         <tr>
-                            <td class="pro-thumbnail"><a href="#"><img class="img-fluid" src="{{ url('/public/uploads/product/'.$cart[$i]->image) }}"
+                            <td class="pro-thumbnail"><a href="{{ route('product-details',$cart[$i]->id) }}"><img class="img-fluid" src="{{ url('/public/uploads/product/'.$cart[$i]->image) }}"
                                                                        alt="Product"/></a></td>
-                            <td class="pro-title"><a href="#">{{ $cart[$i]->productname }}</a></td>
+                            <td class="pro-title"><a href="{{ route('product-details',$cart[$i]->id) }}">{{ $cart[$i]->productname }}</a></td>
                             <td class="pro-price"><span>{{ 'INR '.$cart[$i]->price }}</span></td>
                             <td class="pro-quantity">
                                 <div class="pro-qty" id='multiple' data-productid="{{ $cart[$i]->id }}" data-productrate="{{ $cart[$i]->price }}"><input type="text" min="0.00000001" class="quantity" value="{{ $cart[$i]->quantity }}"></div>
