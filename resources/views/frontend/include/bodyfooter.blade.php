@@ -91,13 +91,6 @@
             <div class="container custom-container">
                 <div class="row align-items-center">
                     <div class="col-md-4 order-1">
-                        <div class="footer-social-link">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-rss"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                        </div>
                     </div>
                     <div class="col-md-4 order-3 order-md-2">
                         <div class="copyright-text text-center">
