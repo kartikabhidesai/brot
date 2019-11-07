@@ -44,7 +44,7 @@
                                     <div class="myaccount-content">
                                         <h3>Orders</h3>
                                         <div class="myaccount-table table-responsive text-center">
-                                            <table id="mydatatable" style="width:100%">
+                                            <table id="datatable" style="width:100%">
                                                 <thead>
                                                     <tr>
                                                         <th class="pro-thumbnail">Thumbnail</th>
