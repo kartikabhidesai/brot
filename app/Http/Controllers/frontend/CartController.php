@@ -104,21 +104,28 @@ class CartController extends Controller {
                 }
                 return json_encode($return);
                 break;
-                
+
             case 'dashboardaddtocart':
 
-                $data = $request->input('data');
                 $items = Session::get('customerlogindata');
                 $userid = $items[0]['id'];
+                $data = $request->input('data');
                 $id = $data['id'];
                 $sizeid = $data['sizeid'];
-                $objCart = new Cart();
-                $result = $objCart->dashboardaddtocartnew($userid, $id, $sizeid);
-                if ($result) {
-                    $return['redirect'] = route('cart-list');
+                $data['id'] = $id;
+                $data['sizeid'] = $sizeid;
+                if (!empty($items)) {
+                    $objCart = new Cart();
+                    $result = $objCart->dashboardaddtocartnew($userid, $id, $sizeid);
+                    if ($result) {
+                        $return['redirect'] = route('cart-list');
+                    } else {
+                        $return['status'] = 'error';
+                        $return['message'] = 'Product already in cart';
+                    }
                 } else {
-                    $return['status'] = 'error';
-                    $return['message'] = 'Product already in cart';
+                    $request->session()->push('cart', $data);
+                    $return['redirect'] = 'login';
                 }
                 return json_encode($return);
                 break;
@@ -132,7 +139,7 @@ class CartController extends Controller {
                 if ($result) {
 //                    $return['status'] = 'success';
 //                    $return['message'] = 'Product Quantity Edited successfully from cart.';
-                   $return['redirect'] = route('cart-list');
+                    $return['redirect'] = route('cart-list');
 //                } else {
 //                    $return['status'] = 'error';
 //                    $return['message'] = 'Soething Wrong';

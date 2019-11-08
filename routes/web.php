@@ -49,6 +49,7 @@ Route::match(['get', 'post'], 'register', ['as' => 'register', 'uses' => 'admin\
 Route::match(['get', 'post'], 'forgotpassword', ['as' => 'forgotpassword', 'uses' => 'admin\LoginController@forgotpassword']);
 Route::match(['get', 'post'], 'createpassword', ['as' => 'createpassword', 'uses' => 'admin\LoginController@createpassword']);
 
+Route::match(['get', 'post'], 'cart-ajaxaction', ['as' => 'cart-ajaxaction', 'uses' => 'frontend\CartController@ajaxaction']);
 
 
 
@@ -63,10 +64,10 @@ Route::match(['get', 'post'], 'add-address', ['as' => 'add-address', 'uses' => '
 Route::match(['get', 'post'], 'edit-address/{id}', ['as' => 'edit-address', 'uses' => 'frontend\MyprofileController@editaddress']);
 
 
-    //Cart
+//Cart
 Route::match(['get', 'post'], 'cart/{id}', ['as' => 'cart', 'uses' => 'frontend\CartController@cart']);
 Route::match(['get', 'post'], 'cart-list', ['as' => 'cart-list', 'uses' => 'frontend\CartController@cartlist']);
-Route::match(['get', 'post'], 'cart-ajaxaction', ['as' => 'cart-ajaxaction', 'uses' => 'frontend\CartController@ajaxaction']);
+
 
 
 //Checkout

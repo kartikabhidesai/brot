@@ -32,9 +32,10 @@ class Order extends Model {
     
     public function getOrdernew(){
         
-        $result = Order::select('product.productname','product_image.image','product.price','product.description','order.orderid','order.quantity','order.status')
+        $result = Order::select('product.productname','product_image.image','product.price','product.description','order.orderid','order.quantity','order.status','size.size')
                 ->join('product','product.id','=','order.productid')
                 ->join('product_image','product_image.productid','=','product.id')
+                ->join('size','size.id','=','order.size')
                 ->groupBy('order.orderid')
                 ->orderBy('order.id', 'asc')
                 ->get();

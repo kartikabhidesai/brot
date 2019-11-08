@@ -7,7 +7,6 @@ var Dashboard = function(){
             if (sizeid == '') {
                 alert('Please Select Size');
             } else {
-                var quantity = $('#quantity').val();
                 var data = {'id': id, 'sizeid': sizeid, _token: $('#_token').val()};
                 $.ajax({
                     type: "POST",

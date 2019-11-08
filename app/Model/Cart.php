@@ -9,7 +9,7 @@ class Cart extends Model {
 
     protected $table = 'cart';
 
-    public function AddToCart($id, $userid) {
+    public function AddToCart($id, $userid, $sizeid) {
 
         $findCart = Cart::where('productid', $id)->first();
         if (!empty($findCart)) {
@@ -19,6 +19,7 @@ class Cart extends Model {
             $objCart = new Cart();
             $objCart->productid = $id;
             $objCart->userid = $userid;
+            $objCart->size = $sizeid;
             $return = $objCart->save();
         }
         return $return;
@@ -42,7 +43,7 @@ class Cart extends Model {
     }
     
     public function dashboardaddtocartnew($userid, $id, $sizeid) {
-
+        
         $findCart = Cart::where('productid', $id)->where('size', $sizeid)->first();
         if (!empty($findCart)) {
             $return = false;

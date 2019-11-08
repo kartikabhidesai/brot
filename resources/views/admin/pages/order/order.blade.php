@@ -18,6 +18,7 @@
                                 <th class="center"> Order Id</th>
                                 <th class="center"> product Price</th>
                                 <th class="center"> product quantity</th>
+                                <th class="center"> product size</th>
                                 <th class="center"> Total</th>
                                 <th class="center"> Status</th>
                             </tr>
@@ -44,6 +45,7 @@
                                 <td class="center">{{ $value->price }}</td>
                                 <td class="center">{{ $value->quantity }}</td>
                                 <td class="center"><b style="color: red">{{ ($value->price)*($value->quantity) }}</b</td>
+                                <td class="center">{{ $value->size }}</td>
                                 @if($value->status == 'pending')
                                 <td class="center">
                                     <div class="btn-group">

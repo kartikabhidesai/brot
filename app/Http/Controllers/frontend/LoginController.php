@@ -37,9 +37,10 @@ class LoginController extends Controller {
                    
                     $items = Session::get('customerlogindata');
                     $productid = Session::get('cart');
+                    $sizeid = $productid[0]['sizeid'];
                     $userid = $items[0]['id'];
                     $objCart = new Cart();
-                    $objCart->AddToCart($productid[0], $userid);
+                    $objCart->AddToCart($productid[0]['id'], $userid, $sizeid);
                     Session::forget('cart');
                     $return['status'] = 'success';
                     $return['message'] = "Well Done login Successfully!";
