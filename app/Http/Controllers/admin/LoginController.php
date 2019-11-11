@@ -19,10 +19,16 @@ class LoginController extends Controller {
     function __construct() {
         
     }
-    
-    public function testingmail(){
-        return view("emails.test");
+
+    public function testingmail() {
+        $objSendSms = new SendSMS();
+        $sendSMS = $objSendSms->sendMailltesting();
+        
+        print_r($sendSMS);
+        die();
+        exit;
     }
+
     public function login(Request $request) {
 
         if ($request->isMethod('post')) {
@@ -132,9 +138,8 @@ class LoginController extends Controller {
         Auth::guard('user')->logout();
         Session::forget('logindata');
     }
-    
-    
-    public function createpassword(){
+
+    public function createpassword() {
         print_r(Hash::make('123'));
     }
 
