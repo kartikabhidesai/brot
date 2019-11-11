@@ -1,7 +1,8 @@
-var Dashboard = function(){
-   
-    var list = function(){
-       $('body').on('click', '.addtocart', function () {
+var Dashboard = function () {
+
+    var list = function () {
+
+        $('body').on('click', '.addtocart', function () {
             var id = $(this).attr('data-id');
             var sizeid = $(this).parent().parent().find(".size").val();
             if (sizeid == '') {
@@ -24,7 +25,7 @@ var Dashboard = function(){
         });
     }
     return{
-       init: function () {
+        init: function () {
             list();
         }
     }

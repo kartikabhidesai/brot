@@ -90,8 +90,8 @@
                             </div>
                             <div>
                                 @php
-                                    $sizearray = explode(",",$result[$i]->size);
-                                    $sizeidarray = explode(",",$result[$i]->sizeid);
+                                $sizearray = explode(",",$result[$i]->size);
+                                $sizeidarray = explode(",",$result[$i]->sizeid);
                                 @endphp
                                 <select name="size" id="size" class="size">
                                     <option value=''>Select Size</option>
